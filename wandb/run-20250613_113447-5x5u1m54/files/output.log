@@ -1,0 +1,13 @@
+CREATING THE BASELINE METRIC VALUE
+ STARTING TO EVALUATE FO THE FIRST TIME
+val Procedure: 24it [00:49,  2.05s/it]
+Training Procedure: 9it [00:17,  1.99s/it]                                                                              | 0/99 [00:00<?, ?it/s]
+Validation Loss Epoch: 0 Value: 889.5428491210937 Optimal_loss: 889.5428491210937
+Traceback (most recent call last):                                                                                                             
+  File "/home/cboned/Projects/OCR-Koopman/main_ocr_ctc.py", line 228, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/main_ocr_ctc.py", line 146, in main
+    _, train_loss = train_ocr_task_ctc(
+  File "/home/cboned/Projects/OCR-Koopman/train.py", line 85, in train_ocr_task_ctc
+    for _idx in range(pixel_values.shape[0]):
+NameError: name 'pixel_values' is not defined

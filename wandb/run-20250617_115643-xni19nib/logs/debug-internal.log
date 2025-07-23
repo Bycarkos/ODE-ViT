@@ -1,0 +1,17 @@
+{"time":"2025-06-17T11:56:43.769005077+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250617_115643-xni19nib/logs/debug-core.log"}
+{"time":"2025-06-17T11:56:44.054714817+02:00","level":"INFO","msg":"created new stream","id":"xni19nib"}
+{"time":"2025-06-17T11:56:44.054755525+02:00","level":"INFO","msg":"stream: started","id":"xni19nib"}
+{"time":"2025-06-17T11:56:44.054783936+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"xni19nib"}
+{"time":"2025-06-17T11:56:44.054786171+02:00","level":"INFO","msg":"handler: started","stream_id":"xni19nib"}
+{"time":"2025-06-17T11:56:44.054837322+02:00","level":"INFO","msg":"sender: started","stream_id":"xni19nib"}
+{"time":"2025-06-17T11:56:44.305064722+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-17T11:56:44.305359548+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-06-17T12:01:05.976367158+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 158.109.8.123:47182->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-17T12:15:36.440381752+02:00","level":"INFO","msg":"stream: closing","id":"xni19nib"}
+{"time":"2025-06-17T12:15:36.440415355+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-17T12:15:36.440447173+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-17T12:15:37.012305517+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-17T12:15:37.425053507+02:00","level":"INFO","msg":"handler: closed","stream_id":"xni19nib"}
+{"time":"2025-06-17T12:15:37.425065322+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"xni19nib"}
+{"time":"2025-06-17T12:15:37.425080385+02:00","level":"INFO","msg":"sender: closed","stream_id":"xni19nib"}
+{"time":"2025-06-17T12:15:37.425106982+02:00","level":"INFO","msg":"stream: closed","id":"xni19nib"}

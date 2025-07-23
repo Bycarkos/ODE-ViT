@@ -1,0 +1,89 @@
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [16:34<00:00,  5.07s/it]
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:56<00:00,  4.88s/it]
+Loss Epoch: 1 Value: 1.1793763119518301
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:49<00:00,  4.84s/it]
+Loss Epoch: 2 Value: 0.12951132375806362
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:48<00:00,  4.84s/it]
+Loss Epoch: 3 Value: 0.02107727789367271
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:52<00:00,  4.86s/it]
+Loss Epoch: 4 Value: 0.0040294767062992575
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:47<00:00,  4.83s/it]
+Loss Epoch: 5 Value: 0.0010784249816424563
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:45<00:00,  4.82s/it]
+Loss Epoch: 6 Value: 0.00038444256970437057
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:40<00:00,  4.80s/it]
+Loss Epoch: 7 Value: 0.0002173924763550234
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:28<00:00,  4.74s/it]
+Loss Epoch: 8 Value: 0.00014263328474076582
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:32<00:00,  4.76s/it]
+Loss Epoch: 9 Value: 0.00010207839966195637
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:32<00:00,  4.76s/it]
+Loss Epoch: 10 Value: 7.706129671143052e-05
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:42<00:00,  4.81s/it]
+Loss Epoch: 11 Value: 6.030838314887076e-05
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:32<00:00,  4.76s/it]
+Loss Epoch: 12 Value: 4.8365314216068456e-05
+Updated
+Training Procedure: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [15:36<00:00,  4.78s/it]
+Loss Epoch: 13 Value: 3.956912051966801e-05
+Updated
+Training Procedure:  33%|█████████████████████████████████████████████████████████▎                                                                                                                   | 65/196 [05:21<10:48,  4.95s/it]
+Loss Epoch: 14 Value: 3.291757966403751e-05
+Updated
+Traceback (most recent call last):                                                                                                                                                                                                     
+  File "/home/cboned/Projects/OCR-Koopman/main_lkis_classification.py", line 206, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/main_lkis_classification.py", line 156, in main
+    _, metrics = train_lkis_task(
+  File "/home/cboned/Projects/OCR-Koopman/train.py", line 160, in train_lkis_task
+    features = teacher_model_encoder(**inputs, output_hidden_states=True)["hidden_states"]  # Shape [batch_size, Seq + 1, 768] -> Shape [batch_size, 768] Get the cls
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/Projects/OCR-Koopman/models/wrapper_models.py", line 345, in forward
+    output = self.model(pixel_values=pixel_values, labels=labels, return_dict=True)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/resnet/modeling_resnet.py", line 406, in forward
+    outputs = self.resnet(pixel_values, output_hidden_states=output_hidden_states, return_dict=return_dict)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/resnet/modeling_resnet.py", line 347, in forward
+    encoder_outputs = self.encoder(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/resnet/modeling_resnet.py", line 250, in forward
+    hidden_state = stage_module(hidden_state)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/resnet/modeling_resnet.py", line 219, in forward
+    hidden_state = layer(hidden_state)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1844, in _call_impl
+    return inner()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1803, in inner
+    hook_result = hook(self, args, result)
+  File "/home/cboned/Projects/OCR-Koopman/models/wrapper_models.py", line 337, in _hook_fn
+    self.post_residuals.append(output.detach().cpu())
+KeyboardInterrupt

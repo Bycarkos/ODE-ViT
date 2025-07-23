@@ -1,0 +1,114 @@
+Config of the encoder: <class 'transformers.models.vit.modeling_vit.ViTModel'> is overwritten by shared encoder config: ViTConfig {
+  "attention_probs_dropout_prob": 0.0,
+  "encoder_stride": 16,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.0,
+  "hidden_size": 768,
+  "image_size": 384,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "model_type": "vit",
+  "num_attention_heads": 12,
+  "num_channels": 3,
+  "num_hidden_layers": 12,
+  "patch_size": 16,
+  "pooler_act": "tanh",
+  "pooler_output_size": 768,
+  "qkv_bias": false,
+  "torch_dtype": "float32",
+  "transformers_version": "4.51.1"
+}
+
+Config of the decoder: <class 'transformers.models.trocr.modeling_trocr.TrOCRForCausalLM'> is overwritten by shared decoder config: TrOCRConfig {
+  "activation_dropout": 0.0,
+  "activation_function": "gelu",
+  "add_cross_attention": true,
+  "attention_dropout": 0.0,
+  "bos_token_id": 0,
+  "classifier_dropout": 0.0,
+  "cross_attention_hidden_size": 768,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "eos_token_id": 2,
+  "init_std": 0.02,
+  "is_decoder": true,
+  "layernorm_embedding": true,
+  "max_position_embeddings": 512,
+  "model_type": "trocr",
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "torch_dtype": "float32",
+  "transformers_version": "4.51.1",
+  "use_cache": false,
+  "use_learned_position_embeddings": true,
+  "vocab_size": 50265
+}
+
+Some weights of VisionEncoderDecoderModel were not initialized from the model checkpoint at microsoft/trocr-base-handwritten and are newly initialized: ['encoder.pooler.dense.bias', 'encoder.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+CREATING THE BASELINE METRIC VALUE
+ STARTING TO EVALUATE FO THE FIRST TIME
+val Procedure: 9it [00:01,  7.96it/s]
+Training Procedure: 345it [09:03,  1.58s/it]                                                                                                                                 | 0/149 [00:00<?, ?it/s]
+Validation Loss Epoch: 0 Value: 40.1317699432373 Optimal_loss: 40.1317699432373
+val Procedure: 9it [00:00,  9.08it/s]37s/it]
+Loss Epoch: 1 Value: 38.34076655843984
+Training Procedure: 345it [09:02,  1.57s/it]                                                                                                                     | 1/149 [09:05<22:25:51, 545.62s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 11.459088134765626 Optimal_loss: 11.459088134765626
+val Procedure: 9it [00:00,  9.09it/s]37s/it]
+Loss Epoch: 2 Value: 21.287915542160256
+Training Procedure: 345it [09:03,  1.58s/it]                                                                                                                     | 2/149 [18:09<22:14:55, 544.86s/it]
+val Procedure: 9it [00:00,  9.11it/s]37s/it]
+Loss Epoch: 3 Value: 20.562665121106132
+Training Procedure: 345it [09:03,  1.58s/it]                                                                                                                     | 3/149 [27:14<22:05:57, 544.91s/it]
+val Procedure: 9it [00:00,  9.23it/s]37s/it]
+Loss Epoch: 4 Value: 16.848304194298343
+Training Procedure: 345it [09:03,  1.58s/it]                                                                                                                     | 4/149 [36:20<21:57:41, 545.25s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 4.90738582611084 Optimal_loss: 4.90738582611084
+val Procedure: 9it [00:00,  9.18it/s]37s/it]
+Loss Epoch: 5 Value: 6.515555958125902
+Training Procedure: 345it [09:03,  1.58s/it]                                                                                                                     | 5/149 [45:26<21:48:54, 545.38s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 3.860570788383484 Optimal_loss: 3.860570788383484
+val Procedure: 9it [00:00,  9.09it/s]37s/it]
+Loss Epoch: 6 Value: 5.706664046688356
+Training Procedure: 345it [09:04,  1.58s/it]                                                                                                                     | 6/149 [54:32<21:40:11, 545.54s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 3.203537702560425 Optimal_loss: 3.203537702560425
+val Procedure: 9it [00:00,  9.23it/s]36s/it]
+Loss Epoch: 7 Value: 5.2454540211221445
+Training Procedure: 345it [09:03,  1.58s/it]                                                                                                                   | 7/149 [1:03:38<21:31:37, 545.76s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 2.429469895362854 Optimal_loss: 2.429469895362854
+val Procedure: 9it [00:01,  8.91it/s]37s/it]
+Loss Epoch: 8 Value: 4.808386860723081
+Training Procedure: 345it [09:03,  1.58s/it]                                                                                                                   | 8/149 [1:12:44<21:22:37, 545.80s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 2.165401780605316 Optimal_loss: 2.165401780605316
+val Procedure: 9it [00:00,  9.11it/s]37s/it]
+Loss Epoch: 9 Value: 4.453594708788222
+Training Procedure: 345it [09:03,  1.57s/it]                                                                                                                   | 9/149 [1:21:49<21:13:10, 545.64s/it]
+val Procedure: 9it [00:00,  9.05it/s]37s/it]
+Loss Epoch: 10 Value: 4.2171844489332555
+Training Procedure: 345it [09:03,  1.58s/it]                                                                                                                  | 10/149 [1:30:54<21:03:51, 545.55s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 1.8616798758506774 Optimal_loss: 1.8616798758506774
+val Procedure: 9it [00:00,  9.17it/s]37s/it]
+Loss Epoch: 11 Value: 4.019962399938832
+Training Procedure: 345it [09:06,  1.58s/it]                                                                                                                  | 11/149 [1:40:00<20:55:04, 545.68s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 1.6047696709632873 Optimal_loss: 1.6047696709632873
+val Procedure: 9it [00:00,  9.11it/s]37s/it]
+Loss Epoch: 12 Value: 3.830120435659436
+Training Procedure: 345it [09:03,  1.58s/it]                                                                                                                  | 12/149 [1:49:09<20:48:15, 546.68s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 1.1478657484054566 Optimal_loss: 1.1478657484054566
+val Procedure: 9it [00:00,  9.12it/s]37s/it]
+Loss Epoch: 13 Value: 3.660803574410038
+Training Procedure: 14it [00:23,  1.68s/it]                                                                                                                   | 13/149 [1:58:15<20:38:14, 546.29s/it]
+Traceback (most recent call last):                                                                                                                                                                   
+  File "/home/cboned/Projects/OCR-Koopman/main_ocr_ctc.py", line 237, in <module>
+  File "/home/cboned/Projects/OCR-Koopman/main_ocr_ctc.py", line 155, in main
+    dataloader=train_dloader,
+  File "/home/cboned/Projects/OCR-Koopman/train.py", line 54, in train_ocr_task_ctc
+    pred_size = torch.IntTensor([preds.size(1)] * tokens.shape[0]).to(tokens.device)
+KeyboardInterrupt

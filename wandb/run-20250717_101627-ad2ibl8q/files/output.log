@@ -1,0 +1,18 @@
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 98/98 [16:31<00:00, 10.12s/it]
+Training Procedure:   1%|█▊                                                                                                                                                                             | 1/98 [00:18<29:35, 18.31s/it]
+Loss Epoch: 1 Value: 0.21672469103822903
+Updated
+Traceback (most recent call last):                                                                                                                                                                                                     
+  File "/home/cboned/Projects/OCR-Koopman/main_lkis_classification.py", line 206, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/main_lkis_classification.py", line 156, in main
+    _, metrics = train_lkis_task(
+  File "/home/cboned/Projects/OCR-Koopman/train.py", line 199, in train_lkis_task
+    loss.backward()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/_tensor.py", line 581, in backward
+    torch.autograd.backward(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/autograd/__init__.py", line 347, in backward
+    _engine_run_backward(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/autograd/graph.py", line 825, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.59 GiB. GPU 0 has a total capacity of 44.35 GiB of which 4.19 GiB is free. Including non-PyTorch memory, this process has 40.14 GiB memory in use. Of the allocated memory 30.21 GiB is allocated by PyTorch, and 9.58 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

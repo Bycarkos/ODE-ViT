@@ -1,0 +1,56 @@
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 409, in hf_raise_for_status
+    response.raise_for_status()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/checkpoints/VIT_imagenet100_first_train_reduced.pt/resolve/main/config.json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/utils/hub.py", line 424, in cached_files
+    hf_hub_download(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 961, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1068, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1596, in _raise_on_head_call_error
+    raise head_call_error
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1484, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1401, in get_hf_file_metadata
+    r = _request_wrapper(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 285, in _request_wrapper
+    response = _request_wrapper(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 309, in _request_wrapper
+    hf_raise_for_status(response)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 459, in hf_raise_for_status
+    raise _format(RepositoryNotFoundError, message, response) from e
+huggingface_hub.errors.RepositoryNotFoundError: 401 Client Error. (Request ID: Root=1-68628925-771e124311d5e91f54924c6b;c01b8ee4-8bad-4b83-a291-f656bd6053d1)
+
+Repository Not Found for url: https://huggingface.co/checkpoints/VIT_imagenet100_first_train_reduced.pt/resolve/main/config.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated. For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+Invalid username or password.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cboned/Projects/OCR-Koopman/main_classification_ode.py", line 209, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/main_classification_ode.py", line 57, in main
+    model = ViTForImageClassification.from_pretrained(base_checkpoint_path)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/modeling_utils.py", line 279, in _wrapper
+    return func(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4078, in from_pretrained
+    resolved_config_file = cached_file(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/utils/hub.py", line 266, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/utils/hub.py", line 456, in cached_files
+    raise OSError(
+OSError: checkpoints/VIT_imagenet100_first_train_reduced.pt is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `huggingface-cli login` or by passing `token=<your_token>`

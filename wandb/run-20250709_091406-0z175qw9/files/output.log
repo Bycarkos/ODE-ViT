@@ -1,0 +1,64 @@
+Some weights of the model checkpoint at /data/users/cboned/checkpoints/Vit_CIFAR100_first_train_reduced.pt were not used when initializing ViTForImageClassification: ['vit.encoder.layer.1.attention.attention.key.bias', 'vit.encoder.layer.1.attention.attention.key.weight', 'vit.encoder.layer.1.attention.attention.query.bias', 'vit.encoder.layer.1.attention.attention.query.weight', 'vit.encoder.layer.1.attention.attention.value.bias', 'vit.encoder.layer.1.attention.attention.value.weight', 'vit.encoder.layer.1.attention.output.dense.bias', 'vit.encoder.layer.1.attention.output.dense.weight', 'vit.encoder.layer.1.intermediate.dense.bias', 'vit.encoder.layer.1.intermediate.dense.weight', 'vit.encoder.layer.1.layernorm_after.bias', 'vit.encoder.layer.1.layernorm_after.weight', 'vit.encoder.layer.1.layernorm_before.bias', 'vit.encoder.layer.1.layernorm_before.weight', 'vit.encoder.layer.1.output.dense.bias', 'vit.encoder.layer.1.output.dense.weight', 'vit.encoder.layer.10.attention.attention.key.bias', 'vit.encoder.layer.10.attention.attention.key.weight', 'vit.encoder.layer.10.attention.attention.query.bias', 'vit.encoder.layer.10.attention.attention.query.weight', 'vit.encoder.layer.10.attention.attention.value.bias', 'vit.encoder.layer.10.attention.attention.value.weight', 'vit.encoder.layer.10.attention.output.dense.bias', 'vit.encoder.layer.10.attention.output.dense.weight', 'vit.encoder.layer.10.intermediate.dense.bias', 'vit.encoder.layer.10.intermediate.dense.weight', 'vit.encoder.layer.10.layernorm_after.bias', 'vit.encoder.layer.10.layernorm_after.weight', 'vit.encoder.layer.10.layernorm_before.bias', 'vit.encoder.layer.10.layernorm_before.weight', 'vit.encoder.layer.10.output.dense.bias', 'vit.encoder.layer.10.output.dense.weight', 'vit.encoder.layer.11.attention.attention.key.bias', 'vit.encoder.layer.11.attention.attention.key.weight', 'vit.encoder.layer.11.attention.attention.query.bias', 'vit.encoder.layer.11.attention.attention.query.weight', 'vit.encoder.layer.11.attention.attention.value.bias', 'vit.encoder.layer.11.attention.attention.value.weight', 'vit.encoder.layer.11.attention.output.dense.bias', 'vit.encoder.layer.11.attention.output.dense.weight', 'vit.encoder.layer.11.intermediate.dense.bias', 'vit.encoder.layer.11.intermediate.dense.weight', 'vit.encoder.layer.11.layernorm_after.bias', 'vit.encoder.layer.11.layernorm_after.weight', 'vit.encoder.layer.11.layernorm_before.bias', 'vit.encoder.layer.11.layernorm_before.weight', 'vit.encoder.layer.11.output.dense.bias', 'vit.encoder.layer.11.output.dense.weight', 'vit.encoder.layer.2.attention.attention.key.bias', 'vit.encoder.layer.2.attention.attention.key.weight', 'vit.encoder.layer.2.attention.attention.query.bias', 'vit.encoder.layer.2.attention.attention.query.weight', 'vit.encoder.layer.2.attention.attention.value.bias', 'vit.encoder.layer.2.attention.attention.value.weight', 'vit.encoder.layer.2.attention.output.dense.bias', 'vit.encoder.layer.2.attention.output.dense.weight', 'vit.encoder.layer.2.intermediate.dense.bias', 'vit.encoder.layer.2.intermediate.dense.weight', 'vit.encoder.layer.2.layernorm_after.bias', 'vit.encoder.layer.2.layernorm_after.weight', 'vit.encoder.layer.2.layernorm_before.bias', 'vit.encoder.layer.2.layernorm_before.weight', 'vit.encoder.layer.2.output.dense.bias', 'vit.encoder.layer.2.output.dense.weight', 'vit.encoder.layer.3.attention.attention.key.bias', 'vit.encoder.layer.3.attention.attention.key.weight', 'vit.encoder.layer.3.attention.attention.query.bias', 'vit.encoder.layer.3.attention.attention.query.weight', 'vit.encoder.layer.3.attention.attention.value.bias', 'vit.encoder.layer.3.attention.attention.value.weight', 'vit.encoder.layer.3.attention.output.dense.bias', 'vit.encoder.layer.3.attention.output.dense.weight', 'vit.encoder.layer.3.intermediate.dense.bias', 'vit.encoder.layer.3.intermediate.dense.weight', 'vit.encoder.layer.3.layernorm_after.bias', 'vit.encoder.layer.3.layernorm_after.weight', 'vit.encoder.layer.3.layernorm_before.bias', 'vit.encoder.layer.3.layernorm_before.weight', 'vit.encoder.layer.3.
+- This IS expected if you are initializing ViTForImageClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ViTForImageClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+CREATING THE BASELINE METRIC VALUE
+ STARTING TO EVALUATE FO THE FIRST TIME
+val Procedure: 24it [00:10,  2.19it/s]
+Training Procedure: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [23:45<00:00,  7.27s/it]
+Validation Loss Epoch: 0 Value: 7.184441261291504 Optimal_loss: 7.184441261291504
+val Procedure: 24it [00:09,  2.47it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [23:45<00:00,  5.90s/it]
+Loss Epoch: 1 Value: 6.376744321414402
+Training Procedure: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [23:40<00:00,  7.25s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 5.068285045623779 Optimal_loss: 5.068285045623779
+val Procedure: 24it [00:03,  6.13it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [23:40<00:00,  5.20s/it]
+Loss Epoch: 2 Value: 5.184839735225755
+Training Procedure: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [23:17<00:00,  7.13s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 4.642823371887207 Optimal_loss: 4.642823371887207
+val Procedure: 24it [00:09,  2.42it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [23:17<00:00,  6.03s/it]
+Loss Epoch: 3 Value: 5.008250039450976
+Training Procedure: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [24:13<00:00,  7.42s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 4.626653575897217 Optimal_loss: 4.626653575897217
+val Procedure: 24it [00:09,  2.42it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [24:13<00:00,  6.03s/it]
+Loss Epoch: 4 Value: 4.975856172795198
+Training Procedure: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [24:14<00:00,  7.42s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 4.588200187683105 Optimal_loss: 4.588200187683105
+val Procedure: 24it [00:09,  2.42it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [24:14<00:00,  6.03s/it]
+Loss Epoch: 5 Value: 4.961207389831543
+Training Procedure: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [24:15<00:00,  7.42s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 4.580189723968505 Optimal_loss: 4.580189723968505
+val Procedure: 24it [00:10,  2.37it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [24:15<00:00,  6.03s/it]
+Loss Epoch: 6 Value: 4.9378175029949265
+Training Procedure:  28%|█████████████████████████████████████████████▏                                                                                                                      | 54/196 [06:40<17:33,  7.42s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 4.552680416107178 Optimal_loss: 4.552680416107178
+Traceback (most recent call last):                                                                                                                                                                                            
+  File "/home/cboned/Projects/OCR-Koopman/main_classification_ode.py", line 213, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/main_classification_ode.py", line 131, in main
+    _, train_loss = train_classification_task(
+  File "/home/cboned/Projects/OCR-Koopman/train.py", line 247, in train_classification_task
+    labels = data["labels"].to(device)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/Projects/OCR-Koopman/models/wrapper_ode.py", line 254, in forward
+    t = torch.arange(self.steps, device=hidden_state.device)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/Projects/OCR-Koopman/models/wrapper_ode.py", line 197, in forward
+    self.integration_time = self.integration_time.type_as(x)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torchdiffeq/_impl/adjoint.py", line 206, in odeint_adjoint
+    ans = OdeintAdjointMethod.apply(shapes, func, y0, t, rtol, atol, method, options, event_fn, adjoint_rtol, adjoint_atol,
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/autograd/function.py", line 575, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torchdiffeq/_impl/adjoint.py", line 24, in forward
+    ans = odeint(func, y0, t, rtol=rtol, atol=atol, method=method, options=options, event_fn=event_fn)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torchdiffeq/_impl/odeint.py", line 80, in odeint
+    solution = solver.integrate(t)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torchdiffeq/_impl/solvers.py", line 119, in integrate
+    solution[j] = self._linear_interp(t0, t1, y0, y1, t[j])
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torchdiffeq/_impl/solvers.py", line 175, in _linear_interp
+    def _linear_interp(self, t0, t1, y0, y1, t):
+KeyboardInterrupt

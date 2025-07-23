@@ -1,0 +1,10 @@
+loading teacher model
+loading Koopman Network
+Extracting the PCA Vt for computing the trajectories:   4%|█████▍                                                                                                                                 | 2000/50000 [00:34<13:38, 58.65it/s]
+Training Procedure:   0%|                                                                                                                                                                                    | 0/10000 [00:00<?, ?it/s]
+Traceback (most recent call last):                                                                                                                                                                           | 0/10000 [00:00<?, ?it/s]
+  File "/home/cboned/Projects/OCR-Koopman/plt_trajectories.py", line 204, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/plt_trajectories.py", line 166, in main
+    wandb.Image(images[i]),
+IndexError: list index out of range

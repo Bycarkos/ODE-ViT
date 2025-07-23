@@ -1,0 +1,62 @@
+{
+  "os": "Linux-5.13.0-44-generic-x86_64-with-glibc2.31",
+  "python": "CPython 3.10.16",
+  "startedAt": "2025-06-13T11:58:27.739230Z",
+  "args": [
+    "-c",
+    "experiment_ctc.yaml",
+    "-cp",
+    "configs/recognition/"
+  ],
+  "program": "/home/cboned/Projects/OCR-Koopman/main_ocr_ctc.py",
+  "codePath": "main_ocr_ctc.py",
+  "email": "cbonedriera@gmail.com",
+  "root": "/home/cboned/Projects/OCR-Koopman",
+  "host": "cudahpc23",
+  "executable": "/home/cboned/miniconda3/envs/graphocr/bin/python",
+  "codePathLocal": "main_ocr_ctc.py",
+  "cpu_count": 24,
+  "cpu_count_logical": 48,
+  "gpu": "NVIDIA A40",
+  "gpu_count": 4,
+  "disk": {
+    "/": {
+      "total": "1871225524224",
+      "used": "1694448640000"
+    }
+  },
+  "memory": {
+    "total": "270122340352"
+  },
+  "cpu": {
+    "count": 24,
+    "countLogical": 48
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA A40",
+      "memoryTotal": "48305799168",
+      "cudaCores": 10752,
+      "architecture": "Ampere"
+    },
+    {
+      "name": "NVIDIA A40",
+      "memoryTotal": "48305799168",
+      "cudaCores": 10752,
+      "architecture": "Ampere"
+    },
+    {
+      "name": "NVIDIA A40",
+      "memoryTotal": "48305799168",
+      "cudaCores": 10752,
+      "architecture": "Ampere"
+    },
+    {
+      "name": "NVIDIA A40",
+      "memoryTotal": "48305799168",
+      "cudaCores": 10752,
+      "architecture": "Ampere"
+    }
+  ],
+  "cudaVersion": "12.2"
+}

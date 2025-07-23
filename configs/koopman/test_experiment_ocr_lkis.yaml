@@ -1,0 +1,38 @@
+log_wandb: False
+
+setup:
+    epochs: 100
+    num_accumulation_steps: -1
+    log_every: 10
+    sample_number_pca: 2000
+    explain_pca: False
+
+    wandb:
+        project: graphocr
+        group: htr
+        name: TrOCR Esposalles
+
+data:
+    dataset:
+        Esposalles:
+            _target_: main_lkis.EsposallesDatasetForHtr
+            dataset_path: "/data/users/cboned/data/HTR/Esposalles"
+
+    collator:
+        shuffle: False
+        batch_size: 128
+        pin_memory: False
+        num_workers: 4
+
+modeling:
+    reduced_model:
+        checkpoint_name: "TrOCR_Distilled_Esposalles_ODE_2"
+        model:
+            _target_: experiment_ocr_lkis.REncoderDecoderModel
+            steps: 12
+
+    processor:
+        checkpoint_path: ${modeling.base.checkpoint_path}
+
+    base:
+        checkpoint_path: checkpoints/TrOCR_Distilled_Esposalles_koopman_operator_full_grid.pt

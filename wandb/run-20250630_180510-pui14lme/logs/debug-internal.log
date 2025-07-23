@@ -1,0 +1,25 @@
+{"time":"2025-06-30T18:05:10.076708167+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250630_180510-pui14lme/logs/debug-core.log"}
+{"time":"2025-06-30T18:05:10.328752729+02:00","level":"INFO","msg":"created new stream","id":"pui14lme"}
+{"time":"2025-06-30T18:05:10.328786792+02:00","level":"INFO","msg":"stream: started","id":"pui14lme"}
+{"time":"2025-06-30T18:05:10.328808198+02:00","level":"INFO","msg":"handler: started","stream_id":"pui14lme"}
+{"time":"2025-06-30T18:05:10.328805242+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"pui14lme"}
+{"time":"2025-06-30T18:05:10.328844396+02:00","level":"INFO","msg":"sender: started","stream_id":"pui14lme"}
+{"time":"2025-06-30T18:05:10.545095288+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-30T18:05:10.545234529+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-06-30T23:19:40.909709034+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-30T23:43:10.929570689+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-30T23:43:43.075849519+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-30T23:43:51.139795469+02:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/bycarkos/Koopman/pui14lme/file_stream","body":"{\"error\":\"context deadline exceeded\"}"}
+{"time":"2025-06-30T23:48:33.995159322+02:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/bycarkos/Koopman/pui14lme/file_stream","body":"{\"error\":\"context deadline exceeded\"}"}
+{"time":"2025-06-30T23:48:41.511220092+02:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/bycarkos/Koopman/pui14lme/file_stream","body":"{\"error\":\"context deadline exceeded\"}"}
+{"time":"2025-06-30T23:50:53.80791142+02:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/graphql","body":"{\"errors\":[{\"message\":\"context deadline exceeded\",\"path\":[\"project\",\"run\"]}],\"data\":{\"project\":{\"run\":null}}}"}
+{"time":"2025-07-01T01:58:26.900379925+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/bycarkos/Koopman/pui14lme/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-07-01T10:04:11.681875792+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-07-01T10:38:39.678825356+02:00","level":"INFO","msg":"stream: closing","id":"pui14lme"}
+{"time":"2025-07-01T10:38:39.679448321+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-01T10:38:39.679943019+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-01T10:38:40.564773013+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-01T10:38:40.75065218+02:00","level":"INFO","msg":"handler: closed","stream_id":"pui14lme"}
+{"time":"2025-07-01T10:38:40.750681122+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"pui14lme"}
+{"time":"2025-07-01T10:38:40.750710435+02:00","level":"INFO","msg":"sender: closed","stream_id":"pui14lme"}
+{"time":"2025-07-01T10:38:40.750735059+02:00","level":"INFO","msg":"stream: closed","id":"pui14lme"}

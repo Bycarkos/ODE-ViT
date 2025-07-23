@@ -1,0 +1,19 @@
+{"time":"2025-06-17T17:26:49.148061822+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250617_172649-yaa6n64j/logs/debug-core.log"}
+{"time":"2025-06-17T17:26:49.404114056+02:00","level":"INFO","msg":"created new stream","id":"yaa6n64j"}
+{"time":"2025-06-17T17:26:49.404159073+02:00","level":"INFO","msg":"stream: started","id":"yaa6n64j"}
+{"time":"2025-06-17T17:26:49.404184979+02:00","level":"INFO","msg":"handler: started","stream_id":"yaa6n64j"}
+{"time":"2025-06-17T17:26:49.404192585+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"yaa6n64j"}
+{"time":"2025-06-17T17:26:49.40422233+02:00","level":"INFO","msg":"sender: started","stream_id":"yaa6n64j"}
+{"time":"2025-06-17T17:26:49.62908421+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-17T17:26:49.629225435+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-06-17T22:25:07.322190871+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-18T03:34:35.337372437+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-18T05:43:05.407949571+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-18T12:01:29.42922931+02:00","level":"INFO","msg":"stream: closing","id":"yaa6n64j"}
+{"time":"2025-06-18T12:01:29.429276371+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-18T12:01:29.429332252+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-18T12:01:30.070344577+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-18T12:01:30.257255399+02:00","level":"INFO","msg":"handler: closed","stream_id":"yaa6n64j"}
+{"time":"2025-06-18T12:01:30.257306089+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"yaa6n64j"}
+{"time":"2025-06-18T12:01:30.25743636+02:00","level":"INFO","msg":"sender: closed","stream_id":"yaa6n64j"}
+{"time":"2025-06-18T12:01:30.257449157+02:00","level":"INFO","msg":"stream: closed","id":"yaa6n64j"}

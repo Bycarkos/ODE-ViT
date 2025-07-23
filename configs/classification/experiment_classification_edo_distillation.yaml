@@ -1,0 +1,51 @@
+log_wandb: True
+
+setup:
+    dict:
+        epochs: 200
+        accumulation_steps: -1
+        log_every: 10
+
+    wandb:
+        project: Koopman
+        group: CLASSIFICATION
+        name: Training_EDO_DISTILLATION_VIT_ON_ImageNet100
+
+data:
+    dataset:
+        dataset_path: "/data/users/cboned/data/Generic/imagenet100"
+
+    collator:
+        train:
+            shuffle: True
+            batch_size: 128
+            pin_memory: True
+            num_workers: 8
+
+        val:
+            shuffle: True
+            batch_size: 8
+            pin_memory: False
+            num_workers: 8
+
+        test:
+            shuffle: False
+            batch_size: 1
+            pin_memory: False
+            num_workers: 0
+
+modeling:
+    teacher:
+        checkpoint_path: "/data/users/cboned/checkpoints/VIT_imagenet100_first_train.pt"
+
+    student:
+        inputs:
+            num_heads: 6
+            embed_dim: 768
+            mlp_ratio: 3
+            depth: 12
+
+        checkpoint_name: "EDO_VIT_distillation_imagenet100_first_train"
+
+    base:
+        checkpoint_path: "/data/users/cboned/checkpoints/VIT_imagenet100_first_train_reduced.pt"

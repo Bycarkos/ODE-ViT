@@ -1,0 +1,23 @@
+2025-06-30 13:18:27,973 INFO    MainThread:101310 [wandb_setup.py:_flush():68] Current SDK version is 0.19.10
+2025-06-30 13:18:27,973 INFO    MainThread:101310 [wandb_setup.py:_flush():68] Configure stats pid to 101310
+2025-06-30 13:18:27,973 INFO    MainThread:101310 [wandb_setup.py:_flush():68] Loading settings from /home/cboned/.config/wandb/settings
+2025-06-30 13:18:27,973 INFO    MainThread:101310 [wandb_setup.py:_flush():68] Loading settings from /home/cboned/Projects/OCR-Koopman/wandb/settings
+2025-06-30 13:18:27,973 INFO    MainThread:101310 [wandb_setup.py:_flush():68] Loading settings from environment variables
+2025-06-30 13:18:27,973 INFO    MainThread:101310 [wandb_init.py:setup_run_log_directory():724] Logging user logs to /home/cboned/Projects/OCR-Koopman/wandb/run-20250630_131827-g3cyhyph/logs/debug.log
+2025-06-30 13:18:27,973 INFO    MainThread:101310 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to /home/cboned/Projects/OCR-Koopman/wandb/run-20250630_131827-g3cyhyph/logs/debug-internal.log
+2025-06-30 13:18:27,973 INFO    MainThread:101310 [wandb_init.py:init():852] calling init triggers
+2025-06-30 13:18:27,973 INFO    MainThread:101310 [wandb_init.py:init():857] wandb.init called with sweep_config: {}
+config: {'_wandb': {'code_path': 'code/main_classification_ode_distillation.py'}}
+2025-06-30 13:18:27,973 INFO    MainThread:101310 [wandb_init.py:init():893] starting backend
+2025-06-30 13:18:27,973 INFO    MainThread:101310 [wandb_init.py:init():897] sending inform_init request
+2025-06-30 13:18:27,975 INFO    MainThread:101310 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-06-30 13:18:27,976 INFO    MainThread:101310 [wandb_init.py:init():907] backend started and connected
+2025-06-30 13:18:27,977 INFO    MainThread:101310 [wandb_init.py:init():1002] updated telemetry
+2025-06-30 13:18:27,977 INFO    MainThread:101310 [wandb_init.py:init():1026] communicating run to backend with 90.0 second timeout
+2025-06-30 13:18:28,468 INFO    MainThread:101310 [wandb_init.py:init():1101] starting run threads in backend
+2025-06-30 13:18:28,582 INFO    MainThread:101310 [wandb_run.py:_console_start():2566] atexit reg
+2025-06-30 13:18:28,582 INFO    MainThread:101310 [wandb_run.py:_redirect():2414] redirect: wrap_raw
+2025-06-30 13:18:28,582 INFO    MainThread:101310 [wandb_run.py:_redirect():2483] Wrapping output streams.
+2025-06-30 13:18:28,583 INFO    MainThread:101310 [wandb_run.py:_redirect():2506] Redirects installed.
+2025-06-30 13:18:28,584 INFO    MainThread:101310 [wandb_init.py:init():1147] run started, returning control to user process
+2025-06-30 18:03:35,028 INFO    MsgRouterThr:101310 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 1 handles.

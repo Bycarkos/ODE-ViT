@@ -1,0 +1,18 @@
+{"time":"2025-06-17T21:43:14.34130334+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250617_214314-m1niw2op/logs/debug-core.log"}
+{"time":"2025-06-17T21:43:14.59433284+02:00","level":"INFO","msg":"created new stream","id":"m1niw2op"}
+{"time":"2025-06-17T21:43:14.59437455+02:00","level":"INFO","msg":"stream: started","id":"m1niw2op"}
+{"time":"2025-06-17T21:43:14.594384762+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"m1niw2op"}
+{"time":"2025-06-17T21:43:14.594424748+02:00","level":"INFO","msg":"handler: started","stream_id":"m1niw2op"}
+{"time":"2025-06-17T21:43:14.594435542+02:00","level":"INFO","msg":"sender: started","stream_id":"m1niw2op"}
+{"time":"2025-06-17T21:43:14.873653076+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-17T21:43:14.87424272+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-06-17T22:25:45.004623097+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-18T03:19:24.563728862+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-18T09:57:54.108336142+02:00","level":"INFO","msg":"stream: closing","id":"m1niw2op"}
+{"time":"2025-06-18T09:57:54.108378734+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-18T09:57:54.10844644+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-18T09:57:54.634105238+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-18T09:57:54.818592084+02:00","level":"INFO","msg":"handler: closed","stream_id":"m1niw2op"}
+{"time":"2025-06-18T09:57:54.818611085+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"m1niw2op"}
+{"time":"2025-06-18T09:57:54.81861836+02:00","level":"INFO","msg":"sender: closed","stream_id":"m1niw2op"}
+{"time":"2025-06-18T09:57:54.818736716+02:00","level":"INFO","msg":"stream: closed","id":"m1niw2op"}

@@ -1,0 +1,12 @@
+loading teacher model
+loading Koopman Network
+Extracting the PCA Vt for computing the trajectories:   4%|█████▍                                                                                                                                 | 2000/50000 [00:36<14:29, 55.21it/s]
+Training Procedure:   0%|                                                                                                                                                                                    | 0/10000 [00:00<?, ?it/s]
+Traceback (most recent call last):                                                                                                                                                                           | 0/10000 [00:00<?, ?it/s]
+  File "/home/cboned/Projects/OCR-Koopman/plt_trajectories.py", line 204, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/plt_trajectories.py", line 157, in main
+    traj_student_aligned = utils.align_trajectories(traj_teacher, traj_student)
+  File "/home/cboned/Projects/OCR-Koopman/utils.py", line 276, in align_trajectories
+    return Y_align
+NameError: name 'Y_align' is not defined

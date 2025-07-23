@@ -1,0 +1,20 @@
+{"time":"2025-06-13T17:56:48.908204965+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250613_175648-qh6vlz6d/logs/debug-core.log"}
+{"time":"2025-06-13T17:56:49.166339068+02:00","level":"INFO","msg":"created new stream","id":"qh6vlz6d"}
+{"time":"2025-06-13T17:56:49.166400582+02:00","level":"INFO","msg":"stream: started","id":"qh6vlz6d"}
+{"time":"2025-06-13T17:56:49.166422783+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"qh6vlz6d"}
+{"time":"2025-06-13T17:56:49.166442189+02:00","level":"INFO","msg":"sender: started","stream_id":"qh6vlz6d"}
+{"time":"2025-06-13T17:56:49.166511648+02:00","level":"INFO","msg":"handler: started","stream_id":"qh6vlz6d"}
+{"time":"2025-06-13T17:56:49.382115946+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-13T17:56:49.382480713+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-06-13T18:04:34.513777738+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-13T18:24:25.560027035+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-13T20:01:21.942082818+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/bycarkos/Koopman/qh6vlz6d/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-06-13T21:05:45.418025866+02:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/bycarkos/Koopman/qh6vlz6d/file_stream","body":"{\"error\":\"context deadline exceeded\"}"}
+{"time":"2025-06-14T09:02:38.315640924+02:00","level":"INFO","msg":"stream: closing","id":"qh6vlz6d"}
+{"time":"2025-06-14T09:02:38.315667946+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-14T09:02:38.315725106+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-14T09:02:40.64027149+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-14T09:02:40.874117956+02:00","level":"INFO","msg":"handler: closed","stream_id":"qh6vlz6d"}
+{"time":"2025-06-14T09:02:40.874160578+02:00","level":"INFO","msg":"sender: closed","stream_id":"qh6vlz6d"}
+{"time":"2025-06-14T09:02:40.874160398+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"qh6vlz6d"}
+{"time":"2025-06-14T09:02:40.874245742+02:00","level":"INFO","msg":"stream: closed","id":"qh6vlz6d"}

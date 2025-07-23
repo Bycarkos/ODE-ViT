@@ -1,0 +1,255 @@
+Config of the encoder: <class 'transformers.models.vit.modeling_vit.ViTModel'> is overwritten by shared encoder config: ViTConfig {
+  "attention_probs_dropout_prob": 0.0,
+  "encoder_stride": 16,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.0,
+  "hidden_size": 768,
+  "image_size": 384,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "model_type": "vit",
+  "num_attention_heads": 12,
+  "num_channels": 3,
+  "num_hidden_layers": 1,
+  "patch_size": 16,
+  "pooler_act": "tanh",
+  "pooler_output_size": 768,
+  "qkv_bias": false,
+  "torch_dtype": "float32",
+  "transformers_version": "4.51.1"
+}
+
+Config of the decoder: <class 'transformers.models.trocr.modeling_trocr.TrOCRForCausalLM'> is overwritten by shared decoder config: TrOCRConfig {
+  "activation_dropout": 0.0,
+  "activation_function": "relu",
+  "add_cross_attention": true,
+  "attention_dropout": 0.0,
+  "bos_token_id": 0,
+  "classifier_dropout": 0.0,
+  "cross_attention_hidden_size": 768,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "eos_token_id": 2,
+  "init_std": 0.02,
+  "is_decoder": true,
+  "layernorm_embedding": false,
+  "max_position_embeddings": 1024,
+  "model_type": "trocr",
+  "pad_token_id": 1,
+  "scale_embedding": true,
+  "tie_word_embeddings": false,
+  "torch_dtype": "float32",
+  "transformers_version": "4.51.1",
+  "use_cache": false,
+  "use_learned_position_embeddings": false,
+  "vocab_size": 50265
+}
+
+Some weights of the model checkpoint at checkpoints/TrOCR_Esposalles_reduced.pt were not used when initializing VisionEncoderDecoderModel: ['encoder.encoder.layer.1.attention.attention.key.weight', 'encoder.encoder.layer.1.attention.attention.query.weight', 'encoder.encoder.layer.1.attention.attention.value.weight', 'encoder.encoder.layer.1.attention.output.dense.bias', 'encoder.encoder.layer.1.attention.output.dense.weight', 'encoder.encoder.layer.1.intermediate.dense.bias', 'encoder.encoder.layer.1.intermediate.dense.weight', 'encoder.encoder.layer.1.layernorm_after.bias', 'encoder.encoder.layer.1.layernorm_after.weight', 'encoder.encoder.layer.1.layernorm_before.bias', 'encoder.encoder.layer.1.layernorm_before.weight', 'encoder.encoder.layer.1.output.dense.bias', 'encoder.encoder.layer.1.output.dense.weight', 'encoder.encoder.layer.10.attention.attention.key.weight', 'encoder.encoder.layer.10.attention.attention.query.weight', 'encoder.encoder.layer.10.attention.attention.value.weight', 'encoder.encoder.layer.10.attention.output.dense.bias', 'encoder.encoder.layer.10.attention.output.dense.weight', 'encoder.encoder.layer.10.intermediate.dense.bias', 'encoder.encoder.layer.10.intermediate.dense.weight', 'encoder.encoder.layer.10.layernorm_after.bias', 'encoder.encoder.layer.10.layernorm_after.weight', 'encoder.encoder.layer.10.layernorm_before.bias', 'encoder.encoder.layer.10.layernorm_before.weight', 'encoder.encoder.layer.10.output.dense.bias', 'encoder.encoder.layer.10.output.dense.weight', 'encoder.encoder.layer.11.attention.attention.key.weight', 'encoder.encoder.layer.11.attention.attention.query.weight', 'encoder.encoder.layer.11.attention.attention.value.weight', 'encoder.encoder.layer.11.attention.output.dense.bias', 'encoder.encoder.layer.11.attention.output.dense.weight', 'encoder.encoder.layer.11.intermediate.dense.bias', 'encoder.encoder.layer.11.intermediate.dense.weight', 'encoder.encoder.layer.11.layernorm_after.bias', 'encoder.encoder.layer.11.layernorm_after.weight', 'encoder.encoder.layer.11.layernorm_before.bias', 'encoder.encoder.layer.11.layernorm_before.weight', 'encoder.encoder.layer.11.output.dense.bias', 'encoder.encoder.layer.11.output.dense.weight', 'encoder.encoder.layer.2.attention.attention.key.weight', 'encoder.encoder.layer.2.attention.attention.query.weight', 'encoder.encoder.layer.2.attention.attention.value.weight', 'encoder.encoder.layer.2.attention.output.dense.bias', 'encoder.encoder.layer.2.attention.output.dense.weight', 'encoder.encoder.layer.2.intermediate.dense.bias', 'encoder.encoder.layer.2.intermediate.dense.weight', 'encoder.encoder.layer.2.layernorm_after.bias', 'encoder.encoder.layer.2.layernorm_after.weight', 'encoder.encoder.layer.2.layernorm_before.bias', 'encoder.encoder.layer.2.layernorm_before.weight', 'encoder.encoder.layer.2.output.dense.bias', 'encoder.encoder.layer.2.output.dense.weight', 'encoder.encoder.layer.3.attention.attention.key.weight', 'encoder.encoder.layer.3.attention.attention.query.weight', 'encoder.encoder.layer.3.attention.attention.value.weight', 'encoder.encoder.layer.3.attention.output.dense.bias', 'encoder.encoder.layer.3.attention.output.dense.weight', 'encoder.encoder.layer.3.intermediate.dense.bias', 'encoder.encoder.layer.3.intermediate.dense.weight', 'encoder.encoder.layer.3.layernorm_after.bias', 'encoder.encoder.layer.3.layernorm_after.weight', 'encoder.encoder.layer.3.layernorm_before.bias', 'encoder.encoder.layer.3.layernorm_before.weight', 'encoder.encoder.layer.3.output.dense.bias', 'encoder.encoder.layer.3.output.dense.weight', 'encoder.encoder.layer.4.attention.attention.key.weight', 'encoder.encoder.layer.4.attention.attention.query.weight', 'encoder.encoder.layer.4.attention.attention.value.weight', 'encoder.encoder.layer.4.attention.output.dense.bias', 'encoder.encoder.layer.4.attention.output.dense.weight', 'encoder.encoder.layer.4.intermediate.dense.bias', 'encoder.encoder.layer.4.intermediate.dense.weight', 'encoder.encoder.layer.4.layernorm_after.bias', 'encoder.encoder.layer.4.layernorm_after.weight', 'encoder.encoder.l
+- This IS expected if you are initializing VisionEncoderDecoderModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing VisionEncoderDecoderModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Config of the encoder: <class 'transformers.models.vit.modeling_vit.ViTModel'> is overwritten by shared encoder config: ViTConfig {
+  "attention_probs_dropout_prob": 0.0,
+  "encoder_stride": 16,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.0,
+  "hidden_size": 768,
+  "image_size": 384,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "model_type": "vit",
+  "num_attention_heads": 12,
+  "num_channels": 3,
+  "num_hidden_layers": 12,
+  "patch_size": 16,
+  "pooler_act": "tanh",
+  "pooler_output_size": 768,
+  "qkv_bias": false,
+  "torch_dtype": "float32",
+  "transformers_version": "4.51.1"
+}
+
+Config of the decoder: <class 'transformers.models.trocr.modeling_trocr.TrOCRForCausalLM'> is overwritten by shared decoder config: TrOCRConfig {
+  "activation_dropout": 0.0,
+  "activation_function": "relu",
+  "add_cross_attention": true,
+  "attention_dropout": 0.0,
+  "bos_token_id": 0,
+  "classifier_dropout": 0.0,
+  "cross_attention_hidden_size": 768,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "eos_token_id": 2,
+  "init_std": 0.02,
+  "is_decoder": true,
+  "layernorm_embedding": false,
+  "max_position_embeddings": 1024,
+  "model_type": "trocr",
+  "pad_token_id": 1,
+  "scale_embedding": true,
+  "tie_word_embeddings": false,
+  "torch_dtype": "float32",
+  "transformers_version": "4.51.1",
+  "use_cache": false,
+  "use_learned_position_embeddings": false,
+  "vocab_size": 50265
+}
+
+/home/cboned/Projects/OCR-Koopman/main_ocr_ctc_ode_distillation.py:48: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_dict = torch.load(cfg.modeling.teacher.checkpoint_path)
+CREATING THE BASELINE METRIC VALUE
+ STARTING TO EVALUATE FO THE FIRST TIME
+val Procedure: 9it [00:01,  8.04it/s]
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Validation Loss Epoch: 0 Value: 38.388220977783206 Optimal_loss: 38.388220977783206
+val Procedure: 9it [00:01,  8.79it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 1 Value: 33.43779270061548
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 15.021260929107665 Optimal_loss: 15.021260929107665
+val Procedure: 9it [00:01,  8.93it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 2 Value: 7.686924364946891
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 5.11126708984375 Optimal_loss: 5.11126708984375
+val Procedure: 9it [00:00,  9.08it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 3 Value: 4.576499192611031
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:36<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 4.176231741905212 Optimal_loss: 4.176231741905212
+val Procedure: 9it [00:00,  9.01it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:36<00:00, 1.90s/batch]
+Loss Epoch: 4 Value: 3.791737361576246
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:37<00:00, 2.20s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 3.5328383922576903 Optimal_loss: 3.5328383922576903
+val Procedure: 9it [00:01,  8.97it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:37<00:00, 1.90s/batch]
+Loss Epoch: 5 Value: 3.4821035426595937
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:34<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 3.265687441825867 Optimal_loss: 3.265687441825867
+val Procedure: 9it [00:01,  8.88it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:34<00:00, 1.90s/batch]
+Loss Epoch: 6 Value: 3.313568820124087
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 3.2385404109954834 Optimal_loss: 3.2385404109954834
+val Procedure: 9it [00:01,  8.99it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 7 Value: 3.1985505912614904
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+val Procedure: 9it [00:00,  9.02it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 8 Value: 3.1033829523169474
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 3.0511932611465453 Optimal_loss: 3.0511932611465453
+val Procedure: 9it [00:01,  8.78it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 9 Value: 2.9775994957357215
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 2.8224473714828493 Optimal_loss: 2.8224473714828493
+val Procedure: 9it [00:01,  8.99it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 10 Value: 2.8503960270812545
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:34<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 2.594823884963989 Optimal_loss: 2.594823884963989
+val Procedure: 9it [00:00,  9.17it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:34<00:00, 1.90s/batch]
+Loss Epoch: 11 Value: 2.696311135914015
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 2.553560733795166 Optimal_loss: 2.553560733795166
+val Procedure: 9it [00:00,  9.01it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 12 Value: 2.5585862643476847
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 2.3743585348129272 Optimal_loss: 2.3743585348129272
+val Procedure: 9it [00:01,  8.95it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 13 Value: 2.484131049418795
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 2.3019517183303835 Optimal_loss: 2.3019517183303835
+val Procedure: 9it [00:00,  9.03it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 14 Value: 2.3706574526385986
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 1.9465021729469298 Optimal_loss: 1.9465021729469298
+val Procedure: 9it [00:01,  8.87it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 15 Value: 2.1625606312268024
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+val Procedure: 9it [00:00,  9.02it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 16 Value: 2.0474909620008606
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+val Procedure: 9it [00:01,  8.93it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 17 Value: 1.966864736529364
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+val Procedure: 9it [00:01,  8.78it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 18 Value: 1.90453099064205
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+val Procedure: 9it [00:01,  8.87it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 19 Value: 1.8528429957403654
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 1.7905559182167052 Optimal_loss: 1.7905559182167052
+val Procedure: 9it [00:01,  8.92it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 20 Value: 1.811441271546958
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 1.7875295400619506 Optimal_loss: 1.7875295400619506
+val Procedure: 9it [00:00,  9.02it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 21 Value: 1.7696706149889074
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:34<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 1.7804144024848938 Optimal_loss: 1.7804144024848938
+val Procedure: 9it [00:01,  8.86it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:34<00:00, 1.61s/batch]
+Loss Epoch: 22 Value: 1.7341420881990073
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:36<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 1.7201886177062988 Optimal_loss: 1.7201886177062988
+val Procedure: 9it [00:01,  8.84it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:36<00:00, 1.90s/batch]
+Loss Epoch: 23 Value: 1.6961008928824162
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:36<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 1.5919549256563186 Optimal_loss: 1.5919549256563186
+val Procedure: 9it [00:01,  8.92it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:36<00:00, 1.90s/batch]
+Loss Epoch: 24 Value: 1.6596684956896133
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:36<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 1.5499181255698204 Optimal_loss: 1.5499181255698204
+val Procedure: 9it [00:00,  9.04it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:36<00:00, 1.90s/batch]
+Loss Epoch: 25 Value: 1.6234674339709074
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+val Procedure: 9it [00:01,  8.92it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 26 Value: 1.591315868280936
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+val Procedure: 9it [00:00,  9.04it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 27 Value: 1.5548883362092834
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+val Procedure: 9it [00:01,  8.74it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 28 Value: 1.5403202779051186
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+val Procedure: 9it [00:01,  8.92it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 29 Value: 1.5063187194907146
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:36<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 1.4947928845882417 Optimal_loss: 1.4947928845882417
+val Procedure: 9it [00:00,  9.08it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:36<00:00, 1.90s/batch]
+Loss Epoch: 30 Value: 1.4787447272867396
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 1.3789294600486754 Optimal_loss: 1.3789294600486754
+val Procedure: 9it [00:00,  9.07it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 31 Value: 1.4574182064636894
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 1.2924950957298278 Optimal_loss: 1.2924950957298278
+val Procedure: 9it [00:01,  8.71it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 32 Value: 1.430395679888518
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:34<00:00, 2.19s/batch]
+val Procedure: 9it [00:01,  8.84it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:34<00:00, 1.90s/batch]
+Loss Epoch: 33 Value: 1.413607468985129
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+val Procedure: 9it [00:01,  8.96it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 34 Value: 1.38554413439571
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+val Procedure: 9it [00:01,  8.90it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 35 Value: 1.365607818658801
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 2.19s/batch]
+Model Updated: Validation Loss Epoch: 0 Value: 1.2750773310661316 Optimal_loss: 1.2750773310661316
+val Procedure: 9it [00:00,  9.01it/s]██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 345/345 [12:35<00:00, 1.90s/batch]
+Loss Epoch: 36 Value: 1.3423612706903099
+Training Procedure:  88%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                 | 305/345 [11:10<01:27, 2.20s/batch]
+Traceback (most recent call last):                                                                                                                                                                             
+  File "/home/cboned/Projects/OCR-Koopman/main_ocr_ctc_ode_distillation.py", line 253, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/main_ocr_ctc_ode_distillation.py", line 170, in main
+    _, train_loss = train_ocr_task_ctc_distillation(
+  File "/home/cboned/Projects/OCR-Koopman/train.py", line 61, in train_ocr_task_ctc_distillation
+    pred_size = torch.IntTensor([preds.size(1)] * tokens.shape[0]).to(tokens.device)
+KeyboardInterrupt

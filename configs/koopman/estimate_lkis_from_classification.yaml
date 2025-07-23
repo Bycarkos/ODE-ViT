@@ -1,0 +1,53 @@
+log_wandb: True
+
+setup:
+    wandb:
+        project: Koopman
+        group: CLASSIFICATION_LKIS
+        name: Test Resnet Trajectories CIFAR100 delay 1 out 64 resolution 8_8
+
+    dict:
+        num_accumulation_steps: -1
+        log_every: 10
+        epochs: 50
+        full_grid: True
+        delay: 1
+        g_out: 64
+        resolution: 8
+
+data:
+    dataset:
+        name: cifar100
+        dataset_path: "/data/users/cboned/data/Generic/cifar"
+
+    collator:
+        train:
+            shuffle: True
+            batch_size: 512
+            pin_memory: True
+            num_workers: 8
+
+        val:
+            shuffle: True
+            batch_size: 32
+            pin_memory: False
+            num_workers: 8
+
+        test:
+            shuffle: False
+            batch_size: 1
+            pin_memory: False
+            num_workers: 0
+
+modeling:
+    type: resnet
+    teacher:
+        checkpoint_path: "checkpoints/Resnet_CIFAR100_first_train.pt"
+
+    student:
+        checkpoint_name: "Resnet_CIFAR100_Koopman_cls_token_out_64_delay_1_res_8_8"
+        inputs:
+            dim_y: 64
+            dim_g_in: 64
+            dim_g_out: 64
+            delay: 1

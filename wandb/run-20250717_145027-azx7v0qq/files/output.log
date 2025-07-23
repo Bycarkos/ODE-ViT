@@ -1,0 +1,46 @@
+Training Procedure:   2%|███▌                                                                                                                                                                           | 2/98 [00:32<26:02, 16.28s/it]
+Traceback (most recent call last):                                                                                                                                                                                                     
+  File "/home/cboned/Projects/OCR-Koopman/main_lkis_classification.py", line 207, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/main_lkis_classification.py", line 157, in main
+    _, metrics = train_lkis_task(
+  File "/home/cboned/Projects/OCR-Koopman/train.py", line 160, in train_lkis_task
+    features = teacher_model_encoder(**inputs, output_hidden_states=True)["hidden_states"]  # Shape [batch_size, Seq + 1, 768] -> Shape [batch_size, 768] Get the cls
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/Projects/OCR-Koopman/models/wrapper_models.py", line 336, in forward
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/resnet/modeling_resnet.py", line 406, in forward
+    outputs = self.resnet(pixel_values, output_hidden_states=output_hidden_states, return_dict=return_dict)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/resnet/modeling_resnet.py", line 347, in forward
+    encoder_outputs = self.encoder(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/resnet/modeling_resnet.py", line 250, in forward
+    hidden_state = stage_module(hidden_state)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/resnet/modeling_resnet.py", line 219, in forward
+    hidden_state = layer(hidden_state)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1844, in _call_impl
+    return inner()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1803, in inner
+    hook_result = hook(self, args, result)
+  File "/home/cboned/Projects/OCR-Koopman/models/wrapper_models.py", line 328, in _hook_fn
+    self.post_residuals.append(output.detach().cpu())
+KeyboardInterrupt

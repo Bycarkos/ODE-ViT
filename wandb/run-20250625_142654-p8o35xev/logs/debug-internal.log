@@ -1,0 +1,22 @@
+{"time":"2025-06-25T14:26:54.054152283+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250625_142654-p8o35xev/logs/debug-core.log"}
+{"time":"2025-06-25T14:26:54.316044727+02:00","level":"INFO","msg":"created new stream","id":"p8o35xev"}
+{"time":"2025-06-25T14:26:54.316086577+02:00","level":"INFO","msg":"stream: started","id":"p8o35xev"}
+{"time":"2025-06-25T14:26:54.316102171+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"p8o35xev"}
+{"time":"2025-06-25T14:26:54.316133819+02:00","level":"INFO","msg":"handler: started","stream_id":"p8o35xev"}
+{"time":"2025-06-25T14:26:54.316182654+02:00","level":"INFO","msg":"sender: started","stream_id":"p8o35xev"}
+{"time":"2025-06-25T14:26:54.636488059+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-25T14:26:54.637742071+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-06-25T20:27:24.956951099+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-25T20:28:39.957867946+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-25T21:53:10.008907988+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-26T04:29:52.35784343+02:00","level":"INFO","msg":"api: retrying HTTP error","status":429,"url":"https://api.wandb.ai/files/bycarkos/Koopman/p8o35xev/file_stream","body":"{\"error\":\"rate limit exceeded\"}"}
+{"time":"2025-06-26T04:29:54.685751125+02:00","level":"INFO","msg":"api: retrying HTTP error","status":429,"url":"https://api.wandb.ai/files/bycarkos/Koopman/p8o35xev/file_stream","body":"{\"error\":\"rate limit exceeded\"}"}
+{"time":"2025-06-26T04:29:59.364616051+02:00","level":"INFO","msg":"api: retrying HTTP error","status":429,"url":"https://api.wandb.ai/files/bycarkos/Koopman/p8o35xev/file_stream","body":"{\"error\":\"rate limit exceeded\"}"}
+{"time":"2025-06-26T16:16:54.710936123+02:00","level":"INFO","msg":"stream: closing","id":"p8o35xev"}
+{"time":"2025-06-26T16:16:54.710978445+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-26T16:16:54.711072341+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-26T16:16:55.323332404+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-26T16:16:55.530310353+02:00","level":"INFO","msg":"handler: closed","stream_id":"p8o35xev"}
+{"time":"2025-06-26T16:16:55.530360003+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"p8o35xev"}
+{"time":"2025-06-26T16:16:55.530400651+02:00","level":"INFO","msg":"sender: closed","stream_id":"p8o35xev"}
+{"time":"2025-06-26T16:16:55.530443313+02:00","level":"INFO","msg":"stream: closed","id":"p8o35xev"}

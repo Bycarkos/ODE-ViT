@@ -1,0 +1,12 @@
+# Direcotries
+./wandb/*
+checkpoints/*
+dmd_results/*
+**/__pycache__
+
+
+## Specific files
+**/*.png
+*.vscode
+**/.ropeproject
+**/pyrightconfig.json

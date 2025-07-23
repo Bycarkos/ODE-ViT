@@ -1,0 +1,534 @@
+Config of the encoder: <class 'transformers.models.vit.modeling_vit.ViTModel'> is overwritten by shared encoder config: ViTConfig {
+  "attention_probs_dropout_prob": 0.0,
+  "encoder_stride": 16,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.0,
+  "hidden_size": 768,
+  "image_size": 384,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "model_type": "vit",
+  "num_attention_heads": 12,
+  "num_channels": 3,
+  "num_hidden_layers": 12,
+  "patch_size": 16,
+  "pooler_act": "tanh",
+  "pooler_output_size": 768,
+  "qkv_bias": false,
+  "torch_dtype": "float32",
+  "transformers_version": "4.51.1"
+}
+
+Config of the decoder: <class 'transformers.models.trocr.modeling_trocr.TrOCRForCausalLM'> is overwritten by shared decoder config: TrOCRConfig {
+  "activation_dropout": 0.0,
+  "activation_function": "gelu",
+  "add_cross_attention": true,
+  "attention_dropout": 0.0,
+  "bos_token_id": 0,
+  "classifier_dropout": 0.0,
+  "cross_attention_hidden_size": 768,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "eos_token_id": 2,
+  "init_std": 0.02,
+  "is_decoder": true,
+  "layernorm_embedding": true,
+  "max_position_embeddings": 512,
+  "model_type": "trocr",
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "torch_dtype": "float32",
+  "transformers_version": "4.51.1",
+  "use_cache": false,
+  "use_learned_position_embeddings": true,
+  "vocab_size": 50265
+}
+
+Some weights of VisionEncoderDecoderModel were not initialized from the model checkpoint at microsoft/trocr-base-handwritten and are newly initialized: ['encoder.pooler.dense.bias', 'encoder.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+CREATING THE BASELINE METRIC VALUE
+ STARTING TO EVALUATE FO THE FIRST TIME
+val Procedure: 9it [00:01,  7.72it/s]
+Training Procedure: 345it [08:57,  1.56s/it]                                                 | 0/149 [00:00<?, ?it/s]
+Validation Loss Epoch: 0 Value: 33.70411777496338 Optimal_loss: 33.70411777496338
+val Procedure: 9it [00:00,  9.35it/s]35s/it]
+Loss Epoch: 1 Value: 23.38368517004925
+Training Procedure: 345it [08:57,  1.56s/it]                                     | 1/149 [08:59<22:10:40, 539.46s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 5.692415189743042 Optimal_loss: 5.692415189743042
+val Procedure: 9it [00:00,  9.16it/s]35s/it]
+Loss Epoch: 2 Value: 4.664244151460951
+Training Procedure: 345it [08:57,  1.56s/it]                                     | 2/149 [17:59<22:02:39, 539.86s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 3.8790536403656004 Optimal_loss: 3.8790536403656004
+val Procedure: 9it [00:00,  9.08it/s]35s/it]
+Loss Epoch: 3 Value: 3.555314909202465
+Training Procedure: 345it [08:58,  1.56s/it]                                     | 3/149 [26:59<21:53:50, 539.94s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 3.1594367265701293 Optimal_loss: 3.1594367265701293
+val Procedure: 9it [00:00,  9.01it/s]35s/it]
+Loss Epoch: 4 Value: 3.064933152820753
+Training Procedure: 345it [08:57,  1.56s/it]                                     | 4/149 [35:59<21:44:57, 539.98s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 3.0100993871688844 Optimal_loss: 3.0100993871688844
+val Procedure: 9it [00:00,  9.25it/s]35s/it]
+Loss Epoch: 5 Value: 2.776262366944465
+Training Procedure: 345it [08:56,  1.56s/it]                                     | 5/149 [44:58<21:35:07, 539.64s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 2.700239419937134 Optimal_loss: 2.700239419937134
+val Procedure: 9it [00:00,  9.24it/s]35s/it]
+Loss Epoch: 6 Value: 2.5426139409991277
+Training Procedure: 345it [08:57,  1.56s/it]                                     | 6/149 [53:57<21:25:33, 539.40s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 2.5902068853378295 Optimal_loss: 2.5902068853378295
+val Procedure: 9it [00:00,  9.24it/s]35s/it]
+Loss Epoch: 7 Value: 2.35606389183929
+Training Procedure: 345it [08:56,  1.55s/it]                                   | 7/149 [1:02:56<21:16:20, 539.30s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 2.333910083770752 Optimal_loss: 2.333910083770752
+val Procedure: 9it [00:00,  9.35it/s]35s/it]
+Loss Epoch: 8 Value: 2.215066344841667
+Training Procedure: 345it [08:57,  1.56s/it]                                   | 8/149 [1:11:55<21:06:40, 539.01s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 2.0606643080711367 Optimal_loss: 2.0606643080711367
+val Procedure: 9it [00:00,  9.23it/s]35s/it]
+Loss Epoch: 9 Value: 2.106937016957048
+Training Procedure: 345it [08:57,  1.56s/it]                                   | 9/149 [1:20:54<20:57:51, 539.08s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 2.0140496253967286 Optimal_loss: 2.0140496253967286
+val Procedure: 9it [00:00,  9.24it/s]35s/it]
+Loss Epoch: 10 Value: 2.0284293617027394
+Training Procedure: 345it [08:57,  1.56s/it]                                  | 10/149 [1:29:53<20:48:59, 539.13s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 1.9654145240783691 Optimal_loss: 1.9654145240783691
+val Procedure: 9it [00:00,  9.15it/s]35s/it]
+Loss Epoch: 11 Value: 1.9231350242227747
+Training Procedure: 345it [08:57,  1.56s/it]                                  | 11/149 [1:38:53<20:40:28, 539.34s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 1.905588150024414 Optimal_loss: 1.905588150024414
+val Procedure: 9it [00:00,  9.43it/s]35s/it]
+Loss Epoch: 12 Value: 1.7862317468809046
+Training Procedure: 345it [08:57,  1.56s/it]                                  | 12/149 [1:47:52<20:31:26, 539.31s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 1.569554626941681 Optimal_loss: 1.569554626941681
+val Procedure: 9it [00:00,  9.35it/s]35s/it]
+Loss Epoch: 13 Value: 1.4509934992030047
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 13/149 [1:56:52<20:22:41, 539.42s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 1.3634342193603515 Optimal_loss: 1.3634342193603515
+val Procedure: 9it [00:00,  9.34it/s]35s/it]
+Loss Epoch: 14 Value: 1.230157292580259
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 14/149 [2:05:52<20:14:19, 539.70s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 1.0919579923152924 Optimal_loss: 1.0919579923152924
+val Procedure: 9it [00:00,  9.08it/s]35s/it]
+Loss Epoch: 15 Value: 1.0725500127543575
+Training Procedure: 345it [08:56,  1.56s/it]                                  | 15/149 [2:14:52<20:05:18, 539.69s/it]
+val Procedure: 9it [00:00,  9.33it/s]35s/it]
+Loss Epoch: 16 Value: 0.9334517687991045
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 16/149 [2:23:51<19:55:49, 539.47s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.9315255433320999 Optimal_loss: 0.9315255433320999
+val Procedure: 9it [00:00,  9.09it/s]35s/it]
+Loss Epoch: 17 Value: 0.8494602932446245
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 17/149 [2:32:51<19:47:22, 539.72s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.732332843542099 Optimal_loss: 0.732332843542099
+val Procedure: 9it [00:00,  9.18it/s]35s/it]
+Loss Epoch: 18 Value: 0.778135559524315
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 18/149 [2:41:51<19:38:20, 539.70s/it]
+val Procedure: 9it [00:00,  9.10it/s]35s/it]
+Loss Epoch: 19 Value: 0.7516456344853277
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 19/149 [2:50:51<19:29:25, 539.74s/it]
+val Procedure: 9it [00:00,  9.34it/s]35s/it]
+Loss Epoch: 20 Value: 0.7173832109009011
+Training Procedure: 345it [08:57,  1.56s/it]                                  | 20/149 [2:59:51<19:20:44, 539.88s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.6960985749959946 Optimal_loss: 0.6960985749959946
+val Procedure: 9it [00:00,  9.14it/s]35s/it]
+Loss Epoch: 21 Value: 0.701013023438661
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 21/149 [3:08:50<19:11:28, 539.75s/it]
+val Procedure: 9it [00:00,  9.22it/s]35s/it]
+Loss Epoch: 22 Value: 0.6860703813856927
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 22/149 [3:17:50<19:02:29, 539.76s/it]
+val Procedure: 9it [00:00,  9.15it/s]35s/it]
+Loss Epoch: 23 Value: 0.6732514949812405
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 23/149 [3:26:51<18:54:01, 540.01s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.6830034017562866 Optimal_loss: 0.6830034017562866
+val Procedure: 9it [00:00,  9.17it/s]35s/it]
+Loss Epoch: 24 Value: 0.6581077142038207
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 24/149 [3:35:50<18:44:51, 539.93s/it]
+val Procedure: 9it [00:00,  9.25it/s]35s/it]
+Loss Epoch: 25 Value: 0.6466850625432056
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 25/149 [3:44:51<18:36:03, 540.03s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.627731516957283 Optimal_loss: 0.627731516957283
+val Procedure: 9it [00:00,  9.27it/s]35s/it]
+Loss Epoch: 26 Value: 0.6350340088208516
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 26/149 [3:53:50<18:26:53, 539.94s/it]
+val Procedure: 9it [00:00,  9.05it/s]35s/it]
+Loss Epoch: 27 Value: 0.6377277189406796
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 27/149 [4:02:50<18:17:48, 539.90s/it]
+val Procedure: 9it [00:00,  9.06it/s]36s/it]
+Loss Epoch: 28 Value: 0.633278066697328
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 28/149 [4:11:50<18:08:46, 539.89s/it]
+val Procedure: 9it [00:00,  9.30it/s]35s/it]
+Loss Epoch: 29 Value: 0.6316883413687996
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 29/149 [4:20:51<18:00:18, 540.15s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.5891947627067566 Optimal_loss: 0.5891947627067566
+val Procedure: 9it [00:00,  9.10it/s]35s/it]
+Loss Epoch: 30 Value: 0.6391327743081079
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 30/149 [4:29:51<17:51:15, 540.13s/it]
+val Procedure: 9it [00:00,  9.29it/s]35s/it]
+Loss Epoch: 31 Value: 0.6266627412775289
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 31/149 [4:38:51<17:42:06, 540.06s/it]
+val Procedure: 9it [00:00,  9.15it/s]35s/it]
+Loss Epoch: 32 Value: 0.6065843210704085
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 32/149 [4:47:51<17:33:06, 540.05s/it]
+val Procedure: 9it [00:00,  9.15it/s]35s/it]
+Loss Epoch: 33 Value: 0.6065233857735344
+Training Procedure: 345it [08:57,  1.56s/it]                                  | 33/149 [4:56:51<17:24:05, 540.05s/it]
+val Procedure: 9it [00:00,  9.14it/s]35s/it]
+Loss Epoch: 34 Value: 0.6023827845635621
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 34/149 [5:05:50<17:14:34, 539.78s/it]
+val Procedure: 9it [00:00,  9.35it/s]35s/it]
+Loss Epoch: 35 Value: 0.6034436434939288
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 35/149 [5:14:51<17:06:16, 540.15s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.5413046807050705 Optimal_loss: 0.5413046807050705
+val Procedure: 9it [00:00,  9.38it/s]35s/it]
+Loss Epoch: 36 Value: 0.5946543493996496
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 36/149 [5:23:51<16:57:12, 540.11s/it]
+val Procedure: 9it [00:00,  9.17it/s]35s/it]
+Loss Epoch: 37 Value: 0.5960611934247224
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 37/149 [5:32:51<16:48:13, 540.12s/it]
+val Procedure: 9it [00:00,  9.34it/s]35s/it]
+Loss Epoch: 38 Value: 0.5966128128162329
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 38/149 [5:41:51<16:39:16, 540.15s/it]
+val Procedure: 9it [00:00,  9.27it/s]35s/it]
+Loss Epoch: 39 Value: 0.5893059741759645
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 39/149 [5:50:51<16:30:13, 540.12s/it]
+val Procedure: 9it [00:00,  9.30it/s]35s/it]
+Loss Epoch: 40 Value: 0.5874927037004112
+Training Procedure: 345it [08:57,  1.56s/it]                                  | 40/149 [5:59:51<16:21:06, 540.06s/it]
+val Procedure: 9it [00:00,  9.40it/s]35s/it]
+Loss Epoch: 41 Value: 0.5886792097402656
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 41/149 [6:08:51<16:11:57, 539.97s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.5161164194345474 Optimal_loss: 0.5161164194345474
+val Procedure: 9it [00:00,  9.23it/s]35s/it]
+Loss Epoch: 42 Value: 0.5754178044588669
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 42/149 [6:17:51<16:03:02, 540.02s/it]
+val Procedure: 9it [00:00,  9.33it/s]35s/it]
+Loss Epoch: 43 Value: 0.5827670417834019
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 43/149 [6:26:51<15:54:04, 540.05s/it]
+val Procedure: 9it [00:00,  9.22it/s]35s/it]
+Loss Epoch: 44 Value: 0.5818937674812649
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 44/149 [6:35:51<15:45:03, 540.03s/it]
+val Procedure: 9it [00:00,  9.23it/s]35s/it]
+Loss Epoch: 45 Value: 0.5778507854627526
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 45/149 [6:44:52<15:36:06, 540.06s/it]
+val Procedure: 9it [00:00,  9.11it/s]35s/it]
+Loss Epoch: 46 Value: 0.5746741401112598
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 46/149 [6:53:52<15:27:06, 540.07s/it]
+val Procedure: 9it [00:00,  9.07it/s]35s/it]
+Loss Epoch: 47 Value: 0.5660272455733756
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 47/149 [7:02:52<15:18:03, 540.03s/it]
+val Procedure: 9it [00:00,  9.23it/s]35s/it]
+Loss Epoch: 48 Value: 0.5691864747068156
+Training Procedure: 345it [08:57,  1.56s/it]                                  | 48/149 [7:11:51<15:08:58, 539.99s/it]
+val Procedure: 9it [00:00,  9.28it/s]35s/it]
+Loss Epoch: 49 Value: 0.5733180142831111
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 49/149 [7:20:50<14:59:21, 539.62s/it]
+val Procedure: 9it [00:00,  9.30it/s]35s/it]
+Loss Epoch: 50 Value: 0.5638136216695758
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 50/149 [7:29:50<14:50:28, 539.68s/it]
+val Procedure: 9it [00:00,  9.23it/s]35s/it]
+Loss Epoch: 51 Value: 0.5679715724095055
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 51/149 [7:38:50<14:41:33, 539.73s/it]
+val Procedure: 9it [00:00,  9.33it/s]35s/it]
+Loss Epoch: 52 Value: 0.5559502590393675
+Training Procedure: 345it [08:57,  1.56s/it]                                  | 52/149 [7:47:50<14:32:35, 539.75s/it]
+val Procedure: 9it [00:00,  9.32it/s]35s/it]
+Loss Epoch: 53 Value: 0.5588398639706598
+Training Procedure: 345it [08:58,  1.56s/it]                                  | 53/149 [7:56:49<14:23:14, 539.52s/it]
+val Procedure: 9it [00:00,  9.15it/s]35s/it]
+Loss Epoch: 54 Value: 0.552792268300402
+Training Procedure: 345it [08:58,  1.56s/it]▏                                 | 54/149 [8:05:48<14:14:18, 539.56s/it]
+val Procedure: 9it [00:00,  9.14it/s]35s/it]
+Loss Epoch: 55 Value: 0.5620728392531906
+Training Procedure: 345it [08:58,  1.56s/it]▌                                 | 55/149 [8:14:48<14:05:25, 539.64s/it]
+val Procedure: 9it [00:00,  9.13it/s]35s/it]
+Loss Epoch: 56 Value: 0.5502611779648324
+Training Procedure: 345it [08:58,  1.56s/it]▉                                 | 56/149 [8:23:48<13:56:28, 539.66s/it]
+val Procedure: 9it [00:00,  9.31it/s]35s/it]
+Loss Epoch: 57 Value: 0.5515543610289477
+Training Procedure: 345it [08:58,  1.56s/it]█▎                                | 57/149 [8:32:48<13:47:36, 539.74s/it]
+val Procedure: 9it [00:00,  9.17it/s]35s/it]
+Loss Epoch: 58 Value: 0.5494544355765633
+Training Procedure: 345it [08:58,  1.56s/it]█▋                                | 58/149 [8:41:48<13:38:41, 539.80s/it]
+val Procedure: 9it [00:00,  9.19it/s]35s/it]
+Loss Epoch: 59 Value: 0.5523245744083238
+Training Procedure: 345it [08:57,  1.56s/it]█▉                                | 59/149 [8:50:48<13:29:45, 539.84s/it]
+val Procedure: 9it [00:00,  9.17it/s]35s/it]
+Loss Epoch: 60 Value: 0.5503620340340379
+Training Procedure: 345it [08:58,  1.56s/it]██▎                               | 60/149 [8:59:46<13:20:14, 539.48s/it]
+val Procedure: 9it [00:00,  9.26it/s]35s/it]
+Loss Epoch: 61 Value: 0.546942078548929
+Training Procedure: 345it [08:58,  1.56s/it]██▋                               | 61/149 [9:08:46<13:11:31, 539.68s/it]
+val Procedure: 9it [00:00,  9.16it/s]35s/it]
+Loss Epoch: 62 Value: 0.5501408227111982
+Training Procedure: 345it [08:58,  1.56s/it]███                               | 62/149 [9:17:46<13:02:41, 539.78s/it]
+val Procedure: 9it [00:00,  9.34it/s]35s/it]
+Loss Epoch: 63 Value: 0.546315105928891
+Training Procedure: 345it [08:58,  1.56s/it]███▍                              | 63/149 [9:26:46<12:53:45, 539.83s/it]
+val Procedure: 9it [00:00,  9.13it/s]35s/it]
+Loss Epoch: 64 Value: 0.5508626643298329
+Training Procedure: 345it [08:58,  1.56s/it]███▊                              | 64/149 [9:35:46<12:44:52, 539.91s/it]
+val Procedure: 9it [00:00,  9.14it/s]35s/it]
+Loss Epoch: 65 Value: 0.5407591203848521
+Training Procedure: 345it [08:58,  1.56s/it]████                              | 65/149 [9:44:47<12:36:20, 540.24s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.5125425428152084 Optimal_loss: 0.5125425428152084
+val Procedure: 9it [00:00,  9.28it/s]35s/it]
+Loss Epoch: 66 Value: 0.5466876543950343
+Training Procedure: 345it [08:58,  1.56s/it]████▍                             | 66/149 [9:53:47<12:27:10, 540.13s/it]
+val Procedure: 9it [00:00,  9.25it/s]35s/it]
+Loss Epoch: 67 Value: 0.550530917748161
+Training Procedure: 345it [08:57,  1.56s/it]████▍                            | 67/149 [10:02:47<12:18:05, 540.06s/it]
+val Procedure: 9it [00:00,  9.22it/s]35s/it]
+Loss Epoch: 68 Value: 0.5466098696425341
+Training Procedure: 345it [08:58,  1.56s/it]████▋                            | 68/149 [10:11:47<12:08:45, 539.82s/it]
+val Procedure: 9it [00:00,  9.09it/s]35s/it]
+Loss Epoch: 69 Value: 0.5478026244087496
+Training Procedure: 345it [08:58,  1.56s/it]█████                            | 69/149 [10:20:47<11:59:49, 539.87s/it]
+val Procedure: 9it [00:00,  9.35it/s]35s/it]
+Loss Epoch: 70 Value: 0.5460795072541721
+Training Procedure: 345it [08:58,  1.56s/it]█████▍                           | 70/149 [10:29:46<11:50:45, 539.82s/it]
+val Procedure: 9it [00:01,  8.98it/s]35s/it]
+Loss Epoch: 71 Value: 0.5525350715803063
+Training Procedure: 345it [08:58,  1.56s/it]█████▊                           | 71/149 [10:38:46<11:41:45, 539.82s/it]
+val Procedure: 9it [00:00,  9.27it/s]35s/it]
+Loss Epoch: 72 Value: 0.5524524264577506
+Training Procedure: 345it [08:58,  1.56s/it]██████▏                          | 72/149 [10:47:46<11:32:46, 539.83s/it]
+val Procedure: 9it [00:00,  9.35it/s]35s/it]
+Loss Epoch: 73 Value: 0.5446623042009879
+Training Procedure: 345it [08:58,  1.56s/it]██████▍                          | 73/149 [10:56:46<11:23:50, 539.87s/it]
+val Procedure: 9it [00:00,  9.06it/s]35s/it]
+Loss Epoch: 74 Value: 0.5505573903304943
+Training Procedure: 345it [08:56,  1.56s/it]██████▊                          | 74/149 [11:05:46<11:15:02, 540.03s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.5092390507459641 Optimal_loss: 0.5092390507459641
+val Procedure: 9it [00:00,  9.24it/s]35s/it]
+Loss Epoch: 75 Value: 0.5507422471391982
+Training Procedure: 345it [08:58,  1.56s/it]███████▏                         | 75/149 [11:14:45<11:05:27, 539.57s/it]
+val Procedure: 9it [00:00,  9.25it/s]35s/it]
+Loss Epoch: 76 Value: 0.5423317676868992
+Training Procedure: 345it [08:58,  1.56s/it]███████▌                         | 76/149 [11:23:45<10:56:41, 539.74s/it]
+val Procedure: 9it [00:00,  9.40it/s]35s/it]
+Loss Epoch: 77 Value: 0.5420610154020613
+Training Procedure: 345it [08:58,  1.56s/it]███████▊                         | 77/149 [11:32:45<10:47:45, 539.79s/it]
+val Procedure: 9it [00:00,  9.25it/s]35s/it]
+Loss Epoch: 78 Value: 0.5444406477437503
+Training Procedure: 345it [08:58,  1.56s/it]████████▏                        | 78/149 [11:41:45<10:38:49, 539.85s/it]
+val Procedure: 9it [00:00,  9.18it/s]35s/it]
+Loss Epoch: 79 Value: 0.5466365009978198
+Training Procedure: 345it [08:58,  1.56s/it]████████▌                        | 79/149 [11:50:45<10:29:50, 539.86s/it]
+val Procedure: 9it [00:00,  9.18it/s]35s/it]
+Loss Epoch: 80 Value: 0.5415981658990833
+Training Procedure: 345it [08:58,  1.56s/it]████████▉                        | 80/149 [11:59:45<10:20:49, 539.85s/it]
+val Procedure: 9it [00:00,  9.25it/s]35s/it]
+Loss Epoch: 81 Value: 0.5425526148167209
+Training Procedure: 345it [08:58,  1.56s/it]█████████▎                       | 81/149 [12:08:44<10:11:46, 539.80s/it]
+val Procedure: 9it [00:00,  9.39it/s]35s/it]
+Loss Epoch: 82 Value: 0.5444131857243137
+Training Procedure: 345it [08:57,  1.56s/it]█████████▌                       | 82/149 [12:17:44<10:02:44, 539.76s/it]
+val Procedure: 9it [00:00,  9.18it/s]35s/it]
+Loss Epoch: 83 Value: 0.545052723089854
+Training Procedure: 345it [08:57,  1.56s/it]██████████▌                       | 83/149 [12:26:44<9:53:48, 539.83s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.5080440014600753 Optimal_loss: 0.5080440014600753
+val Procedure: 9it [00:00,  9.08it/s]35s/it]
+Loss Epoch: 84 Value: 0.5447456123172373
+Training Procedure: 345it [08:58,  1.56s/it]██████████▉                       | 84/149 [12:35:43<9:44:42, 539.73s/it]
+val Procedure: 9it [00:00,  9.30it/s]35s/it]
+Loss Epoch: 85 Value: 0.5441212619560353
+Training Procedure: 345it [08:58,  1.56s/it]███████████▏                      | 85/149 [12:44:43<9:35:42, 539.73s/it]
+val Procedure: 9it [00:00,  9.17it/s]35s/it]
+Loss Epoch: 86 Value: 0.5444076604601266
+Training Procedure: 345it [08:56,  1.56s/it]███████████▌                      | 86/149 [12:53:43<9:26:40, 539.69s/it]
+val Procedure: 9it [00:00,  9.09it/s]35s/it]
+Loss Epoch: 87 Value: 0.5443716078564741
+Training Procedure: 345it [08:58,  1.56s/it]███████████▉                      | 87/149 [13:02:42<9:17:30, 539.52s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.47954975366592406 Optimal_loss: 0.47954975366592406
+val Procedure: 9it [00:00,  9.26it/s]35s/it]
+Loss Epoch: 88 Value: 0.542793195316757
+Training Procedure: 345it [08:57,  1.56s/it]████████████▎                     | 88/149 [13:11:41<9:08:33, 539.57s/it]
+val Procedure: 9it [00:00,  9.21it/s]35s/it]
+Loss Epoch: 89 Value: 0.5448561585467795
+Training Procedure: 345it [08:58,  1.56s/it]████████████▋                     | 89/149 [13:20:41<8:59:33, 539.55s/it]
+val Procedure: 9it [00:00,  9.18it/s]35s/it]
+Loss Epoch: 90 Value: 0.5396432704683664
+Training Procedure: 345it [08:57,  1.56s/it]█████████████                     | 90/149 [13:29:41<8:50:36, 539.60s/it]
+val Procedure: 9it [00:00,  9.27it/s]35s/it]
+Loss Epoch: 91 Value: 0.5426108898460001
+Training Procedure: 345it [08:57,  1.56s/it]█████████████▎                    | 91/149 [13:38:40<8:41:32, 539.53s/it]
+val Procedure: 9it [00:00,  9.11it/s]35s/it]
+Loss Epoch: 92 Value: 0.5446118533611297
+Training Procedure: 345it [08:57,  1.56s/it]█████████████▋                    | 92/149 [13:47:39<8:32:30, 539.49s/it]
+val Procedure: 9it [00:00,  9.40it/s]35s/it]
+Loss Epoch: 93 Value: 0.5393166674220043
+Training Procedure: 345it [08:56,  1.56s/it]██████████████                    | 93/149 [13:56:39<8:23:29, 539.45s/it]
+val Procedure: 9it [00:00,  9.02it/s]35s/it]
+Loss Epoch: 94 Value: 0.5382576190043187
+Training Procedure: 345it [08:57,  1.56s/it]██████████████▍                   | 94/149 [14:05:37<8:14:13, 539.16s/it]
+val Procedure: 9it [00:00,  9.39it/s]35s/it]
+Loss Epoch: 95 Value: 0.542945210657258
+Training Procedure: 345it [08:57,  1.56s/it]██████████████▊                   | 95/149 [14:14:37<8:05:16, 539.20s/it]
+val Procedure: 9it [00:00,  9.32it/s]35s/it]
+Loss Epoch: 96 Value: 0.5404987615087758
+Training Procedure: 345it [08:57,  1.56s/it]███████████████▏                  | 96/149 [14:23:36<7:56:19, 539.23s/it]
+val Procedure: 9it [00:00,  9.16it/s]35s/it]
+Loss Epoch: 97 Value: 0.5343244910240174
+Training Procedure: 345it [08:57,  1.56s/it]███████████████▌                  | 97/149 [14:32:35<7:47:22, 539.29s/it]
+val Procedure: 9it [00:00,  9.19it/s]35s/it]
+Loss Epoch: 98 Value: 0.5284392364647077
+Training Procedure: 345it [08:57,  1.56s/it]███████████████▊                  | 98/149 [14:41:35<7:38:25, 539.32s/it]
+val Procedure: 9it [00:00,  9.26it/s]35s/it]
+Loss Epoch: 99 Value: 0.5429981668790181
+Training Procedure: 345it [08:57,  1.56s/it]████████████████▏                 | 99/149 [14:50:34<7:29:27, 539.36s/it]
+val Procedure: 9it [00:00,  9.30it/s]35s/it]
+Loss Epoch: 100 Value: 0.5406657891860907
+Training Procedure: 345it [08:58,  1.56s/it]███████████████▉                 | 100/149 [14:59:34<7:20:29, 539.37s/it]
+val Procedure: 9it [00:00,  9.22it/s]35s/it]
+Loss Epoch: 101 Value: 0.541974004973536
+Training Procedure: 345it [08:56,  1.56s/it]████████████████▏                | 101/149 [15:08:33<7:11:32, 539.43s/it]
+val Procedure: 9it [00:00,  9.07it/s]35s/it]
+Loss Epoch: 102 Value: 0.5351474103720292
+Training Procedure: 345it [08:57,  1.56s/it]████████████████▌                | 102/149 [15:17:32<7:02:19, 539.14s/it]
+val Procedure: 9it [00:00,  9.33it/s]35s/it]
+Loss Epoch: 103 Value: 0.5419330627158068
+Training Procedure: 345it [08:57,  1.56s/it]████████████████▉                | 103/149 [15:26:31<6:53:23, 539.22s/it]
+val Procedure: 9it [00:00,  9.37it/s]35s/it]
+Loss Epoch: 104 Value: 0.5400595235651818
+Training Procedure: 345it [08:57,  1.56s/it]█████████████████▎               | 104/149 [15:35:30<6:44:27, 539.27s/it]
+val Procedure: 9it [00:00,  9.07it/s]35s/it]
+Loss Epoch: 105 Value: 0.5399334093798762
+Training Procedure: 345it [08:57,  1.56s/it]█████████████████▋               | 105/149 [15:44:30<6:35:31, 539.36s/it]
+val Procedure: 9it [00:00,  9.36it/s]35s/it]
+Loss Epoch: 106 Value: 0.5363362748553787
+Training Procedure: 345it [08:57,  1.56s/it]█████████████████▉               | 106/149 [15:53:29<6:26:33, 539.38s/it]
+val Procedure: 9it [00:00,  9.11it/s]35s/it]
+Loss Epoch: 107 Value: 0.5381079824074455
+Training Procedure: 345it [08:58,  1.56s/it]██████████████████▎              | 107/149 [16:02:29<6:17:35, 539.43s/it]
+val Procedure: 9it [00:00,  9.25it/s]35s/it]
+Loss Epoch: 108 Value: 0.5419781994992409
+Training Procedure: 345it [08:56,  1.56s/it]██████████████████▋              | 108/149 [16:11:29<6:08:39, 539.50s/it]
+val Procedure: 9it [00:00,  9.10it/s]35s/it]
+Loss Epoch: 109 Value: 0.5439475630504498
+Training Procedure: 345it [08:58,  1.56s/it]███████████████████              | 109/149 [16:20:27<5:59:28, 539.22s/it]
+val Procedure: 9it [00:00,  9.12it/s]35s/it]
+Loss Epoch: 110 Value: 0.5381683207076529
+Training Procedure: 345it [08:57,  1.56s/it]███████████████████▍             | 110/149 [16:29:27<5:50:33, 539.32s/it]
+val Procedure: 9it [00:00,  9.20it/s]35s/it]
+Loss Epoch: 111 Value: 0.5426738188750502
+Training Procedure: 345it [08:58,  1.56s/it]███████████████████▋             | 111/149 [16:38:26<5:41:36, 539.39s/it]
+val Procedure: 9it [00:00,  9.10it/s]35s/it]
+Loss Epoch: 112 Value: 0.5380864526914514
+Training Procedure: 345it [08:57,  1.56s/it]████████████████████             | 112/149 [16:47:26<5:32:39, 539.46s/it]
+val Procedure: 9it [00:00,  9.23it/s]35s/it]
+Loss Epoch: 113 Value: 0.5368204844170722
+Training Procedure: 345it [08:58,  1.56s/it]████████████████████▍            | 113/149 [16:56:25<5:23:32, 539.25s/it]
+val Procedure: 9it [00:00,  9.29it/s]35s/it]
+Loss Epoch: 114 Value: 0.5444876880749412
+Training Procedure: 345it [08:58,  1.56s/it]████████████████████▊            | 114/149 [17:05:25<5:14:44, 539.57s/it]
+Model Updated: Validation Loss Epoch: 0 Value: 0.47896465063095095 Optimal_loss: 0.47896465063095095
+val Procedure: 9it [00:00,  9.19it/s]35s/it]
+Loss Epoch: 115 Value: 0.5465925879236581
+Training Procedure: 345it [08:58,  1.56s/it]█████████████████████▏           | 115/149 [17:14:25<5:05:45, 539.57s/it]
+val Procedure: 9it [00:00,  9.25it/s]35s/it]
+Loss Epoch: 116 Value: 0.5378037328305452
+Training Procedure: 345it [08:57,  1.56s/it]█████████████████████▍           | 116/149 [17:23:24<4:56:46, 539.60s/it]
+val Procedure: 9it [00:00,  9.26it/s]35s/it]
+Loss Epoch: 117 Value: 0.5425456427145695
+Training Procedure: 345it [08:58,  1.56s/it]█████████████████████▊           | 117/149 [17:32:24<4:47:46, 539.57s/it]
+val Procedure: 9it [00:00,  9.28it/s]35s/it]
+Loss Epoch: 118 Value: 0.5405108263527137
+Training Procedure: 345it [08:58,  1.56s/it]██████████████████████▏          | 118/149 [17:41:23<4:38:47, 539.60s/it]
+val Procedure: 9it [00:00,  9.19it/s]35s/it]
+Loss Epoch: 119 Value: 0.5337859971799712
+Training Procedure: 345it [08:57,  1.56s/it]██████████████████████▌          | 119/149 [17:50:23<4:29:50, 539.67s/it]
+val Procedure: 9it [00:00,  9.23it/s]35s/it]
+Loss Epoch: 120 Value: 0.531664316550545
+Training Procedure: 345it [08:58,  1.56s/it]██████████████████████▉          | 120/149 [17:59:22<4:20:47, 539.56s/it]
+val Procedure: 9it [00:00,  9.31it/s]35s/it]
+Loss Epoch: 121 Value: 0.5409913430179375
+Training Procedure: 345it [08:58,  1.56s/it]███████████████████████▏         | 121/149 [18:08:22<4:11:50, 539.65s/it]
+val Procedure: 9it [00:00,  9.15it/s]35s/it]
+Loss Epoch: 122 Value: 0.5371479430060456
+Training Procedure: 345it [08:58,  1.56s/it]███████████████████████▌         | 122/149 [18:17:22<4:02:50, 539.66s/it]
+val Procedure: 9it [00:00,  9.07it/s]35s/it]
+Loss Epoch: 123 Value: 0.5355941741362862
+Training Procedure: 345it [08:58,  1.56s/it]███████████████████████▉         | 123/149 [18:26:22<3:53:53, 539.74s/it]
+val Procedure: 9it [00:00,  9.10it/s]35s/it]
+Loss Epoch: 124 Value: 0.5347837142322375
+Training Procedure: 345it [08:58,  1.56s/it]████████████████████████▎        | 124/149 [18:35:22<3:44:54, 539.77s/it]
+val Procedure: 9it [00:00,  9.40it/s]35s/it]
+Loss Epoch: 125 Value: 0.5376257485237674
+Training Procedure: 345it [08:58,  1.56s/it]████████████████████████▌        | 125/149 [18:44:22<3:35:56, 539.83s/it]
+val Procedure: 9it [00:00,  9.35it/s]35s/it]
+Loss Epoch: 126 Value: 0.5400108224239902
+Training Procedure: 345it [08:58,  1.56s/it]████████████████████████▉        | 126/149 [18:53:22<3:26:57, 539.90s/it]
+val Procedure: 9it [00:00,  9.18it/s]35s/it]
+Loss Epoch: 127 Value: 0.5360101016535275
+Training Procedure: 345it [08:58,  1.56s/it]█████████████████████████▎       | 127/149 [19:02:22<3:17:59, 539.96s/it]
+val Procedure: 9it [00:00,  9.13it/s]36s/it]
+Loss Epoch: 128 Value: 0.5382485863955124
+Training Procedure: 345it [08:58,  1.56s/it]█████████████████████████▋       | 128/149 [19:11:22<3:08:56, 539.85s/it]
+val Procedure: 9it [00:00,  9.08it/s]36s/it]
+Loss Epoch: 129 Value: 0.5376689882382103
+Training Procedure: 345it [08:58,  1.56s/it]██████████████████████████       | 129/149 [19:20:22<3:00:00, 540.01s/it]
+val Procedure: 9it [00:00,  9.27it/s]35s/it]
+Loss Epoch: 130 Value: 0.5418699450250984
+Training Procedure: 345it [08:58,  1.56s/it]██████████████████████████▎      | 130/149 [19:29:22<2:51:02, 540.13s/it]
+val Procedure: 9it [00:00,  9.18it/s]35s/it]
+Loss Epoch: 131 Value: 0.5373408076555832
+Training Procedure: 345it [08:59,  1.56s/it]██████████████████████████▋      | 131/149 [19:38:23<2:42:03, 540.21s/it]
+val Procedure: 9it [00:00,  9.09it/s]35s/it]
+Loss Epoch: 132 Value: 0.5365825446619503
+Training Procedure: 345it [08:58,  1.56s/it]███████████████████████████      | 132/149 [19:47:23<2:33:05, 540.33s/it]
+val Procedure: 9it [00:00,  9.08it/s]35s/it]
+Loss Epoch: 133 Value: 0.5339641164178434
+Training Procedure: 345it [08:58,  1.56s/it]███████████████████████████▍     | 133/149 [19:56:24<2:24:05, 540.35s/it]
+val Procedure: 9it [00:00,  9.36it/s]35s/it]
+Loss Epoch: 134 Value: 0.5339364530383677
+Training Procedure: 345it [08:57,  1.56s/it]███████████████████████████▊     | 134/149 [20:05:24<2:15:05, 540.37s/it]
+val Procedure: 9it [00:00,  9.14it/s]35s/it]
+Loss Epoch: 135 Value: 0.531102858159853
+Training Procedure: 345it [08:59,  1.56s/it]████████████████████████████     | 135/149 [20:14:23<2:05:59, 539.98s/it]
+val Procedure: 9it [00:00,  9.18it/s]35s/it]
+Loss Epoch: 136 Value: 0.5348002304201541
+Training Procedure: 345it [08:58,  1.56s/it]████████████████████████████▍    | 136/149 [20:23:24<1:57:02, 540.17s/it]
+val Procedure: 9it [00:00,  9.22it/s]35s/it]
+Loss Epoch: 137 Value: 0.5416273955849634
+Training Procedure: 345it [08:58,  1.56s/it]████████████████████████████▊    | 137/149 [20:32:24<1:48:02, 540.18s/it]
+val Procedure: 9it [00:00,  9.24it/s]35s/it]
+Loss Epoch: 138 Value: 0.5336152669312297
+Training Procedure: 345it [08:58,  1.56s/it]█████████████████████████████▏   | 138/149 [20:41:24<1:39:01, 540.17s/it]
+val Procedure: 9it [00:00,  9.19it/s]35s/it]
+Loss Epoch: 139 Value: 0.5348439493904943
+Training Procedure: 345it [08:58,  1.56s/it]█████████████████████████████▌   | 139/149 [20:50:25<1:30:02, 540.27s/it]
+val Procedure: 9it [00:00,  9.10it/s]35s/it]
+Loss Epoch: 140 Value: 0.5327667640603106
+Training Procedure: 345it [08:59,  1.56s/it]█████████████████████████████▊   | 140/149 [20:59:25<1:21:02, 540.29s/it]
+val Procedure: 9it [00:00,  9.23it/s]35s/it]
+Loss Epoch: 141 Value: 0.5341771603494451
+Training Procedure: 345it [08:58,  1.56s/it]██████████████████████████████▏  | 141/149 [21:08:26<1:12:03, 540.39s/it]
+val Procedure: 9it [00:01,  8.96it/s]35s/it]
+Loss Epoch: 142 Value: 0.5383220409137616
+Training Procedure: 345it [08:58,  1.56s/it]██████████████████████████████▌  | 142/149 [21:17:26<1:03:03, 540.44s/it]
+val Procedure: 9it [00:00,  9.20it/s]35s/it]
+Loss Epoch: 143 Value: 0.5360080211058907
+Training Procedure: 345it [08:58,  1.56s/it]████████████████████████████████▊  | 143/149 [21:26:26<54:01, 540.25s/it]
+val Procedure: 9it [00:00,  9.00it/s]35s/it]
+Loss Epoch: 144 Value: 0.537313942719197
+Training Procedure: 345it [08:58,  1.56s/it]█████████████████████████████████▏ | 144/149 [21:35:26<45:01, 540.32s/it]
+val Procedure: 9it [00:00,  9.26it/s]35s/it]
+Loss Epoch: 145 Value: 0.5397816593232362
+Training Procedure: 345it [08:58,  1.56s/it]█████████████████████████████████▌ | 145/149 [21:44:27<36:01, 540.37s/it]
+val Procedure: 9it [00:01,  8.97it/s]36s/it]
+Loss Epoch: 146 Value: 0.5333995788857557
+Training Procedure: 345it [08:57,  1.56s/it]█████████████████████████████████▉ | 146/149 [21:53:27<27:01, 540.40s/it]
+val Procedure: 9it [00:00,  9.18it/s]35s/it]
+Loss Epoch: 147 Value: 0.5377391029095304
+Training Procedure: 345it [08:59,  1.56s/it]██████████████████████████████████▎| 147/149 [22:02:27<18:00, 540.10s/it]
+val Procedure: 9it [00:00,  9.05it/s]36s/it]
+Loss Epoch: 148 Value: 0.5348811279172483
+Training Procedure: 345it [08:59,  1.56s/it]██████████████████████████████████▋| 148/149 [22:11:28<09:00, 540.28s/it]
+val Procedure: 9it [00:01,  8.96it/s]36s/it]
+Loss Epoch: 149 Value: 0.5353783514188684
+val Procedure: 9it [00:00, 58.89it/s]                                                                                
+val Procedure: 7it [00:00, 63.71it/s]

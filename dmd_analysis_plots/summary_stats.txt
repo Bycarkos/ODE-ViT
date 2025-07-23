@@ -1,0 +1,150 @@
+File: K_Resnet50_cifar100_cls_token_out_3_delay_1.npy
+  - Spectral Radius: 0.8964
+  - Mean Magnitude: 0.5454
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 3
+
+File: K_Resnet50_cifar100_cls_token_out_3_delay_2.npy
+  - Spectral Radius: 0.8162
+  - Mean Magnitude: 0.6032
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 3
+
+File: K_TrOCR_Esposalles_Koopman_cls_token_as_observation.npy
+  - Spectral Radius: 1.0234
+  - Mean Magnitude: 0.7480
+  - # Unstable Eigenvalues (|λ| > 1): 24
+  - # Purely Real Eigenvalues: 20
+
+File: K_TrOCR_Esposalles_Koopman_cls_token_out_128_from_ctc_delay_3.npy
+  - Spectral Radius: 1.0000
+  - Mean Magnitude: 0.2591
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 28
+
+File: K_TrOCR_Esposalles_Koopman_cls_token_out_128_from_ctc_delay_3_new.npy
+  - Spectral Radius: 0.9999
+  - Mean Magnitude: 0.2845
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 26
+
+File: K_TrOCR_Esposalles_Koopman_cls_token_out_32_normalize_g.npy
+  - Spectral Radius: 1.0000
+  - Mean Magnitude: 0.4401
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 16
+
+File: K_TrOCR_Esposalles_Koopman_cls_token_out_32_normalize_g_full_grid.npy
+  - Spectral Radius: 1.0000
+  - Mean Magnitude: 0.4846
+  - # Unstable Eigenvalues (|λ| > 1): 1
+  - # Purely Real Eigenvalues: 16
+
+File: K_TrOCR_Esposalles_Koopman_cls_token_out_32_normalize_g_full_grid_contractive.npy
+  - Spectral Radius: 1.0000
+  - Mean Magnitude: 0.4798
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 16
+
+File: K_TrOCR_Esposalles_Koopman_cls_token_out_3_from_ctc_delay_3.npy
+  - Spectral Radius: 0.9998
+  - Mean Magnitude: 0.9886
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 3
+
+File: K_TrOCR_Esposalles_Koopman_cls_token_out_3_no_phi_delay_1.npy
+  - Spectral Radius: 0.8534
+  - Mean Magnitude: 0.7964
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 1
+
+File: K_TrOCR_Esposalles_Koopman_cls_token_out_64_no_phi_delay_1.npy
+  - Spectral Radius: 1.5101
+  - Mean Magnitude: 0.9564
+  - # Unstable Eigenvalues (|λ| > 1): 33
+  - # Purely Real Eigenvalues: 8
+
+File: K_TrOCR_Esposalles_Koopman_cls_token_out_768_from_ctc_delay_1.npy
+  - Spectral Radius: 1.0000
+  - Mean Magnitude: 0.0805
+  - # Unstable Eigenvalues (|λ| > 1): 1
+  - # Purely Real Eigenvalues: 36
+
+File: K_TrOCR_Esposalles_Koopman_cls_token_out_768_no_phi_delay_1_normalizing_g.npy
+  - Spectral Radius: 3.2912
+  - Mean Magnitude: 1.1464
+  - # Unstable Eigenvalues (|λ| > 1): 527
+  - # Purely Real Eigenvalues: 22
+
+File: K_VIT_cifa100_cls_token_out_128_delay_3.npy
+  - Spectral Radius: 0.9972
+  - Mean Magnitude: 0.3077
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 20
+
+File: K_VIT_cifa100_cls_token_out_3_delay_1.npy
+  - Spectral Radius: 0.3653
+  - Mean Magnitude: 0.1700
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 3
+
+File: K_VIT_cifa100_cls_token_out_3_delay_3.npy
+  - Spectral Radius: 0.3613
+  - Mean Magnitude: 0.2716
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 1
+
+File: K_VIT_cifa100_cls_token_out_768_delay_1.npy
+  - Spectral Radius: 0.9997
+  - Mean Magnitude: 0.0772
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 40
+
+File: K_VIT_cifa100_cls_token_out_768_delay_3.npy
+  - Spectral Radius: 0.9997
+  - Mean Magnitude: 0.1580
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 34
+
+File: K_VIT_imagenet100_cls_token_out_128_delay_3.npy
+  - Spectral Radius: 0.9616
+  - Mean Magnitude: 0.2778
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 18
+
+File: K_VIT_imagenet1k_cls_token_out_128_delay_3.npy
+  - Spectral Radius: 0.9994
+  - Mean Magnitude: 0.2069
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 20
+
+File: K_esposalles.npy
+  - Spectral Radius: 0.8562
+  - Mean Magnitude: 0.8234
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 1
+
+File: K_esposalles_train_out_3_delay_1_with_phi.npy
+  - Spectral Radius: 0.7541
+  - Mean Magnitude: 0.6286
+  - # Unstable Eigenvalues (|λ| > 1): 0
+  - # Purely Real Eigenvalues: 1
+
+File: K_esposalles_train_out_768_delay_1_no_phi.npy
+  - Spectral Radius: 4.5799
+  - Mean Magnitude: 1.1279
+  - # Unstable Eigenvalues (|λ| > 1): 457
+  - # Purely Real Eigenvalues: 30
+
+File: K_esposalles_train_out_768_delay_1_with_phi.npy
+  - Spectral Radius: 2.4409
+  - Mean Magnitude: 1.0865
+  - # Unstable Eigenvalues (|λ| > 1): 491
+  - # Purely Real Eigenvalues: 26
+
+File: K_esposalles_train_out_768_delay_3_with_phi.npy
+  - Spectral Radius: 1.9338
+  - Mean Magnitude: 1.2415
+  - # Unstable Eigenvalues (|λ| > 1): 607
+  - # Purely Real Eigenvalues: 18
+

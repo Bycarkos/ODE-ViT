@@ -1,0 +1,2467 @@
+2025-06-30 11:28:32,159 INFO    MainThread:4188922 [wandb_setup.py:_flush():68] Current SDK version is 0.19.10
+2025-06-30 11:28:32,159 INFO    MainThread:4188922 [wandb_setup.py:_flush():68] Configure stats pid to 4188922
+2025-06-30 11:28:32,159 INFO    MainThread:4188922 [wandb_setup.py:_flush():68] Loading settings from /home/cboned/.config/wandb/settings
+2025-06-30 11:28:32,159 INFO    MainThread:4188922 [wandb_setup.py:_flush():68] Loading settings from /home/cboned/Projects/OCR-Koopman/wandb/settings
+2025-06-30 11:28:32,159 INFO    MainThread:4188922 [wandb_setup.py:_flush():68] Loading settings from environment variables
+2025-06-30 11:28:32,159 INFO    MainThread:4188922 [wandb_init.py:setup_run_log_directory():724] Logging user logs to /home/cboned/Projects/OCR-Koopman/wandb/run-20250630_112832-rbhoqyip/logs/debug.log
+2025-06-30 11:28:32,159 INFO    MainThread:4188922 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to /home/cboned/Projects/OCR-Koopman/wandb/run-20250630_112832-rbhoqyip/logs/debug-internal.log
+2025-06-30 11:28:32,159 INFO    MainThread:4188922 [wandb_init.py:init():852] calling init triggers
+2025-06-30 11:28:32,159 INFO    MainThread:4188922 [wandb_init.py:init():857] wandb.init called with sweep_config: {}
+config: {'_wandb': {'code_path': 'code/main_classification_ode.py'}}
+2025-06-30 11:28:32,159 INFO    MainThread:4188922 [wandb_init.py:init():893] starting backend
+2025-06-30 11:28:32,159 INFO    MainThread:4188922 [wandb_init.py:init():897] sending inform_init request
+2025-06-30 11:28:32,163 INFO    MainThread:4188922 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-06-30 11:28:32,163 INFO    MainThread:4188922 [wandb_init.py:init():907] backend started and connected
+2025-06-30 11:28:32,165 INFO    MainThread:4188922 [wandb_init.py:init():1002] updated telemetry
+2025-06-30 11:28:32,166 INFO    MainThread:4188922 [wandb_init.py:init():1026] communicating run to backend with 90.0 second timeout
+2025-06-30 11:28:32,663 INFO    MainThread:4188922 [wandb_init.py:init():1101] starting run threads in backend
+2025-06-30 11:28:32,823 INFO    MainThread:4188922 [wandb_run.py:_console_start():2566] atexit reg
+2025-06-30 11:28:32,823 INFO    MainThread:4188922 [wandb_run.py:_redirect():2414] redirect: wrap_raw
+2025-06-30 11:28:32,823 INFO    MainThread:4188922 [wandb_run.py:_redirect():2483] Wrapping output streams.
+2025-06-30 11:28:32,823 INFO    MainThread:4188922 [wandb_run.py:_redirect():2506] Redirects installed.
+2025-06-30 11:28:32,825 INFO    MainThread:4188922 [wandb_init.py:init():1147] run started, returning control to user process
+2025-06-30 11:29:28,832 INFO    MsgRouterThr:4188922 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 2 handles.
+2025-06-30 11:29:28,985 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:28,989 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:28,989 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:28,990 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:28,993 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:28,993 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:28,994 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:28,995 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:28,996 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:28,998 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:28,999 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,000 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,001 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,002 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,003 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,003 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,005 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,007 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,007 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,008 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,009 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,010 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,010 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,011 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,011 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,012 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,012 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,013 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,013 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,014 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,015 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,016 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,016 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,017 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,018 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,019 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,019 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,020 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,020 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,021 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,021 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,022 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,022 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,023 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,023 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,024 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-30 11:29:29,025 ERROR   Thread-5 (_pin_memory_loop):4188922 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2493, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1632, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 763, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe

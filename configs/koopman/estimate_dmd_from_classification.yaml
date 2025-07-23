@@ -1,0 +1,28 @@
+setup:
+    save_path: "dmd_results"
+    save_file: "Resnet50_cifar100_cls_token_out_3_delay_2"
+    full_grid: True
+
+data:
+    dataset:
+        name: cifar100
+        dataset_path: "/data/users/cboned/data/Generic/cifar"
+
+    collator:
+        shuffle: True
+        batch_size: 256
+        pin_memory: True
+        num_workers: 8
+
+modeling:
+    type: resnet
+    teacher:
+        checkpoint_path: "checkpoints/Resnet_CIFAR100_first_train.pt"
+
+    student:
+        checkpoint_path: "checkpoints/Resnet_CIFAR100_Koopman_cls_token_out_3_delay_2.pt"
+        inputs:
+            dim_y: 768
+            dim_g_in: 768
+            dim_g_out: 3
+            delay: 2

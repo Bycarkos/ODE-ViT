@@ -1,0 +1,16 @@
+{"time":"2025-06-28T18:58:17.339712083+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250628_185817-odlcj3ke/logs/debug-core.log"}
+{"time":"2025-06-28T18:58:17.618684509+02:00","level":"INFO","msg":"created new stream","id":"odlcj3ke"}
+{"time":"2025-06-28T18:58:17.618714273+02:00","level":"INFO","msg":"stream: started","id":"odlcj3ke"}
+{"time":"2025-06-28T18:58:17.618750511+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"odlcj3ke"}
+{"time":"2025-06-28T18:58:17.618781157+02:00","level":"INFO","msg":"handler: started","stream_id":"odlcj3ke"}
+{"time":"2025-06-28T18:58:17.618752867+02:00","level":"INFO","msg":"sender: started","stream_id":"odlcj3ke"}
+{"time":"2025-06-28T18:58:17.807433721+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-28T18:58:17.807567981+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-06-30T12:26:00.505047876+02:00","level":"INFO","msg":"stream: closing","id":"odlcj3ke"}
+{"time":"2025-06-30T12:26:00.505158976+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-30T12:26:00.505270757+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-30T12:26:01.424731599+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-30T12:26:02.003662225+02:00","level":"INFO","msg":"handler: closed","stream_id":"odlcj3ke"}
+{"time":"2025-06-30T12:26:02.003710138+02:00","level":"INFO","msg":"sender: closed","stream_id":"odlcj3ke"}
+{"time":"2025-06-30T12:26:02.003701941+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"odlcj3ke"}
+{"time":"2025-06-30T12:26:02.003820958+02:00","level":"INFO","msg":"stream: closed","id":"odlcj3ke"}

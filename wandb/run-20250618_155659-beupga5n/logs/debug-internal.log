@@ -1,0 +1,18 @@
+{"time":"2025-06-18T15:56:59.601916746+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250618_155659-beupga5n/logs/debug-core.log"}
+{"time":"2025-06-18T15:56:59.86056003+02:00","level":"INFO","msg":"created new stream","id":"beupga5n"}
+{"time":"2025-06-18T15:56:59.860627647+02:00","level":"INFO","msg":"stream: started","id":"beupga5n"}
+{"time":"2025-06-18T15:56:59.860653392+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"beupga5n"}
+{"time":"2025-06-18T15:56:59.860719555+02:00","level":"INFO","msg":"handler: started","stream_id":"beupga5n"}
+{"time":"2025-06-18T15:56:59.860670399+02:00","level":"INFO","msg":"sender: started","stream_id":"beupga5n"}
+{"time":"2025-06-18T15:57:00.181662821+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-18T15:57:00.181911598+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-06-18T22:15:11.874568082+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/bycarkos/Koopman/beupga5n/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-06-19T00:33:57.099788563+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/bycarkos/Koopman/beupga5n/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-06-19T14:54:51.589433328+02:00","level":"INFO","msg":"stream: closing","id":"beupga5n"}
+{"time":"2025-06-19T14:54:51.589478455+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-19T14:54:51.58952256+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-19T14:54:55.978964985+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-19T14:54:56.167167967+02:00","level":"INFO","msg":"handler: closed","stream_id":"beupga5n"}
+{"time":"2025-06-19T14:54:56.16723429+02:00","level":"INFO","msg":"sender: closed","stream_id":"beupga5n"}
+{"time":"2025-06-19T14:54:56.167229359+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"beupga5n"}
+{"time":"2025-06-19T14:54:56.167333033+02:00","level":"INFO","msg":"stream: closed","id":"beupga5n"}

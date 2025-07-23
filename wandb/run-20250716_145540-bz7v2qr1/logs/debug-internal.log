@@ -1,0 +1,17 @@
+{"time":"2025-07-16T14:55:40.752420176+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250716_145540-bz7v2qr1/logs/debug-core.log"}
+{"time":"2025-07-16T14:55:41.017587703+02:00","level":"INFO","msg":"created new stream","id":"bz7v2qr1"}
+{"time":"2025-07-16T14:55:41.017622017+02:00","level":"INFO","msg":"stream: started","id":"bz7v2qr1"}
+{"time":"2025-07-16T14:55:41.017634585+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"bz7v2qr1"}
+{"time":"2025-07-16T14:55:41.017657745+02:00","level":"INFO","msg":"sender: started","stream_id":"bz7v2qr1"}
+{"time":"2025-07-16T14:55:41.017654818+02:00","level":"INFO","msg":"handler: started","stream_id":"bz7v2qr1"}
+{"time":"2025-07-16T14:55:41.304019365+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-16T14:55:41.304194533+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-07-16T20:47:52.133047443+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/bycarkos/Koopman/bz7v2qr1/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-07-16T21:42:14.57985581+02:00","level":"INFO","msg":"stream: closing","id":"bz7v2qr1"}
+{"time":"2025-07-16T21:42:14.580158724+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-16T21:42:14.580250292+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-16T21:42:15.158154515+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-16T21:42:15.740627464+02:00","level":"INFO","msg":"handler: closed","stream_id":"bz7v2qr1"}
+{"time":"2025-07-16T21:42:15.740670647+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"bz7v2qr1"}
+{"time":"2025-07-16T21:42:15.740725476+02:00","level":"INFO","msg":"sender: closed","stream_id":"bz7v2qr1"}
+{"time":"2025-07-16T21:42:15.740732501+02:00","level":"INFO","msg":"stream: closed","id":"bz7v2qr1"}

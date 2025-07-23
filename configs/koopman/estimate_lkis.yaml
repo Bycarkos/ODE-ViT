@@ -1,0 +1,53 @@
+log_wandb: True
+
+setup:
+    wandb:
+        project: Koopman
+        group: CLASSIFICATION_LKIS
+        name: VIT Classification LKIS estimation
+
+    dict:
+        epochs: 150
+        num_accumulation_steps: -1
+        log_every: 10
+        full_grid: False
+        delay: 3
+        g_out: 128
+
+data:
+    dataset:
+        Esposalles:
+            _target_: main_lkis.EsposallesDatasetForHtr
+            dataset_path: "/data/users/cboned/data/HTR/Esposalles"
+
+    collator:
+        train:
+            shuffle: True
+            batch_size: 512
+            pin_memory: True
+            num_workers: 8
+
+        val:
+            shuffle: True
+            batch_size: 256
+            pin_memory: False
+            num_workers: 8
+
+        test:
+            shuffle: True
+            batch_size: 1
+            pin_memory: False
+            num_workers: 0
+
+models:
+    teacher:
+        checkpoint_path: "checkpoints/TrOCR_Esposalles.pt"
+
+    student:
+        checkpoint_name: "TrOCR_Esposalles_Koopman_cls_token_out_128_ctc_delay_3"
+        finetune: False
+        inputs:
+            dim_y: 768
+            dim_g_in: 768
+            dim_g_out: 128
+            delay: 3

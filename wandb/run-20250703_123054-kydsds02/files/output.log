@@ -1,0 +1,728 @@
+Some weights of ResNetForImageClassification were not initialized from the model checkpoint at microsoft/resnet-50 and are newly initialized because the shapes did not match:
+- classifier.1.bias: found shape torch.Size([1000]) in the checkpoint and torch.Size([100]) in the model instantiated
+- classifier.1.weight: found shape torch.Size([1000, 2048]) in the checkpoint and torch.Size([100, 2048]) in the model instantiated
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+ResNetForImageClassification(
+  (resnet): ResNetModel(
+    (embedder): ResNetEmbeddings(
+      (embedder): ResNetConvLayer(
+        (convolution): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+        (normalization): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (activation): ReLU()
+      )
+      (pooler): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    )
+    (encoder): ResNetEncoder(
+      (stages): ModuleList(
+        (0): ResNetStage(
+          (layers): Sequential(
+            (0): ResNetBottleNeckLayer(
+              (shortcut): ResNetShortCut(
+                (convolution): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (1): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (2): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+          )
+        )
+        (1): ResNetStage(
+          (layers): Sequential(
+            (0): ResNetBottleNeckLayer(
+              (shortcut): ResNetShortCut(
+                (convolution): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+                (normalization): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (1): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (2): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (3): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+          )
+        )
+        (2): ResNetStage(
+          (layers): Sequential(
+            (0): ResNetBottleNeckLayer(
+              (shortcut): ResNetShortCut(
+                (convolution): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+                (normalization): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (1): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (2): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (3): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (4): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (5): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+          )
+        )
+        (3): ResNetStage(
+          (layers): Sequential(
+            (0): ResNetBottleNeckLayer(
+              (shortcut): ResNetShortCut(
+                (convolution): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+                (normalization): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (1): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+            (2): ResNetBottleNeckLayer(
+              (shortcut): Identity()
+              (layer): Sequential(
+                (0): ResNetConvLayer(
+                  (convolution): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (1): ResNetConvLayer(
+                  (convolution): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): ReLU()
+                )
+                (2): ResNetConvLayer(
+                  (convolution): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+                  (normalization): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                  (activation): Identity()
+                )
+              )
+              (activation): ReLU()
+            )
+          )
+        )
+      )
+    )
+    (pooler): AdaptiveAvgPool2d(output_size=(1, 1))
+  )
+  (classifier): Sequential(
+    (0): Flatten(start_dim=1, end_dim=-1)
+    (1): Linear(in_features=2048, out_features=100, bias=True)
+  )
+)
+CREATING THE BASELINE METRIC VALUE
+ STARTING TO EVALUATE FO THE FIRST TIME
+val Procedure: 24it [00:01, 22.13it/s]
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:00<00:00,  1.63it/s]
+Validation Loss Epoch: 0 Value: 4.615728511810302 Optimal_loss: 4.615728511810302
+val Procedure: 24it [00:00, 27.91it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:00<00:00,  2.08it/s]
+Loss Epoch: 1 Value: 4.607664582680683
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [01:59<00:00,  1.65it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 4.6023164558410645 Optimal_loss: 4.6023164558410645
+val Procedure: 24it [00:00, 28.83it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [01:59<00:00,  2.08it/s]
+Loss Epoch: 2 Value: 4.600381396254715
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [01:58<00:00,  1.65it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 4.593824729919434 Optimal_loss: 4.593824729919434
+val Procedure: 24it [00:00, 24.72it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [01:58<00:00,  2.08it/s]
+Loss Epoch: 3 Value: 4.585595228234116
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [01:58<00:00,  1.65it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 4.573523597717285 Optimal_loss: 4.573523597717285
+val Procedure: 24it [00:01, 18.70it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [01:58<00:00,  2.08it/s]
+Loss Epoch: 4 Value: 4.561129959262147
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [01:59<00:00,  1.65it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 4.546826019287109 Optimal_loss: 4.546826019287109
+val Procedure: 24it [00:01, 14.56it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [01:58<00:00,  2.08it/s]
+Loss Epoch: 5 Value: 4.520203607422965
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:02<00:00,  1.60it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 4.496633701324463 Optimal_loss: 4.496633701324463
+val Procedure: 24it [00:00, 28.18it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:02<00:00,  1.99it/s]
+Loss Epoch: 6 Value: 4.44051401225888
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 4.372591094970703 Optimal_loss: 4.372591094970703
+val Procedure: 24it [00:00, 28.35it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 7 Value: 4.279113046976985
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 4.1474730491638185 Optimal_loss: 4.1474730491638185
+val Procedure: 24it [00:00, 27.94it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 8 Value: 3.9956315646366196
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 3.8271866130828855 Optimal_loss: 3.8271866130828855
+val Procedure: 24it [00:01, 23.45it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 9 Value: 3.6094948929183337
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 3.3845363903045653 Optimal_loss: 3.3845363903045653
+val Procedure: 24it [00:00, 27.95it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 10 Value: 3.166581176981634
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 2.9413241863250734 Optimal_loss: 2.9413241863250734
+val Procedure: 24it [00:00, 28.47it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 11 Value: 2.7477444519802017
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 2.5253507328033447 Optimal_loss: 2.5253507328033447
+val Procedure: 24it [00:01, 17.84it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 12 Value: 2.3943688674848906
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 2.1937511205673217 Optimal_loss: 2.1937511205673217
+val Procedure: 24it [00:01, 18.84it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 13 Value: 2.1105395415607764
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 1.9549112367630004 Optimal_loss: 1.9549112367630004
+val Procedure: 24it [00:01, 15.59it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 14 Value: 1.884808352407144
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 1.776815071105957 Optimal_loss: 1.776815071105957
+val Procedure: 24it [00:00, 27.63it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 15 Value: 1.7065298587692028
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 1.6782879543304443 Optimal_loss: 1.6782879543304443
+val Procedure: 24it [00:00, 28.33it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 16 Value: 1.5600414568064165
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 1.512474193572998 Optimal_loss: 1.512474193572998
+val Procedure: 24it [00:00, 27.92it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 17 Value: 1.4415190724693998
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 1.3839962196350097 Optimal_loss: 1.3839962196350097
+val Procedure: 24it [00:01, 16.97it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 18 Value: 1.3422119587051624
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 1.2894705843925476 Optimal_loss: 1.2894705843925476
+val Procedure: 24it [00:00, 28.33it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 19 Value: 1.256832701211073
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 1.2699906206130982 Optimal_loss: 1.2699906206130982
+val Procedure: 24it [00:00, 28.10it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 20 Value: 1.1875641017544025
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 1.2620620679855348 Optimal_loss: 1.2620620679855348
+val Procedure: 24it [00:01, 14.66it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 21 Value: 1.1224032564430821
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 1.078749179840088 Optimal_loss: 1.078749179840088
+val Procedure: 24it [00:00, 26.94it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 22 Value: 1.06707121401417
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 1.072526774406433 Optimal_loss: 1.072526774406433
+val Procedure: 24it [00:01, 16.88it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 23 Value: 1.0170320029161415
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 27.91it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 24 Value: 0.9726790594203132
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 1.0610963988304138 Optimal_loss: 1.0610963988304138
+val Procedure: 24it [00:01, 21.66it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 25 Value: 0.9333638180883563
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:03<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 18.94it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:03<00:00,  1.99it/s]
+Loss Epoch: 26 Value: 0.895072335491375
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.979673626422882 Optimal_loss: 0.979673626422882
+val Procedure: 24it [00:00, 28.39it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 27 Value: 0.8639488697660213
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 16.97it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 28 Value: 0.8338877701637696
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.9700785207748414 Optimal_loss: 0.9700785207748414
+val Procedure: 24it [00:00, 27.54it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 29 Value: 0.8038762674039724
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.9634501242637634 Optimal_loss: 0.9634501242637634
+val Procedure: 24it [00:00, 27.52it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 30 Value: 0.7776397399756373
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.8700051808357239 Optimal_loss: 0.8700051808357239
+val Procedure: 24it [00:01, 18.35it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 31 Value: 0.7544793726838365
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.8652775764465332 Optimal_loss: 0.8652775764465332
+val Procedure: 24it [00:01, 20.48it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 32 Value: 0.7308065234398355
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 28.31it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 33 Value: 0.710767290726
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.8480863165855408 Optimal_loss: 0.8480863165855408
+val Procedure: 24it [00:01, 19.55it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 34 Value: 0.6906612106427854
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.8110435724258422 Optimal_loss: 0.8110435724258422
+val Procedure: 24it [00:01, 17.00it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 35 Value: 0.6716038146797492
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.805040363073349 Optimal_loss: 0.805040363073349
+val Procedure: 24it [00:00, 27.87it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 36 Value: 0.6563342393052821
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 28.17it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 37 Value: 0.6373938107673003
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 19.09it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 38 Value: 0.6232442130543747
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:01, 23.65it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 39 Value: 0.6086063299860273
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 28.36it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 40 Value: 0.5957817467195647
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.7782975661754609 Optimal_loss: 0.7782975661754609
+val Procedure: 24it [00:01, 14.26it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 41 Value: 0.5814793523477049
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:01, 16.62it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 42 Value: 0.5691576847920612
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 28.31it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 43 Value: 0.5563746535656403
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:03<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 26.30it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:03<00:00,  1.99it/s]
+Loss Epoch: 44 Value: 0.5459231795096884
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 28.12it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 45 Value: 0.5343138012959032
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.7008601713180542 Optimal_loss: 0.7008601713180542
+val Procedure: 24it [00:01, 18.66it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 46 Value: 0.5223691475634672
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 28.61it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 47 Value: 0.5136445941669601
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 28.10it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 48 Value: 0.504252765099613
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 28.16it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 49 Value: 0.49614586361816954
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 19.59it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 50 Value: 0.4853643893587346
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:01, 17.85it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 51 Value: 0.4783787227102688
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 14.02it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 52 Value: 0.46938473031837114
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 27.36it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 53 Value: 0.4622332289510844
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 16.90it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 54 Value: 0.45501631437515727
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 28.03it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 55 Value: 0.44783649578386425
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.6939447414875031 Optimal_loss: 0.6939447414875031
+val Procedure: 24it [00:00, 26.12it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 56 Value: 0.4438352490566215
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:01, 15.65it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 57 Value: 0.4362476916641605
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 27.79it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 58 Value: 0.43123379212861157
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 22.07it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 59 Value: 0.4252192428221508
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 24.00it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 60 Value: 0.4203537892626256
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.6682729244232177 Optimal_loss: 0.6682729244232177
+val Procedure: 24it [00:00, 28.11it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 61 Value: 0.41492111479141275
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 25.39it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 62 Value: 0.41037277284325385
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:01, 16.85it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 63 Value: 0.4063202462026051
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 27.64it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 64 Value: 0.4022847889941566
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 28.45it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 65 Value: 0.39685881867700695
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+Model Updated: Validation Loss Epoch: 0 Value: 0.5964700329303741 Optimal_loss: 0.5964700329303741
+val Procedure: 24it [00:01, 17.58it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 66 Value: 0.39364928889031314
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 16.69it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 67 Value: 0.39044820973459554
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:01, 18.15it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 68 Value: 0.38529948464461733
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 14.03it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 69 Value: 0.3838932502026461
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:01, 15.35it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 70 Value: 0.3796235298623844
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 28.24it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 71 Value: 0.3780272831113971
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 28.18it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 72 Value: 0.3754363896287217
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 27.88it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 73 Value: 0.3733448892527697
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:03<00:00,  1.59it/s]
+val Procedure: 24it [00:01, 19.48it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:03<00:00,  1.99it/s]
+Loss Epoch: 74 Value: 0.3707960327060855
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 28.51it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 75 Value: 0.3695575848069726
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 18.59it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  2.00it/s]
+Loss Epoch: 76 Value: 0.367525574808218
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 28.06it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 77 Value: 0.3640524421115311
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 22.59it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 78 Value: 0.3608980267023554
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:01, 14.79it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 79 Value: 0.36289113136578577
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:01, 19.19it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  2.00it/s]
+Loss Epoch: 80 Value: 0.36026003804742074
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 30.48it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 81 Value: 0.35937500030410535
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 13.23it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  2.00it/s]
+Loss Epoch: 82 Value: 0.3583464383774874
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 27.99it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 83 Value: 0.35653226602138305
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 17.35it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  2.00it/s]
+Loss Epoch: 84 Value: 0.3568277102800048
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 25.18it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 85 Value: 0.3551671530823318
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 28.15it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 86 Value: 0.35427965824397245
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 27.38it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  2.00it/s]
+Loss Epoch: 87 Value: 0.35349169920901863
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 18.62it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  2.00it/s]
+Loss Epoch: 88 Value: 0.35287767146923105
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 28.29it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 89 Value: 0.3535757955847954
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 20.65it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 90 Value: 0.3537712950183421
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:01, 19.64it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 91 Value: 0.35073668464105956
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:01, 19.79it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 92 Value: 0.3503408033628853
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 27.88it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 93 Value: 0.3506836025994651
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 27.88it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:03<00:00,  1.99it/s]
+Loss Epoch: 94 Value: 0.3494401431205321
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 28.35it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 95 Value: 0.3527941333548147
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 28.45it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 96 Value: 0.35160470525829157
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:03<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 27.33it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:03<00:00,  1.99it/s]
+Loss Epoch: 97 Value: 0.3517246450088462
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.58it/s]
+val Procedure: 24it [00:00, 24.28it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 98 Value: 0.35004585570826824
+Training Procedure: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.57it/s]
+val Procedure: 24it [00:00, 27.63it/s]█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 196/196 [02:04<00:00,  1.99it/s]
+Loss Epoch: 99 Value: 0.3503553622535297
+                                                                                                                                                                                                                                                                         
+End of training

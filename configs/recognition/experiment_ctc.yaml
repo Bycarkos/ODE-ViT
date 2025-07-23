@@ -1,0 +1,46 @@
+log_wandb: True
+
+setup:
+    dict:
+        epochs: 150
+        accumulation_steps: -1
+        log_every: 10
+
+    wandb:
+        project: Koopman
+        group: OCR_CTC
+        name: Training_OCR_CTC_LOSS_25_first_only
+
+data:
+    dataset:
+        Esposalles:
+            _target_: main_ocr_ctc.EsposallesDatasetForHtr
+            dataset_path: "/data/users/cboned/data/HTR/Esposalles"
+
+    collator:
+        train:
+            shuffle: True
+            batch_size: 64
+            pin_memory: True
+            num_workers: 8
+
+        val:
+            shuffle: True
+            batch_size: 8
+            pin_memory: False
+            num_workers: 8
+
+        test:
+            shuffle: False
+            batch_size: 1
+            pin_memory: False
+            num_workers: 0
+
+modeling:
+    inputs:
+        num_heads: 6
+        embed_dim: 768
+        mlp_ratio: 3
+        depth: 12
+
+    checkpoint_name: "TrOCR_Esposalles_CTC_With_Q_25"

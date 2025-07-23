@@ -1,0 +1,6 @@
+CREATING THE BASELINE METRIC VALUE
+ STARTING TO EVALUATE FO THE FIRST TIME
+val Procedure: 24it [00:49,  2.05s/it]
+Training Procedure:   0%|                                                                                                                                         | 0/99 [00:00<?, ?it/s]
+Validation Loss Epoch: 0 Value: 1095.04224609375 Optimal_loss: 1095.04224609375
+Training Procedure: 994it [29:12,  1.76s/it]

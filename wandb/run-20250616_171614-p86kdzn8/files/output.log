@@ -1,0 +1,95 @@
+Config of the encoder: <class 'transformers.models.vit.modeling_vit.ViTModel'> is overwritten by shared encoder config: ViTConfig {
+  "attention_probs_dropout_prob": 0.0,
+  "encoder_stride": 16,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.0,
+  "hidden_size": 768,
+  "image_size": 384,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "model_type": "vit",
+  "num_attention_heads": 12,
+  "num_channels": 3,
+  "num_hidden_layers": 1,
+  "patch_size": 16,
+  "pooler_act": "tanh",
+  "pooler_output_size": 768,
+  "qkv_bias": false,
+  "torch_dtype": "float32",
+  "transformers_version": "4.51.1"
+}
+
+Config of the decoder: <class 'transformers.models.trocr.modeling_trocr.TrOCRForCausalLM'> is overwritten by shared decoder config: TrOCRConfig {
+  "activation_dropout": 0.0,
+  "activation_function": "relu",
+  "add_cross_attention": true,
+  "attention_dropout": 0.0,
+  "bos_token_id": 0,
+  "classifier_dropout": 0.0,
+  "cross_attention_hidden_size": 768,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "eos_token_id": 2,
+  "init_std": 0.02,
+  "is_decoder": true,
+  "layernorm_embedding": false,
+  "max_position_embeddings": 1024,
+  "model_type": "trocr",
+  "pad_token_id": 1,
+  "scale_embedding": true,
+  "tie_word_embeddings": false,
+  "torch_dtype": "float32",
+  "transformers_version": "4.51.1",
+  "use_cache": false,
+  "use_learned_position_embeddings": false,
+  "vocab_size": 50265
+}
+
+Some weights of the model checkpoint at checkpoints/TrOCR_Esposalles_reduced.pt were not used when initializing VisionEncoderDecoderModel: ['encoder.encoder.layer.1.attention.attention.key.weight', 'encoder.encoder.layer.1.attention.attention.query.weight', 'encoder.encoder.layer.1.attention.attention.value.weight', 'encoder.encoder.layer.1.attention.output.dense.bias', 'encoder.encoder.layer.1.attention.output.dense.weight', 'encoder.encoder.layer.1.intermediate.dense.bias', 'encoder.encoder.layer.1.intermediate.dense.weight', 'encoder.encoder.layer.1.layernorm_after.bias', 'encoder.encoder.layer.1.layernorm_after.weight', 'encoder.encoder.layer.1.layernorm_before.bias', 'encoder.encoder.layer.1.layernorm_before.weight', 'encoder.encoder.layer.1.output.dense.bias', 'encoder.encoder.layer.1.output.dense.weight', 'encoder.encoder.layer.10.attention.attention.key.weight', 'encoder.encoder.layer.10.attention.attention.query.weight', 'encoder.encoder.layer.10.attention.attention.value.weight', 'encoder.encoder.layer.10.attention.output.dense.bias', 'encoder.encoder.layer.10.attention.output.dense.weight', 'encoder.encoder.layer.10.intermediate.dense.bias', 'encoder.encoder.layer.10.intermediate.dense.weight', 'encoder.encoder.layer.10.layernorm_after.bias', 'encoder.encoder.layer.10.layernorm_after.weight', 'encoder.encoder.layer.10.layernorm_before.bias', 'encoder.encoder.layer.10.layernorm_before.weight', 'encoder.encoder.layer.10.output.dense.bias', 'encoder.encoder.layer.10.output.dense.weight', 'encoder.encoder.layer.11.attention.attention.key.weight', 'encoder.encoder.layer.11.attention.attention.query.weight', 'encoder.encoder.layer.11.attention.attention.value.weight', 'encoder.encoder.layer.11.attention.output.dense.bias', 'encoder.encoder.layer.11.attention.output.dense.weight', 'encoder.encoder.layer.11.intermediate.dense.bias', 'encoder.encoder.layer.11.intermediate.dense.weight', 'encoder.encoder.layer.11.layernorm_after.bias', 'encoder.encoder.layer.11.layernorm_after.weight', 'encoder.encoder.layer.11.layernorm_before.bias', 'encoder.encoder.layer.11.layernorm_before.weight', 'encoder.encoder.layer.11.output.dense.bias', 'encoder.encoder.layer.11.output.dense.weight', 'encoder.encoder.layer.2.attention.attention.key.weight', 'encoder.encoder.layer.2.attention.attention.query.weight', 'encoder.encoder.layer.2.attention.attention.value.weight', 'encoder.encoder.layer.2.attention.output.dense.bias', 'encoder.encoder.layer.2.attention.output.dense.weight', 'encoder.encoder.layer.2.intermediate.dense.bias', 'encoder.encoder.layer.2.intermediate.dense.weight', 'encoder.encoder.layer.2.layernorm_after.bias', 'encoder.encoder.layer.2.layernorm_after.weight', 'encoder.encoder.layer.2.layernorm_before.bias', 'encoder.encoder.layer.2.layernorm_before.weight', 'encoder.encoder.layer.2.output.dense.bias', 'encoder.encoder.layer.2.output.dense.weight', 'encoder.encoder.layer.3.attention.attention.key.weight', 'encoder.encoder.layer.3.attention.attention.query.weight', 'encoder.encoder.layer.3.attention.attention.value.weight', 'encoder.encoder.layer.3.attention.output.dense.bias', 'encoder.encoder.layer.3.attention.output.dense.weight', 'encoder.encoder.layer.3.intermediate.dense.bias', 'encoder.encoder.layer.3.intermediate.dense.weight', 'encoder.encoder.layer.3.layernorm_after.bias', 'encoder.encoder.layer.3.layernorm_after.weight', 'encoder.encoder.layer.3.layernorm_before.bias', 'encoder.encoder.layer.3.layernorm_before.weight', 'encoder.encoder.layer.3.output.dense.bias', 'encoder.encoder.layer.3.output.dense.weight', 'encoder.encoder.layer.4.attention.attention.key.weight', 'encoder.encoder.layer.4.attention.attention.query.weight', 'encoder.encoder.layer.4.attention.attention.value.weight', 'encoder.encoder.layer.4.attention.output.dense.bias', 'encoder.encoder.layer.4.attention.output.dense.weight', 'encoder.encoder.layer.4.intermediate.dense.bias', 'encoder.encoder.layer.4.intermediate.dense.weight', 'encoder.encoder.layer.4.layernorm_after.bias', 'encoder.encoder.layer.4.layernorm_after.weight', 'encoder.encoder.l
+- This IS expected if you are initializing VisionEncoderDecoderModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing VisionEncoderDecoderModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Reduced model loaded
+Loaded keys: <All keys matched successfully>
+LKIS model loaded
+Starting training procedure
+Evaluating to get the baseline
+val Procedure: 0it [00:03, ?it/s]
+Training Procedure:   0%|                                                                                                                                         | 0/99 [00:00<?, ?it/s]Exception in thread Thread-4 (_pin_memory_loop):
+Validation Loss Epoch: 0 Value: 74.31887817382812 Optimal_loss: 74.31887817382812
+Traceback (most recent call last):                                                                                                                       | 1/345 [00:02<12:04,  2.11s/it]
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 59, in _pin_memory_loop
+    do_one_step()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py", line 35, in do_one_step
+    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 541, in rebuild_storage_fd
+    fd = df.detach()
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 57, in detach
+    with _resource_sharer.get_connection(self._id) as conn:
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/resource_sharer.py", line 86, in get_connection
+    c = Client(address, authkey=process.current_process().authkey)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 502, in Client
+    c = SocketClient(address)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/multiprocessing/connection.py", line 630, in SocketClient
+    s.connect(address)
+FileNotFoundError: [Errno 2] No such file or directory
+Training Epoch 1:   0%|▍                                                                                                                                 | 1/345 [00:02<14:53,  2.60s/it]
+Traceback (most recent call last):                                                                                                                                                       
+  File "/home/cboned/Projects/OCR-Koopman/experiment_ocr_lkis_ctc.py", line 463, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/experiment_ocr_lkis_ctc.py", line 380, in main
+    _, metrics = train_one_epoch(
+  File "/home/cboned/Projects/OCR-Koopman/experiment_ocr_lkis_ctc.py", line 202, in train_one_epoch
+    metrics_iter["guiding_loss"] += (guiding_loss.item())
+KeyboardInterrupt

@@ -1,0 +1,44 @@
+log_wandb: True
+
+setup:
+    dict:
+        epochs: 300
+        accumulation_steps: -1
+        log_every: 5
+
+    wandb:
+        project: Koopman
+        group: CLASSIFICATION
+        name: Training_EDO_VIT_ON_cifar100_euler_new
+
+data:
+    dataset:
+        name: "cifar100"
+        dataset_path: "/data/users/cboned/data/Generic/cifar"
+
+    collator:
+        train:
+            shuffle: True
+            batch_size: 256
+            pin_memory: True
+            num_workers: 12
+
+
+        val:
+            shuffle: True
+            batch_size: 32
+            pin_memory: False
+            num_workers: 8
+
+        test:
+            shuffle: False
+            batch_size: 1
+            pin_memory: False
+            num_workers: 0
+
+modeling:
+    type: vit
+
+    checkpoint_name: "EDO_euler_VIT_cifar100_second_train"
+
+    base: "/data/users/cboned/checkpoints/Vit_CIFAR100_first_train_reduced.pt"

@@ -1,0 +1,53 @@
+Some weights of ViTForImageClassification were not initialized from the model checkpoint at google/vit-base-patch16-224-in21k and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+CREATING THE BASELINE METRIC VALUE
+ STARTING TO EVALUATE FO THE FIRST TIME
+val Procedure: 24it [00:49,  2.06s/it]
+Training Procedure:   0%|                                                                                                                                                              | 0/248 [00:06<?, ?it/s]
+Validation Loss Epoch: 0 Value: 4.609327888488769 Optimal_loss: 4.609327888488769
+Traceback (most recent call last):                                                                                                                                                                             
+  File "/home/cboned/Projects/OCR-Koopman/main_classification.py", line 204, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/main_classification.py", line 123, in main
+    _, train_loss = train_classification_task(
+  File "/home/cboned/Projects/OCR-Koopman/train.py", line 45, in train_classification_task
+    output = model(**pixel_values, labels=labels)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/vit/modeling_vit.py", line 833, in forward
+    outputs = self.vit(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/vit/modeling_vit.py", line 616, in forward
+    encoder_outputs = self.encoder(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/vit/modeling_vit.py", line 441, in forward
+    layer_outputs = layer_module(hidden_states, layer_head_mask, output_attentions)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/vit/modeling_vit.py", line 386, in forward
+    self_attention_outputs = self.attention(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/vit/modeling_vit.py", line 328, in forward
+    self_outputs = self.attention(hidden_states, head_mask, output_attentions)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/models/vit/modeling_vit.py", line 260, in forward
+    context_layer, attention_probs = attention_interface(
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/transformers/integrations/sdpa_attention.py", line 39, in sdpa_attention_forward
+    query = query.contiguous()
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 296.00 MiB. GPU 0 has a total capacity of 44.35 GiB of which 267.81 MiB is free. Including non-PyTorch memory, this process has 44.08 GiB memory in use. Of the allocated memory 43.71 GiB is allocated by PyTorch, and 59.26 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

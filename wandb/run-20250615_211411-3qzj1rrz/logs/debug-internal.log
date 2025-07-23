@@ -1,0 +1,62 @@
+{"time":"2025-06-15T21:14:11.406302576+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250615_211411-3qzj1rrz/logs/debug-core.log"}
+{"time":"2025-06-15T21:14:11.661114287+02:00","level":"INFO","msg":"created new stream","id":"3qzj1rrz"}
+{"time":"2025-06-15T21:14:11.66116662+02:00","level":"INFO","msg":"stream: started","id":"3qzj1rrz"}
+{"time":"2025-06-15T21:14:11.661186994+02:00","level":"INFO","msg":"handler: started","stream_id":"3qzj1rrz"}
+{"time":"2025-06-15T21:14:11.66118964+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"3qzj1rrz"}
+{"time":"2025-06-15T21:14:11.661226268+02:00","level":"INFO","msg":"sender: started","stream_id":"3qzj1rrz"}
+{"time":"2025-06-15T21:14:11.891343499+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-15T21:14:11.891635499+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-06-16T07:40:12.557525372+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/bycarkos/Koopman/3qzj1rrz/file_stream\": dial tcp: lookup api.wandb.ai on 127.0.0.53:53: read udp 127.0.0.1:33079->127.0.0.53:53: i/o timeout"}
+{"time":"2025-06-16T07:40:24.626509003+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/bycarkos/Koopman/3qzj1rrz/file_stream\": dial tcp: lookup api.wandb.ai on 127.0.0.53:53: read udp 127.0.0.1:54151->127.0.0.53:53: i/o timeout"}
+{"time":"2025-06-16T07:40:38.701205355+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/bycarkos/Koopman/3qzj1rrz/file_stream\": dial tcp: lookup api.wandb.ai on 127.0.0.53:53: read udp 127.0.0.1:56877->127.0.0.53:53: i/o timeout"}
+{"time":"2025-06-16T14:41:58.642800751+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T14:42:31.041803633+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T14:43:05.539701839+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T14:43:43.805959894+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T14:44:33.035836468+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-16T14:45:39.871362786+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-16T14:47:09.872678703+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-16T14:48:39.873673568+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-16T14:50:09.874950739+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T14:51:28.643247942+02:00","level":"WARN","msg":"sender: taking a long time","seconds":600.001055507,"work":"WorkRecord(*service_go_proto.Request_StopStatus); Control(local:true mailbox_slot:\"rvju0kwhee2o\" connection_id:\"127.0.0.1:48974\")"}
+{"time":"2025-06-16T14:51:39.876307248+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T14:52:28.929837112+02:00","level":"WARN","msg":"runwork: taking a long time","seconds":600.000170989,"work":"WorkRecord(*service_go_proto.Record_OutputRaw); Control(connection_id:\"127.0.0.1:48974\")"}
+{"time":"2025-06-16T14:52:41.077712289+02:00","level":"WARN","msg":"runwork: taking a long time","seconds":600.00083776,"work":"WorkRecord(*service_go_proto.Record_Stats); Control(always_send:true)"}
+{"time":"2025-06-16T14:52:41.099986206+02:00","level":"WARN","msg":"runwork: taking a long time","seconds":600.00075388,"work":"WorkRecord(*service_go_proto.Record_Stats); Control(always_send:true)"}
+{"time":"2025-06-16T14:53:09.877637238+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-16T14:54:39.878460175+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-16T14:56:09.87906+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T14:57:14.510100235+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 158.109.8.123:57086->35.186.228.49:443: read: connection timed out"}
+{"time":"2025-06-16T14:58:14.672052248+02:00","level":"INFO","msg":"sender: succeeded after taking longer than expected","seconds":1006.029860987,"work":"WorkRecord(*service_go_proto.Request_StopStatus); Control(local:true mailbox_slot:\"rvju0kwhee2o\" connection_id:\"127.0.0.1:48974\")"}
+{"time":"2025-06-16T14:58:14.672087054+02:00","level":"INFO","msg":"runwork: succeeded after taking longer than expected","seconds":945.742451105,"work":"WorkRecord(*service_go_proto.Record_OutputRaw); Control(connection_id:\"127.0.0.1:48974\")"}
+{"time":"2025-06-16T14:58:14.67209921+02:00","level":"INFO","msg":"runwork: succeeded after taking longer than expected","seconds":933.572914176,"work":"WorkRecord(*service_go_proto.Record_Stats); Control(always_send:true)"}
+{"time":"2025-06-16T14:58:14.672087044+02:00","level":"INFO","msg":"runwork: succeeded after taking longer than expected","seconds":933.595208867,"work":"WorkRecord(*service_go_proto.Record_Stats); Control(always_send:true)"}
+{"time":"2025-06-16T14:58:58.6546052+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T14:59:30.678945288+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T15:00:04.909550222+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-16T15:00:42.979424018+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T15:01:30.269675465+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T15:02:39.748881721+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T15:04:09.750097919+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-16T15:05:39.751901948+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T15:07:09.753893305+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T15:08:28.654351767+02:00","level":"WARN","msg":"sender: taking a long time","seconds":600.000589294,"work":"WorkRecord(*service_go_proto.Request_StopStatus); Control(local:true mailbox_slot:\"x1q2citautzs\" connection_id:\"127.0.0.1:48974\")"}
+{"time":"2025-06-16T15:08:39.75507047+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-16T15:09:29.882873898+02:00","level":"WARN","msg":"runwork: taking a long time","seconds":600.000705007,"work":"WorkRecord(*service_go_proto.Record_OutputRaw); Control(connection_id:\"127.0.0.1:48974\")"}
+{"time":"2025-06-16T15:09:41.07579792+02:00","level":"WARN","msg":"runwork: taking a long time","seconds":600.0002991,"work":"WorkRecord(*service_go_proto.Record_Stats); Control(always_send:true)"}
+{"time":"2025-06-16T15:09:41.088008912+02:00","level":"WARN","msg":"runwork: taking a long time","seconds":600.001053181,"work":"WorkRecord(*service_go_proto.Record_Stats); Control(always_send:true)"}
+{"time":"2025-06-16T15:10:09.756660055+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T15:11:39.757754293+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T15:13:09.759613461+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-06-16T15:14:14.4142635+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 158.109.8.123:57590->35.186.228.49:443: read: connection timed out"}
+{"time":"2025-06-16T15:15:14.586320221+02:00","level":"INFO","msg":"sender: succeeded after taking longer than expected","seconds":1005.932527343,"work":"WorkRecord(*service_go_proto.Request_StopStatus); Control(local:true mailbox_slot:\"x1q2citautzs\" connection_id:\"127.0.0.1:48974\")"}
+{"time":"2025-06-16T15:15:14.5863983+02:00","level":"INFO","msg":"runwork: succeeded after taking longer than expected","seconds":933.510892204,"work":"WorkRecord(*service_go_proto.Record_Stats); Control(always_send:true)"}
+{"time":"2025-06-16T15:15:14.586411528+02:00","level":"INFO","msg":"runwork: succeeded after taking longer than expected","seconds":944.704273845,"work":"WorkRecord(*service_go_proto.Record_OutputRaw); Control(connection_id:\"127.0.0.1:48974\")"}
+{"time":"2025-06-16T15:15:14.586419145+02:00","level":"INFO","msg":"runwork: succeeded after taking longer than expected","seconds":933.49951756,"work":"WorkRecord(*service_go_proto.Record_Stats); Control(always_send:true)"}
+{"time":"2025-06-16T15:57:25.562518527+02:00","level":"ERROR","msg":"writer: startStore: error storing record: store: can't write proto: write /home/cboned/Projects/OCR-Koopman/wandb/run-20250615_211411-3qzj1rrz/run-3qzj1rrz.wandb: no space left on device"}
+{"time":"2025-06-16T15:57:25.563053712+02:00","level":"ERROR","msg":"writer: startStore: error storing record: store: can't get next record: write /home/cboned/Projects/OCR-Koopman/wandb/run-20250615_211411-3qzj1rrz/run-3qzj1rrz.wandb: no space left on device"}
+{"time":"2025-06-16T15:57:27.442739555+02:00","level":"ERROR","msg":"writer: startStore: error storing record: store: can't get next record: write /home/cboned/Projects/OCR-Koopman/wandb/run-20250615_211411-3qzj1rrz/run-3qzj1rrz.wandb: no space left on device"}
+{"time":"2025-06-16T15:57:27.442902847+02:00","level":"ERROR","msg":"writer: startStore: error storing record: store: can't get next record: write /home/cboned/Projects/OCR-Koopman/wandb/run-20250615_211411-3qzj1rrz/run-3qzj1rrz.wandb: no space left on device"}
+{"time":"2025-06-16T15:57:27.442916828+02:00","level":"ERROR","msg":"writer: startStore: error storing record: store: can't get next record: write /home/cboned/Projects/OCR-Koopman/wandb/run-20250615_211411-3qzj1rrz/run-3qzj1rrz.wandb: no space left on device"}
+{"time":"2025-06-16T15:57:29.658521227+02:00","level":"ERROR","msg":"writer: startStore: error storing record: store: can't get next record: write /home/cboned/Projects/OCR-Koopman/wandb/run-20250615_211411-3qzj1rrz/run-3qzj1rrz.wandb: no space left on device"}
+{"time":"202

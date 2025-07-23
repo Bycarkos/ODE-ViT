@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/cboned/Projects/OCR-Koopman/main_lkis_classification.py", line 203, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/main_lkis_classification.py", line 96, in main
+    train_dataset = CIFAR100(root=cfg.data.dataset.dataset_path, download=False, train=True)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torchvision/datasets/cifar.py", line 68, in __init__
+    if not self._check_integrity():
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torchvision/datasets/cifar.py", line 132, in _check_integrity
+    if not check_integrity(fpath, md5):
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torchvision/datasets/utils.py", line 58, in check_integrity
+    return check_md5(fpath, md5)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torchvision/datasets/utils.py", line 50, in check_md5
+    return md5 == calculate_md5(fpath, **kwargs)
+  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torchvision/datasets/utils.py", line 45, in calculate_md5
+    md5.update(chunk)
+KeyboardInterrupt

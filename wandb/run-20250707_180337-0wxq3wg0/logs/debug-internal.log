@@ -1,0 +1,18 @@
+{"time":"2025-07-07T18:03:37.87035254+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250707_180337-0wxq3wg0/logs/debug-core.log"}
+{"time":"2025-07-07T18:03:38.530915852+02:00","level":"INFO","msg":"created new stream","id":"0wxq3wg0"}
+{"time":"2025-07-07T18:03:38.530966602+02:00","level":"INFO","msg":"stream: started","id":"0wxq3wg0"}
+{"time":"2025-07-07T18:03:38.530998491+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"0wxq3wg0"}
+{"time":"2025-07-07T18:03:38.531059512+02:00","level":"INFO","msg":"sender: started","stream_id":"0wxq3wg0"}
+{"time":"2025-07-07T18:03:38.531232345+02:00","level":"INFO","msg":"handler: started","stream_id":"0wxq3wg0"}
+{"time":"2025-07-07T18:03:38.789021893+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-07T18:03:38.789612588+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-07-08T21:49:26.099307597+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-07-09T00:33:11.316595398+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-07-09T08:22:42.812817872+02:00","level":"INFO","msg":"stream: closing","id":"0wxq3wg0"}
+{"time":"2025-07-09T08:22:42.812848238+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-09T08:22:42.812980734+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-09T08:22:43.52834344+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-09T08:22:43.903110893+02:00","level":"INFO","msg":"handler: closed","stream_id":"0wxq3wg0"}
+{"time":"2025-07-09T08:22:43.903138152+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"0wxq3wg0"}
+{"time":"2025-07-09T08:22:43.903194964+02:00","level":"INFO","msg":"sender: closed","stream_id":"0wxq3wg0"}
+{"time":"2025-07-09T08:22:43.903202781+02:00","level":"INFO","msg":"stream: closed","id":"0wxq3wg0"}

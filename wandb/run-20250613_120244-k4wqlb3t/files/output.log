@@ -1,0 +1,13 @@
+CREATING THE BASELINE METRIC VALUE
+ STARTING TO EVALUATE FO THE FIRST TIME
+val Procedure: 24it [00:49,  2.05s/it]
+Training Procedure: 76it [02:16,  1.79s/it]                                                                                                                       | 0/99 [00:00<?, ?it/s]
+Validation Loss Epoch: 0 Value: 1280.040703125 Optimal_loss: 1280.040703125
+Traceback (most recent call last):                                                                                                                                                       
+  File "/home/cboned/Projects/OCR-Koopman/main_ocr_ctc.py", line 228, in <module>
+    main(cfg=cfg)
+  File "/home/cboned/Projects/OCR-Koopman/main_ocr_ctc.py", line 146, in main
+    _, train_loss = train_ocr_task_ctc(
+  File "/home/cboned/Projects/OCR-Koopman/train.py", line 51, in train_ocr_task_ctc
+    pred_size = torch.IntTensor([output.size(1)] * tokens.shape[0]).to(tokens.device)
+KeyboardInterrupt
