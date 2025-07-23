@@ -1,1 +1,0 @@
-{"_timestamp":1.7532168679207778e+09,"_runtime":45687.543373893,"_step":440,"train/loss_kpm_iter":0.8816236187703907,"train/loss_stability_iter":3.8669063985347747,"train/loss_rec_iter":347.7820151805878,"_wandb":{"runtime":45761},"train/loss_iter":352.53054466247556}

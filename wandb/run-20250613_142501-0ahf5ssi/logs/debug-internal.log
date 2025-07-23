@@ -1,8 +1,0 @@
-{"time":"2025-06-13T14:25:01.608738484+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250613_142501-0ahf5ssi/logs/debug-core.log"}
-{"time":"2025-06-13T14:25:01.8671253+02:00","level":"INFO","msg":"created new stream","id":"0ahf5ssi"}
-{"time":"2025-06-13T14:25:01.867175686+02:00","level":"INFO","msg":"stream: started","id":"0ahf5ssi"}
-{"time":"2025-06-13T14:25:01.867208111+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"0ahf5ssi"}
-{"time":"2025-06-13T14:25:01.867281827+02:00","level":"INFO","msg":"sender: started","stream_id":"0ahf5ssi"}
-{"time":"2025-06-13T14:25:01.867234406+02:00","level":"INFO","msg":"handler: started","stream_id":"0ahf5ssi"}
-{"time":"2025-06-13T14:25:02.176177107+02:00","level":"INFO","msg":"Starting system monitor"}
-{"time":"2025-06-13T14:25:02.176345906+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}

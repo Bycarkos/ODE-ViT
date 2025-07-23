@@ -1,1 +1,0 @@
-{"iteration_loss":46.00608777999878,"train/epoch":2,"_wandb":{"runtime":3933},"_runtime":3928.745972872,"train/epoch_loss":4.604410276027641,"val/epoch_acc":0.019999999552965164,"_step":283,"val/epoch_loss":4.601027946472168,"train/lr":2.818181818181818e-06,"_timestamp":1.7513634560026927e+09,"iteration_acc":0.1171875,"train/epoch_acc":0.010211490094661713}

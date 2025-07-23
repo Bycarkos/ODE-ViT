@@ -1,8 +1,0 @@
-{"time":"2025-07-22T11:27:50.942079443+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/cboned/Projects/OCR-Koopman/wandb/run-20250722_112750-t5960rhc/logs/debug-core.log"}
-{"time":"2025-07-22T11:27:51.800531085+02:00","level":"INFO","msg":"created new stream","id":"t5960rhc"}
-{"time":"2025-07-22T11:27:51.800559857+02:00","level":"INFO","msg":"stream: started","id":"t5960rhc"}
-{"time":"2025-07-22T11:27:51.800582396+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"t5960rhc"}
-{"time":"2025-07-22T11:27:51.800623445+02:00","level":"INFO","msg":"sender: started","stream_id":"t5960rhc"}
-{"time":"2025-07-22T11:27:51.800595945+02:00","level":"INFO","msg":"handler: started","stream_id":"t5960rhc"}
-{"time":"2025-07-22T11:27:52.065367982+02:00","level":"INFO","msg":"Starting system monitor"}
-{"time":"2025-07-22T11:27:52.065544864+02:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}

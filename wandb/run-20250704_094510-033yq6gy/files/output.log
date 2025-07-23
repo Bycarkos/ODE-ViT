@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/home/cboned/Projects/OCR-Koopman/main_lkis_classification.py", line 208, in <module>
-    main(cfg=cfg)
-  File "/home/cboned/Projects/OCR-Koopman/main_lkis_classification.py", line 95, in main
-    train_dataset = CIFAR100(root=cfg.data.dataset.dataset_path, download=False, train=True)
-  File "/home/cboned/miniconda3/envs/graphocr/lib/python3.10/site-packages/torchvision/datasets/cifar.py", line 69, in __init__
-    raise RuntimeError("Dataset not found or corrupted. You can use download=True to download it")
-RuntimeError: Dataset not found or corrupted. You can use download=True to download it

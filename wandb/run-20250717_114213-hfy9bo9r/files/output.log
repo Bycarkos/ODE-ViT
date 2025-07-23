@@ -1,5 +1,0 @@
-loading teacher model
-loading Koopman Network
-Extracting the PCA Vt for computing the trajectories:   4%|█████▍                                                                                                                                 | 2000/50000 [00:35<14:11, 56.35it/s]
-Training Procedure:   0%|▏                                                                                                                                                                         | 9/10000 [00:03<1:03:50,  2.61it/s]
-Training Procedure:   0%|▏                                                                                                                                                                           | 9/10000 [00:02<50:15,  3.31it/s]
