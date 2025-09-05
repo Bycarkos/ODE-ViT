@@ -341,7 +341,7 @@ class ResNetForKoopmanEstimation(torch.nn.Module):
             residual = residual.max(dim=1).values
             out = self.pooling(residual)
             out = out.flatten(1)
-            out = F.normalize(out, p=2, dim=1) # / (out.shape[1]**0.5)
+            out = out / (out.shape[1]**0.5) #F.normalize(out, p=2, dim=1) #
             residual_states.append(out)
 
 

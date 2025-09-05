@@ -239,7 +239,11 @@ def main(cfg: DictConfig):
 
 
     checkpoint_path = cfg.modeling.teacher.checkpoint_path
-    teacher_model = ResNetForKoopmanEstimation(checkpoint_path, out_channels=768, out_size=(4, 4)) if cfg.modeling.type == "resnet" else ViTForImageClassification.from_pretrained(cfg.modeling.teacher.checkpoint_path)
+    
+    resolution = cfg.setup.resolution
+    teacher_model = ResNetForKoopmanEstimation(cfg.modeling.teacher.checkpoint_path, out_size=resolution) if cfg.modeling.type == "resnet" else ViTForImageClassification.from_pretrained(cfg.modeling.teacher.checkpoint_path)
+
+
     processor = AutoImageProcessor.from_pretrained("microsoft/resnet-50", use_fast=True) if cfg.modeling.type == "resnet" else ViTImageProcessor.from_pretrained('google/vit-base-patch16-224-in21k')
     collator = Collator(processor)
     teacher_model.to(device)

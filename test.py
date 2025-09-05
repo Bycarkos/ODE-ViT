@@ -60,19 +60,16 @@ def test_classification_task(
         preds = output["logits"]
         soft_pred = preds.softmax(dim=-1).argmax(dim=-1)
         loss = output["loss"] #criterion(preds, labels)
+
         metrics["epoch_loss"] += loss.item()
         metrics["epoch_acc"] += (soft_pred == labels).float().mean(-1) #(accuracy(soft_pred, labels, task="multiclass"))
 
-
-        if (batch_idx + 1) % log_every == 0:
-            break
-
     if wandb_logger:
         wandb_logger.log(
-            {f"{mode}/{key}": value / log_every for key, value in metrics.items()}
+            {f"{mode}/{key}": value / len(dataloader) for key, value in metrics.items()}
         )
 
-    return model, (metrics["epoch_loss"] / log_every)
+    return model, (metrics["epoch_loss"] / len(dataloader))
 
 @torch.no_grad()
 def test_ocr_task_ctc(

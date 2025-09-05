@@ -250,17 +250,16 @@ def train_classification_task(
         preds = output["logits"]
         soft_pred = preds.softmax(dim=-1).argmax(dim=-1)
         loss = output["loss"] #criterion(preds, labels)
-
         loss.backward()
 
-        metrics_epoch["epoch_loss"] += loss.item()
-        metrics_iter["iteration_loss"] += loss.item()
+        metrics_epoch["epoch_loss"] += (loss.item())
+        metrics_iter["iteration_loss"] += (loss.item())
 
         metrics_iter["iteration_acc"] += (soft_pred == labels).float().mean(-1)
         metrics_epoch["epoch_acc"] += (soft_pred == labels).float().mean(-1)
 
         if cumulative >= num_accumulation_steps:
-            torch.nn.utils.clip_grad_norm_(params, 1.0)
+            torch.nn.utils.clip_grad_norm_(params, 5.0)
             optimizer.step()
             optimizer.zero_grad()
             if scheduler:
@@ -271,7 +270,6 @@ def train_classification_task(
         metrics_iter.update({"train/lr": optimizer.param_groups[0]["lr"]})
 
         if ((batch_idx + 1) % log_every) == 0:
-
             if wandb_logger:
                 metrics_iter = {
                     f"train/{key}": value / log_every for key, value in metrics_iter.items()

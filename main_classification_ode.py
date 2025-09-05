@@ -10,8 +10,9 @@ import utils
 from train import  train_classification_task
 from test import test_classification_task
 
-from transformers import ViTForImageClassification, ViTConfig, ResNetForImageClassification, ViTImageProcessor
-from models.wrapper_ode import ConditionalEDOEncoderWrapper
+from transformers import AutoConfig, ViTForImageClassification, ViTConfig, ResNetForImageClassification, ViTImageProcessor
+from models.wrapper_ode_new import NeuralODEIntrepretation
+from models.ode_transformer_gpt import ViTNeuralODE
 ## Common packages
 import torch
 from torch.utils.data import DataLoader
@@ -58,13 +59,28 @@ def main(cfg: DictConfig):
 
 
     base_checkpoint_path = cfg.modeling.base
-    configuration = ViTConfig(num_hidden_layers=1)
-    model = ViTForImageClassification(configuration)
+    config = AutoConfig.from_pretrained(base_checkpoint_path)
+    #config.hidden_size = 768
+    #config.pooler_output_size = 768
+    #config.num_heads = 2
+    #config.intermidiate_size = 768
 
-    model.classifier = torch.nn.Linear(model.classifier.in_features, len(train_dataset.classes))
-
-    model = ConditionalEDOEncoderWrapper(encoder=model, n_classes=len(train_dataset.classes), steps=12)
+    model = NeuralODEIntrepretation(vit_config=config, **cfg.modeling.inputs)
     model = model.to(device)
+    """ model = ViTNeuralODE(
+        img_size=224,
+        patch_size=16,
+        in_chans=3,
+        num_classes=100,
+        embed_dim=192,
+        num_heads=3,
+        mlp_ratio=4.0,
+        emulate_depth=12,
+        time_interval=1.0,   # match 12 "layers" by integrating over [0,12]
+        num_eval_steps=48,
+        solver="dopri5",
+).cuda()
+"""
 
     processor = ViTImageProcessor.from_pretrained('google/vit-base-patch16-224-in21k')
 
@@ -77,9 +93,8 @@ def main(cfg: DictConfig):
         collate_fn=collator.classification_collate_fn,
         **cfg.data.collator.val,
     )
-    model.to(device)
 
-    initial_lr = 1e-5
+    initial_lr = 1e-3
     optimizer = AdamW(
         filter(lambda p: p.requires_grad, model.parameters()),
         lr=initial_lr,
@@ -91,7 +106,7 @@ def main(cfg: DictConfig):
     total_steps = cfg.setup.dict.epochs * steps_per_epoch
 
     # Warmup steps (e.g., 10% of total steps)
-    warmup_steps = int(0.05 * total_steps)
+    warmup_steps = int(0.1 * total_steps)
 
     scheduler = get_cosine_schedule_with_warmup(
         optimizer, num_warmup_steps=warmup_steps, num_training_steps=total_steps
@@ -123,8 +138,9 @@ def main(cfg: DictConfig):
     print(
         f"Validation Loss Epoch: {0} Value: {loss_validation} Optimal_loss: {optimal_loss}"
     )
+    if cfg.log_wandb == True:
 
-    #wandb.watch(model, log="all")
+        wandb_logger.watch(model, log="all")
 
     for epoch in tqdm.tqdm(
         range(1, cfg.setup.dict.epochs), desc="Training Procedure", position=0, leave=False
