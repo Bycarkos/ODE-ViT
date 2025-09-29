@@ -1,0 +1,6 @@
+{
+    "typeCheckingMode": "off",
+    "reportPossiblyUnboundVariable": "none",
+    "python.linting.enabled": false
+
+}
