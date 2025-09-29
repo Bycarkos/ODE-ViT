@@ -13,6 +13,7 @@ from test import test_classification_task
 from transformers import AutoConfig, ViTForImageClassification, ViTConfig, ResNetForImageClassification, ViTImageProcessor
 from models.wrapper_ode_new import NeuralODEIntrepretation
 from models.ode_transformer_gpt import ViTNeuralODE
+
 ## Common packages
 import torch
 from torch.utils.data import DataLoader
@@ -60,27 +61,54 @@ def main(cfg: DictConfig):
 
     base_checkpoint_path = cfg.modeling.base
     config = AutoConfig.from_pretrained(base_checkpoint_path)
-    #config.hidden_size = 768
-    #config.pooler_output_size = 768
-    #config.num_heads = 2
-    #config.intermidiate_size = 768
+    config.hidden_size = 192
+    config.num_attention_heads = 3
+    config.intermidiate_size = 768
+    config.hidden_act = "gelu"
 
-    model = NeuralODEIntrepretation(vit_config=config, **cfg.modeling.inputs)
-    model = model.to(device)
-    """ model = ViTNeuralODE(
+
+    #model = NeuralODEIntrepretation(vit_config=config, **cfg.modeling.inputs)
+    #model = model.to(device)
+    model = ViTNeuralODE(
         img_size=224,
         patch_size=16,
         in_chans=3,
         num_classes=100,
-        embed_dim=192,
-        num_heads=3,
-        mlp_ratio=4.0,
-        emulate_depth=12,
+        embed_dim=768,
+        num_heads=8,
+        mlp_ratio=1.0,
+        emulate_depth=12.0,
         time_interval=1.0,   # match 12 "layers" by integrating over [0,12]
-        num_eval_steps=48,
-        solver="dopri5",
-).cuda()
-"""
+        num_eval_steps=24,
+        solver="euler",
+    )
+
+    save_path = "/data/users/cboned/checkpoints"
+    checkpoint_name = f"{save_path}/VIT_ODE_CIFAR100.pt"
+
+    if cfg.infer_from_checkpoint:
+        weight_to_update = torch.load(checkpoint_name, weights_only=True)
+        for w in weight_to_update.keys():
+            if model.state_dict().get(w) is not None:
+                model.state_dict()[w].data.copy_(weight_to_update[w])
+
+    #teacher_model_checkpoint = cfg.modeling.base
+    #teacher_model = ViTForImageClassification.from_pretrained(teacher_model_checkpoint)
+
+    #model.cls_token = teacher_model.vit.embeddings.cls_token
+    #model.cls_token.requires_grad = False
+
+
+    #for param in model.parameters():
+    #    param.requires_grad = False
+
+
+    #model.cls_token.requires_grad = True
+    #model.pos_embed.requires_grad = True
+    #model.head.requires_grad = True
+    #model.norm_head.requires_grad = True
+
+    model = model.to(device)
 
     processor = ViTImageProcessor.from_pretrained('google/vit-base-patch16-224-in21k')
 
@@ -98,7 +126,7 @@ def main(cfg: DictConfig):
     optimizer = AdamW(
         filter(lambda p: p.requires_grad, model.parameters()),
         lr=initial_lr,
-        weight_decay=1e-4,
+        weight_decay=5e-2,
     )
 
     ## ** Scheduler
@@ -112,7 +140,7 @@ def main(cfg: DictConfig):
         optimizer, num_warmup_steps=warmup_steps, num_training_steps=total_steps
     )
 
-    optimal_loss = 1e10
+    optimal_loss = 0.0
     save_path = "/data/users/cboned/checkpoints"
     os.makedirs(save_path, exist_ok=True)
     checkpoint_name = f"{save_path}/{cfg.modeling.checkpoint_name}.pt"
@@ -120,7 +148,7 @@ def main(cfg: DictConfig):
     criterion = torch.nn.CrossEntropyLoss()
 
     print("CREATING THE BASELINE METRIC VALUE\n STARTING TO EVALUATE FO THE FIRST TIME")
-    _, loss_validation = test_classification_task(
+    _, loss_validation, acc_validation = test_classification_task(
         dataloader=val_dloader,
         model=model,
         criterion=criterion,
@@ -129,14 +157,14 @@ def main(cfg: DictConfig):
 
     _, optimal_loss = utils.update_and_save_model_pt(
         previous_metric=optimal_loss,
-        actual_metric=loss_validation,
+        actual_metric=acc_validation,
         model=model,
         checkpoint_path=checkpoint_name,
-        compare="<",
+        compare=">",
     )
 
     print(
-        f"Validation Loss Epoch: {0} Value: {loss_validation} Optimal_loss: {optimal_loss}"
+        f"Validation Metric Epoch: {0} Value: {acc_validation} Optimal_metric: {optimal_loss}"
     )
     if cfg.log_wandb == True:
 
@@ -161,7 +189,7 @@ def main(cfg: DictConfig):
         print(f"Loss Epoch: {epoch} Value: {train_loss}")
 
         if ((epoch) % 1) == 0:
-            _, loss_validation = test_classification_task(
+            _, loss_validation, acc_validation = test_classification_task(
                 dataloader=val_dloader,
                 model=model,
                 criterion=criterion,
@@ -170,15 +198,15 @@ def main(cfg: DictConfig):
 
             updated, optimal_loss = utils.update_and_save_model_pt(
                 previous_metric=optimal_loss,
-                actual_metric=loss_validation,
+                actual_metric=acc_validation,
                 model=model,
                 checkpoint_path=checkpoint_name,
-                compare="<",
+                compare=">",
             )
 
             if updated:
                 print(
-                    f"Model Updated: Validation Loss Epoch: {0} Value: {loss_validation} Optimal_loss: {optimal_loss}"
+                    f"Model Updated: Validation Metric Epoch: {0} Value: {acc_validation} Optimal_Metric: {optimal_loss}"
                 )
 
     print("End of training")

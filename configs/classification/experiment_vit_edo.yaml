@@ -1,16 +1,16 @@
 log_wandb: True
+infer_from_checkpoint: False
 
 setup:
     dict:
-        epochs: 300
+        epochs: 200
         accumulation_steps: -1
-        log_every: 5
+        log_every: 10
 
     wandb:
         project: Koopman
         group: CLASSIFICATION
-        name: Training_EDO_VIT_ON_cifar100_euler_new
-
+        name: Training_EDO_VIT_ON_cifar100_no_fixing_cls
 data:
     dataset:
         name: "cifar100"
@@ -19,16 +19,15 @@ data:
     collator:
         train:
             shuffle: True
-            batch_size: 256
+            batch_size: 64
             pin_memory: True
-            num_workers: 12
-
+            num_workers: 16
 
         val:
             shuffle: True
-            batch_size: 32
+            batch_size: 256
             pin_memory: False
-            num_workers: 8
+            num_workers: 16
 
         test:
             shuffle: False
@@ -38,7 +37,11 @@ data:
 
 modeling:
     type: vit
+    inputs:
+        integration_time: 1
+        num_step_evaluations: 24
+        solver: euler
+        n_classes: 100
 
-    checkpoint_name: "EDO_euler_VIT_cifar100_second_train"
-
-    base: "/data/users/cboned/checkpoints/Vit_CIFAR100_first_train_reduced.pt"
+    checkpoint_name: VIT_ODE_cifar100_no_fixing_cls
+    base: "checkpoints/Vit_CIFAR100.pt"

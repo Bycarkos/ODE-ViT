@@ -1,4 +1,4 @@
-log_wandb: True
+log_wandb: False
 
 setup:
     dict:
@@ -9,22 +9,23 @@ setup:
     wandb:
         project: Koopman
         group: CLASSIFICATION
-        name: Training_EDO_DISTILLATION_VIT_ON_ImageNet100
+        name: EDO_DISTILLATION_VIT_ON_CIFAR100_mse_last_step_continue
 
 data:
     dataset:
-        dataset_path: "/data/users/cboned/data/Generic/imagenet100"
+        name: "cifar100"
+        dataset_path: "/data/users/cboned/data/Generic/cifar"
 
     collator:
         train:
             shuffle: True
-            batch_size: 128
+            batch_size: 64
             pin_memory: True
             num_workers: 8
 
         val:
             shuffle: True
-            batch_size: 8
+            batch_size: 128
             pin_memory: False
             num_workers: 8
 
@@ -35,17 +36,19 @@ data:
             num_workers: 0
 
 modeling:
+    type: vit
+
     teacher:
-        checkpoint_path: "/data/users/cboned/checkpoints/VIT_imagenet100_first_train.pt"
+        checkpoint_path: "checkpoints/Vit_CIFAR100.pt"
 
     student:
         inputs:
-            num_heads: 6
-            embed_dim: 768
-            mlp_ratio: 3
-            depth: 12
+            integration_time: 1
+            num_step_evaluations: 24
+            solver: euler
+            n_classes: 100
 
-        checkpoint_name: "EDO_VIT_distillation_imagenet100_first_train"
+        checkpoint_name: "EDO_DISTILLATION_VIT_ON_CIFAR100_mse_last_step_continue"
 
     base:
-        checkpoint_path: "/data/users/cboned/checkpoints/VIT_imagenet100_first_train_reduced.pt"
+        checkpoint_path: "checkpoints/Vit_CIFAR100_first_train_reduced.pt"

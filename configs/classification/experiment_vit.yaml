@@ -2,7 +2,7 @@ log_wandb: True
 
 setup:
     dict:
-        epochs: 100
+        epochs: 20
         accumulation_steps: -1
         log_every: 10
 
@@ -38,4 +38,4 @@ data:
 modeling:
     type: vit
 
-    checkpoint_name: "Vit_CIFAR100_first_train"
+    checkpoint_name: "Vit_CIFAR100"

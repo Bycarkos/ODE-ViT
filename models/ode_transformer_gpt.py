@@ -1,27 +1,16 @@
-# vit_ode_pytorch.py
 import math
 from typing import Optional, Tuple, List
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from .time_emb import TimeEmbedding, LearnedSinusoidalPosEmb
+from torchdiffeq import odeint
 
-# ----- Optional: torchdiffeq integration (fallback to Euler if not installed) -----
-try:
-    from torchdiffeq import odeint
-    TORCHDIFFEQ_AVAILABLE = True
-except Exception:
-    TORCHDIFFEQ_AVAILABLE = False
-
-
-# -----------------------
-# Small building blocks
-# -----------------------
 
 class PatchEmbed(nn.Module):
     """
     ViT patch embedding via Conv2d.
-    For CIFAR-100: img_size=32, patch_size=4 or 8 works well (e.g., 4 -> 8x8 tokens).
     """
     def __init__(self, img_size=32, patch_size=4, in_chans=3, embed_dim=192):
         super().__init__()
@@ -87,11 +76,16 @@ class ParallelAttentionMLP(nn.Module):
 
         self.attn = MultiheadSelfAttention(dim=dim, num_heads=num_heads, attn_drop=attn_drop, proj_drop=proj_drop)
         self.mlp = MLP(dim=dim, hidden_dim=int(dim * mlp_ratio), drop=mlp_drop)
+        self.tg = nn.Linear(1, out_features=dim)
+        self.tf = nn.Linear(1, out_features=dim)
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        g = self.attn(self.norm_attn(x))  # G(x)
-        f = self.mlp(self.norm_mlp(x))    # F(x)
-        return f + g                      # derivative
+    def forward(self, x: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
+        tG = self.tg(t.view(-1, 1))
+        tF = self.tf(t.view(-1, 1))
+
+        g = self.attn(self.norm_attn(x) + tG)  # G(x)
+        f = self.mlp(self.norm_mlp(x) + tF)    # F(x)
+        return f + g                    # derivative
 
 
 class ViT_ODEFunc(nn.Module):
@@ -103,7 +97,10 @@ class ViT_ODEFunc(nn.Module):
                  attn_drop: float = 0.0, proj_drop: float = 0.0, mlp_drop: float = 0.0,
                  emulate_depth: int = 12, time_interval: float = 12.0):
         super().__init__()
+        self.dim = dim
         self.block = ParallelAttentionMLP(dim, num_heads, mlp_ratio, attn_drop, proj_drop, mlp_drop)
+        self.conditional_time_embedding =  nn.Linear(dim*2, dim) #MLP(dim=dim, hidden_dim=dim, drop=0.0)
+
         # If you integrate over [0, 1] and want to match D layers, multiply by D.
         # If you integrate over [0, D], set scaler=1.0
         if time_interval == 1.0:
@@ -111,39 +108,38 @@ class ViT_ODEFunc(nn.Module):
         else:
             self.scaler = 1.0
 
+    def fourier_encode_time(self, t, dim):
+        """
+        Args:
+            t: scalar float tensor or shape (B,) — time value(s)
+            dim: int — dimension of output encoding (must be even)
+
+        Returns:
+            Tensor of shape (B, dim), each row is the Fourier encoding of time t
+        """
+        assert dim % 2 == 0, "Dimension must be even for sin/cos pairs"
+
+        half_dim = dim // 2
+        freqs = torch.exp(
+            torch.arange(0, half_dim, dtype=torch.float32) * (-math.log(10000.0) / half_dim)
+        ).to(t.device)  # (half_dim,)
+
+        # t can be scalar or vector (B,)
+        if len(t.shape) == 0:
+            t = t.unsqueeze(0)
+        t = t.unsqueeze(-1)  # (B, 1)
+
+        angles = t * freqs  # (B, half_dim)
+        sin = torch.sin(angles)
+        cos = torch.cos(angles)
+
+        return torch.cat([sin, cos], dim=-1)  # (B, dim)
+
     def forward(self, t: torch.Tensor, x: torch.Tensor) -> torch.Tensor:
         # x: [B, N, D]
-        dx = self.block(x) * self.scaler
-        return dx
-
-
-# -----------------------
-# ODEBlock with fallback
-# -----------------------
-
-class ODEBlock(nn.Module):
-    """
-    If torchdiffeq is installed, uses odeint(method=solver).
-    Otherwise falls back to a fixed-step Euler integrator across provided time grid `t`.
-    """
-    def __init__(self, odefunc: nn.Module, solver: str = "rk4", rtol: float = 1e-3, atol: float = 1e-5):
-        super().__init__()
-        self.odefunc = odefunc
-        self.solver = solver
-        self.rtol = rtol
-        self.atol = atol
-
-    def forward(self, x0: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
-        """
-        x0: [B, N, D]
-        t:  [T]
-        returns: [T, B, N, D]
-        """
-        # odeint expects (t, batch, ...) ordering as it returns [T, *x_shape]
-        states = odeint(self.odefunc, x0, t, method=self.solver, rtol=self.rtol, atol=self.atol)
-        # states: [T, B, N, D]
-        return states
-
+        t = t.to(x.device)
+        dx = self.block(x, t) * self.scaler
+        return dx #+ x
 
 
 # -----------------------
@@ -166,14 +162,13 @@ class ViTNeuralODE(nn.Module):
         embed_dim: int = 192,
         num_heads: int = 3,
         mlp_ratio: float = 4.0,
-        attn_drop: float = 0.0,
-        proj_drop: float = 0.0,
-        mlp_drop: float = 0.0,
+        attn_drop: float = 0.3,
+        proj_drop: float = 0.3,
+        mlp_drop: float = 0.3,
         emulate_depth: int = 12,           # corresponds to a 12-layer ViT
         time_interval: float = 12.0,       # integrate over [0, 12] to match 12 layers; set to 1.0 if you prefer [0,1]
         num_eval_steps: int = 48,          # solver internal evaluation points (e.g., 4 per unit of time)
-        solver: str = "rk4",
-        distilled_control_points: Optional[int] = None,  # optional KD anchors
+        solver: str = "rk4"
     ):
         super().__init__()
 
@@ -182,7 +177,8 @@ class ViTNeuralODE(nn.Module):
 
         # Class token + positional embeddings
         self.cls_token = nn.Parameter(torch.zeros(1, 1, embed_dim))
-        self.pos_embed = nn.Parameter(torch.zeros(1, 1 + num_patches, embed_dim))
+        self.pos_embed = nn.Parameter(torch.zeros(1, 2 + num_patches, embed_dim))
+        self.dist_token = nn.Parameter(torch.zeros(1, 1, embed_dim))
         self.pos_drop = nn.Dropout(p=0.0)
 
         # ODE function and integrator
@@ -196,18 +192,21 @@ class ViTNeuralODE(nn.Module):
             emulate_depth=emulate_depth,
             time_interval=time_interval,
         )
-        self.odeblock = ODEBlock(self.odefunc, solver=solver)
 
         # Head
         self.norm_head = nn.LayerNorm(embed_dim)
         self.head = nn.Linear(embed_dim, num_classes)
+        self.dist_head = nn.Linear(embed_dim, num_classes)
+        self.norm_dist = nn.LayerNorm(embed_dim)
+        self.solver = solver
 
         # Time grid
         self.time_interval = time_interval
         self.num_eval_steps = num_eval_steps
-        self.register_buffer("t_grid", torch.linspace(0.0, time_interval, num_eval_steps))
+        self.t_grid = torch.linspace(0.0, time_interval, num_eval_steps)
 
-
+        self.control_points_idx = (self.num_eval_steps // emulate_depth)
+        self.control_points = torch.linspace(0, num_eval_steps-1, steps=12).long()
         self._init_weights()
 
     @property
@@ -217,7 +216,8 @@ class ViTNeuralODE(nn.Module):
     def _init_weights(self):
         nn.init.trunc_normal_(self.pos_embed, std=0.02)
         nn.init.trunc_normal_(self.cls_token, std=0.02)
-        nn.init.trunc_normal_(self.head.weight, std=0.02)
+        nn.init.trunc_normal_(self.dist_token, std=0.02)
+
         if self.head.bias is not None:
             nn.init.zeros_(self.head.bias)
 
@@ -228,8 +228,9 @@ class ViTNeuralODE(nn.Module):
         x = self.patch_embed(x)                    # [B, N, D]
         B, N, D = x.shape
         cls = self.cls_token.expand(B, -1, -1)     # [B, 1, D]
-        x = torch.cat([cls, x], dim=1)             # [B, 1+N, D]
-        x = x + self.pos_embed[:, : (N + 1)]
+        dist = self.dist_token.expand(B, -1, -1)
+        x = torch.cat([cls, dist, x], dim=1)             # [B, 1+N, D]
+        x = x + self.pos_embed[:, : (N + 2)]
         x = self.pos_drop(x)
         return x
 
@@ -239,7 +240,7 @@ class ViTNeuralODE(nn.Module):
         labels: Optional[torch.Tensor] = None,     # [B]
         teacher_states: Optional[torch.Tensor] = None,  # [L, B, N, D] (optional: baseline ViT block outputs)
         kd_weight: float = 1.0,                    # distillation weight (if teacher_states is provided)
-        return_all_states: bool = False,
+        output_hidden_states: bool = False,
     ):
         """
         Returns:
@@ -250,24 +251,24 @@ class ViTNeuralODE(nn.Module):
               ctrl_states: [Q, B, N, D] optional KD anchors
         """
         tokens = self.embed(pixel_values)                     # [B, 1+N, D]
-        states = self.odeblock(tokens, self.t_grid)  # [T, B, 1+N, D]
+        states = odeint(self.odefunc, tokens, self.t_grid.to(self.device), method=self.solver)
+
         final = states[-1]                         # [B, 1+N, D]
         cls_final = final[:, 0]                    # [B, D]
+        dist_final = final[:, 1]
         logits = self.head(self.norm_head(cls_final))
+        logits_dist = self.dist_head(self.norm_dist(dist_final))
 
+        control_points = states[self.control_points]  # [Q, B, 1+N, D]
 
-        loss = None
         if labels is not None:
-            ce = F.cross_entropy(logits, labels)
+            loss = F.cross_entropy(logits, labels)
 
-            loss = ce
-
-        out = {"logits": logits, "loss": loss}
-        if return_all_states:
+        out = {"logits": logits, "logits_dist": logits_dist, "loss": loss, "control_points": control_points}
+        if output_hidden_states:
             out["states"] = states
 
         return out
-
 
 # -----------------------
 # Minimal usage example

@@ -6,6 +6,7 @@ import tqdm
 
 from torchmetrics.functional.text import char_error_rate, word_error_rate
 from torchmetrics.functional.classification import accuracy
+from collections import defaultdict
 
 import torchvision.transforms.v2 as T
 from wandb import Table, Image
@@ -42,7 +43,7 @@ def test_classification_task(
     log_every: int = 25
 ):
 
-    metrics = {"epoch_loss": 0.0, "epoch_acc": 0.0}
+    metrics = defaultdict(float)
 
     model.eval()
     cumulative = 0
@@ -59,6 +60,11 @@ def test_classification_task(
 
         preds = output["logits"]
         soft_pred = preds.softmax(dim=-1).argmax(dim=-1)
+        if output.get("logits_dist", None) is not None:
+            soft_pred_dist = output["logits_dist"].argmax(dim=-1)
+            metrics["epoch_acc_dist"] += (soft_pred_dist == labels).float().mean(-1)
+            metrics["epoch_mixed_acc"] += (((output["logits_dist"] + preds)/2).argmax(dim=-1) == labels).float().mean(-1)
+
         loss = output["loss"] #criterion(preds, labels)
 
         metrics["epoch_loss"] += loss.item()
@@ -69,7 +75,8 @@ def test_classification_task(
             {f"{mode}/{key}": value / len(dataloader) for key, value in metrics.items()}
         )
 
-    return model, (metrics["epoch_loss"] / len(dataloader))
+    print("Accuracy:", (metrics["epoch_acc"]/len(dataloader)).item())
+    return model, (metrics["epoch_loss"] / len(dataloader)), (metrics["epoch_acc"]/len(dataloader)).item()
 
 @torch.no_grad()
 def test_ocr_task_ctc(

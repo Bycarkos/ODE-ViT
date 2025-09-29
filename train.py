@@ -1,15 +1,58 @@
 # type: ignore
 
-from os import sched_getscheduler
-from posix import POSIX_FADV_SEQUENTIAL
 import torch
 from torch.utils.data import DataLoader
+import torch.nn.functional as F
 import tqdm
 from collections import defaultdict
 
 from torchmetrics.functional.text import char_error_rate, word_error_rate  # type: ignore
 from wandb import Table, Image  # type: ignore
 device = "cuda" if torch.cuda.is_available() else "cpu"
+
+
+class ImageDistilTrainer(torch.nn.Module):
+    def __init__(self, teacher_model=None, student_model=None, temperature=None, lambda_param=None,  *args, **kwargs):
+        super().__init__()
+        self.teacher = teacher_model
+        self.student = student_model
+        self.loss_function = torch.nn.KLDivLoss(reduction="batchmean")
+        self.cosine_loss = torch.nn.CosineEmbeddingLoss()
+        self.mse_loss = torch.nn.MSELoss()
+        self.teacher.eval()
+        self.student.train()
+        self.temperature = temperature
+        self.lambda_param = lambda_param
+
+    
+    def compute_loss(self, inputs, labels, return_outputs=True):
+        student_output = self.student(**inputs, labels=labels, output_hidden_states=True)
+
+        with torch.no_grad():
+          teacher_output = self.teacher(**inputs, output_hidden_states=True)
+
+        last_cls_token = teacher_output.hidden_states[-1][:,0]
+        last_state = student_output["states"][-1, :, 0]
+
+
+        mse_loss = self.mse_loss(last_cls_token, last_state)
+        soft_teacher = F.softmax(teacher_output["logits"] / self.temperature, dim=-1)
+        soft_student = F.log_softmax(student_output["logits_dist"] / self.temperature, dim=-1)
+
+        # Compute the loss
+        distillation_loss = self.loss_function(soft_student, soft_teacher) * (self.temperature ** 2)
+
+        # Compute the true label loss
+        student_target_loss = student_output["loss"]
+
+        ## Losses
+        student_target_loss = (1. - self.lambda_param) * student_target_loss
+        distillation_loss = self.lambda_param * distillation_loss
+
+        # Calculate final loss
+        loss = student_target_loss + distillation_loss + (mse_loss * ((1-self.lambda_param)/ 10))
+
+        return (loss, student_target_loss, mse_loss, student_output) if return_outputs else (loss, student_target_loss, mse_loss)
 
 
 def train_classification_with_koopman(
@@ -122,8 +165,6 @@ def train_classification_with_koopman(
 
     return model, loss_to_return
 
-
-
 def train_lkis_task(
     teacher_model_encoder: torch.nn.Module,
     student_model: torch.nn.Module,
@@ -230,8 +271,8 @@ def train_classification_task(
     log_every: int = 5_000):
 
 
-    metrics_epoch = {"epoch_loss": 0.0, "epoch_acc": 0.0}
-    metrics_iter = {"iteration_loss": 0.0, "iteration_acc": 0.0}
+    metrics_epoch = defaultdict(float)
+    metrics_iter = defaultdict(float)
     cumulative = 0
     params = model.parameters()
     model.train()
@@ -259,7 +300,7 @@ def train_classification_task(
         metrics_epoch["epoch_acc"] += (soft_pred == labels).float().mean(-1)
 
         if cumulative >= num_accumulation_steps:
-            torch.nn.utils.clip_grad_norm_(params, 5.0)
+            torch.nn.utils.clip_grad_norm_(params, 1.0)
             optimizer.step()
             optimizer.zero_grad()
             if scheduler:
@@ -275,7 +316,7 @@ def train_classification_task(
                     f"train/{key}": value / log_every for key, value in metrics_iter.items()
                 }
                 wandb_logger.log(metrics_iter)
-                metrics_iter = {"iteration_loss": 0.0, "iteration_acc": 0.0}
+                metrics_iter = defaultdict(float)
 
     loss_to_return = metrics_epoch["epoch_loss"]/len(dataloader)
 
@@ -301,11 +342,15 @@ def train_classification_task_distillation(
     log_every: int = 5_000):
 
 
-    metrics_epoch = {"epoch_loss": 0.0, "epoch_acc": 0.0}
-    metrics_iter = {"iteration_loss": 0.0, "iteration_acc": 0.0}
+    metrics_epoch = defaultdict(float)
+    metrics_iter = defaultdict(float)
     cumulative = 0
     params = student_model.parameters()
-    student_model.train()
+
+    trainer = ImageDistilTrainer(teacher_model=teacher_model,
+                                student_model=student_model,
+                                temperature=2.0,
+                                lambda_param=0.6)
 
     for batch_idx, data in tqdm.tqdm(
         enumerate(dataloader), desc="Training Procedure", leave=True, position=1, total=len(dataloader), unit="batch", unit_scale=True
@@ -313,45 +358,35 @@ def train_classification_task_distillation(
         cumulative += 1
 
         pixel_values = data["pixel_values"].to(device)
+
         labels = data["labels"].to(device)
 
+        loss, student_target_loss, mse_loss, student_output = trainer.compute_loss(inputs = pixel_values, labels=labels)
 
-        output = student_model(**pixel_values, labels=labels)
-        preds = output["logits"]
+        preds = student_output["logits"]
         soft_pred = preds.softmax(dim=-1).argmax(dim=-1)
-        loss = output["loss"]
-        hidden_states_students = output["hidden_states"]
-        hidden_states_students = torch.cat([feat.unsqueeze(1) for feat in hidden_states_students], dim=1)
-        with torch.no_grad():
-            output_teacher = teacher_model(**pixel_values, output_hidden_states=True)
+        soft_pred_dist = student_output["logits_dist"].argmax(dim=-1)
+        mixed_pred = ((student_output["logits_dist"] + preds)/2).argmax(dim=-1)
 
-        hidden_states_teacher = output_teacher["hidden_states"]
-        hidden_states_teacher = torch.cat([feat.unsqueeze(1) for feat in hidden_states_teacher], dim=1)
-        logits_teacher = output_teacher["logits"]
-        ## Loss recognition
-        preds = output["logits"]
+        loss.backward()
 
 
-        ## loss MSE
-        loss_mse = torch.nn.functional.mse_loss(hidden_states_students, hidden_states_teacher)
-
-        ## loss Dist
-        loss_dist = torch.nn.functional.cross_entropy(preds, logits_teacher.softmax(dim=-1))
-        #log_probs_student = torch.nn.functional.log_softmax(preds / 1., dim=-1)
-        #probs_teacher = torch.nn.functional.softmax(logits_teacher / 1., dim=-1)
-        #loss_dist = torch.nn.functional.kl_div(log_probs_student, probs_teacher, reduction='batchmean') * (1. ** 2)
-
-        loss_dist *= 0.05
-
-        #import pdb; pdb.set_trace()
-        loss_final = loss + (0.05 * loss_mse) #+ loss_dist
-        loss_final.backward()
 
         metrics_epoch["epoch_loss"] += loss.item()
         metrics_iter["iteration_loss"] += loss.item()
 
+        metrics_epoch["kd_loss"] += student_target_loss.item()
+        metrics_iter["kd_loss"] += student_target_loss.item()
+
+        metrics_epoch["mse loss"] += mse_loss.item()
+        metrics_iter["mse loss"] += mse_loss.item()
+
         metrics_iter["iteration_acc"] += (soft_pred == labels).float().mean(-1)
         metrics_epoch["epoch_acc"] += (soft_pred == labels).float().mean(-1)
+
+        metrics_epoch["epoch_acc_dist"] += (soft_pred_dist == labels).float().mean(-1)
+
+        metrics_epoch["mixed_acc"] += (mixed_pred == labels).float().mean(-1)
 
         if cumulative >= num_accumulation_steps:
             torch.nn.utils.clip_grad_norm_(params, 1.0)
@@ -371,7 +406,7 @@ def train_classification_task_distillation(
                     f"train/{key}": value / log_every for key, value in metrics_iter.items()
                 }
                 wandb_logger.log(metrics_iter)
-                metrics_iter = {"iteration_loss": 0.0, "iteration_acc": 0.0}
+                metrics_iter = defaultdict(float)
 
         loss_to_return = metrics_epoch["epoch_loss"]/len(dataloader)
 
@@ -381,6 +416,8 @@ def train_classification_task_distillation(
         }
         metrics_epoch.update({"train/epoch": epoch})
         wandb_logger.log(metrics_epoch)
+
+
 
     return student_model, loss_to_return
 

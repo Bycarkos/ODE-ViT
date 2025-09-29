@@ -63,6 +63,7 @@ class LearnedSinusoidalPosEmb(nn.Module):
 
         # Concatenate [x, sin(freqs), cos(freqs)]
         x_expanded_for_concat = x.unsqueeze(-1)  # Keep original x
+        import pdb; pdb.set_trace()
         fouriered = torch.cat([x_expanded_for_concat, sin_emb, cos_emb], dim=-1)
         return fouriered
 

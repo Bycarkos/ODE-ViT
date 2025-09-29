@@ -1,3 +1,4 @@
+from cv2 import log
 from torchdiffeq import odeint_adjoint, odeint
 from transformers import PreTrainedModel, ViTConfig
 from transformers.models.vit.modeling_vit import ViTAttention, ViTEmbeddings, ViTIntermediate, ViTOutput, ViTPooler
@@ -83,36 +84,36 @@ class ViTOutput(nn.Module):
         super().__init__()
         self.dense = nn.Linear(config.intermediate_size, config.hidden_size)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
+        self.hidden_act = nn.GELU()
 
     def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
         hidden_states = self.dense(hidden_states)
-        return torch.nn.functional.relu(hidden_states)
+        return self.hidden_act(hidden_states)
 
 class VIT_ODE(nn.Module):
     def __init__(self, vit_config) -> None:
         super().__init__()
 
         self.temporal_embedding = nn.Parameter(torch.randn(1, 1, vit_config.hidden_size), requires_grad=True)
-        self.step_adpater = nn.Parameter(torch.ones(1, 1, vit_config.hidden_size), requires_grad=True)
 
         self.attention = ViTAttention(config=vit_config)
         self.intermediate = ViTIntermediate(config=vit_config)
         self.output = ViTOutput(config=vit_config)
-        self.layernorm_before = nn.LayerNorm(vit_config.hidden_size, eps=vit_config.layer_norm_eps)
-        self.layernorm_after = nn.LayerNorm(vit_config.hidden_size, eps=vit_config.layer_norm_eps)
+        self.layernorm_before = nn.LayerNorm(vit_config.hidden_size)
+        self.layernorm_after = nn.LayerNorm(vit_config.hidden_size)
 
     def forward(self, t: torch.Tensor, x: torch.Tensor):
 
         dt = (self.temporal_embedding * t)
-        zt = (x * dt)
+        zt = (x + dt)
         x1 = self.layernorm_before(zt)
         g = self.attention(x1, head_mask=None)[0]  # G(x)
 
-        x2 = self.layernorm_before(x1)
+        x2 = self.layernorm_after(zt)
         f = self.intermediate(x2)               # F(x)
         f = self.output(f)       # keep raw F(x), not residual
 
-        return self.layernorm_after(f + g)
+        return (f + g) 
 
 class NeuralODEIntrepretation(nn.Module):
 
@@ -121,35 +122,36 @@ class NeuralODEIntrepretation(nn.Module):
         n_classes: int,
         integration_time: int= 12,
         num_step_evaluations: int=50,
+        depth_ode:int=12,
         solver:str="euler"):
 
         super().__init__()
 
         self.vit_embeddings = ViTEmbeddings(vit_config)
         self.hidden_size = vit_config.hidden_size
-        self.pooler= ViTPooler(vit_config)
+
         self.n_classes = n_classes
         self.integration_time = integration_time
         self.num_step_evaluations = num_step_evaluations
         self.solver = solver
+        self.depth_ode = depth_ode
 
         assert (self.num_step_evaluations % self.integration_time) == 0, "The number of control points is not divisible by the number"
 
         self.vit = VIT_ODE(vit_config)
         self._ode_func_wrapper = IntegrationFunction(resiudal_block=self.vit)
-
         self.state_update = ODEBlock(odefunc=self._ode_func_wrapper, solver=solver)
-
-        self.classifier = nn.Linear(self.hidden_size, n_classes)
+        
+        self.layernorm = nn.LayerNorm(self.hidden_size)
+        
+        self.classifier = nn.Linear(vit_config.hidden_size, n_classes)
 
         self.time = torch.linspace(0., self.integration_time, self.num_step_evaluations).to(self.device)  # shape [12]
+        self.scale = self.depth_ode if self.integration_time == 1 else self.depth_ode/self.integration_time
 
-    def _load_state_dict(self):
-        final_dict = {}
-        for module in [self.vit_embeddings, self.pooler, self.vit, self.classifier]:
-            final_dict.update(module.state_dict())
-
-        return final_dict
+        self.control_points_idx = (self.num_step_evaluations // self.depth_ode)
+        
+        self.control_points = torch.arange(0, self.num_step_evaluations, self.control_points_idx).to(self.device)
 
 
     @property
@@ -171,14 +173,13 @@ class NeuralODEIntrepretation(nn.Module):
 
         hidden_state = self.vit_embeddings(pixel_values)  # [B, N, D]
 
-        states = self.state_update(x=hidden_state, t=self.time)
-
-        pooler_state = states[-1]
-
-        pooler_output = self.pooler(pooler_state)
-
-        logits = self.classifier(pooler_output)  # CLS token
-        loss = None
+        states = self.state_update(x=hidden_state, t=self.time) * self.scale
+        pooler_control_points = states[self.control_points]
+        
+        final = states[-1]
+        cls_final = final[:, 0]  # CLS token
+        
+        logits = self.classifier(self.layernorm(cls_final))  # CLS token
 
         if labels is not None:
             loss = torch.nn.functional.cross_entropy(logits, labels)
@@ -186,7 +187,8 @@ class NeuralODEIntrepretation(nn.Module):
         return {
             "logits": logits,
             "loss": loss,
-            "hidden_states": states
+            "hidden_states": states,
+            "control_points": pooler_control_points
         }
 
 if __name__ == "__main__":

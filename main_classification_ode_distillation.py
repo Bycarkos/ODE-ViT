@@ -8,11 +8,16 @@ from datasets.collator import Collator
 import utils
 
 
+from torchvision.datasets import CIFAR100
+
+
 from train import  train_classification_task, train_classification_task_distillation
 from test import test_classification_task
+from models.wrapper_ode_new import NeuralODEIntrepretation
+from models.ode_transformer_gpt import ViTNeuralODE
+from transformers import AutoConfig, ViTForImageClassification,  ViTImageProcessor
 
-from transformers import ViTForImageClassification, ResNetForImageClassification, ViTImageProcessor
-from models.wrapper_models import EDOEncoderWrapperClassification
+
 ## Common packages
 import torch
 from torch.utils.data import DataLoader
@@ -50,20 +55,53 @@ def main(cfg: DictConfig):
         wandb_logger = False
 
 
-    train_dataset = ImageFolder(root=cfg.data.dataset.dataset_path+"/train")
-    validation_dataset = ImageFolder(root=cfg.data.dataset.dataset_path+"/val")
+    if cfg.data.dataset.name == "cifar100":
+        train_dataset = CIFAR100(root=cfg.data.dataset.dataset_path, download=False, train=True)
+        validation_dataset = CIFAR100(root=cfg.data.dataset.dataset_path, download=False, train=False)
+    else:
+        train_dataset = ImageFolder(root=cfg.data.dataset.dataset_path+"/train")
+        validation_dataset = ImageFolder(root=cfg.data.dataset.dataset_path+"/val")
 
 
     base_checkpoint_path = cfg.modeling.base.checkpoint_path
-    model = ViTForImageClassification.from_pretrained(base_checkpoint_path)
 
-    model.classifier = torch.nn.Linear(model.classifier.in_features, len(train_dataset.classes))
+    #config = AutoConfig.from_pretrained(base_checkpoint_path)
 
-    model = EDOEncoderWrapperClassification(encoder=model, n_classes=len(train_dataset.classes), steps=12)
+
+    #model = NeuralODEIntrepretation(vit_config=config, **cfg.modeling.student.inputs)
+    #model = model.to(device)
+    model = ViTNeuralODE(
+            img_size=224,
+            patch_size=16,
+            in_chans=3,
+            num_classes=100,
+            embed_dim=768,
+            num_heads=8,
+            mlp_ratio=1.0,
+            emulate_depth=12.0,
+            time_interval=1.0,   # match 12 "layers" by integrating over [0,12]
+            num_eval_steps=24,
+            solver="euler",
+    ).cuda()
+
+    """
+    save_path = "/data/users/cboned/checkpoints"
+    checkpoint_name = f"{save_path}/EDO_DISTILLATION_VIT_ON_CIFAR100_mse_last_step.pt"
+
+    weight_to_update = torch.load(checkpoint_name, weights_only=True)
+    for w in weight_to_update.keys():
+        if model.state_dict().get(w) is not None:
+            model.state_dict()[w].data.copy_(weight_to_update[w])
+
+    """
 
     teacher_model_checkpoint = cfg.modeling.teacher.checkpoint_path
     teacher_model = ViTForImageClassification.from_pretrained(teacher_model_checkpoint)
 
+
+    model.head = teacher_model.classifier
+    model.head.requires_grad = False
+    print("Teacher Model Loaded Correctly")
 
     student_model = model.to(device)
     teacher_model = teacher_model.to(device)
@@ -81,11 +119,11 @@ def main(cfg: DictConfig):
     )
     model.to(device)
 
-    initial_lr = 1e-5
+    initial_lr = 1e-3
     optimizer = AdamW(
         filter(lambda p: p.requires_grad, student_model.parameters()),
         lr=initial_lr,
-        weight_decay=1e-4,
+        weight_decay=5e-2,
     )
 
     ## ** Scheduler
@@ -93,21 +131,25 @@ def main(cfg: DictConfig):
     total_steps = cfg.setup.dict.epochs * steps_per_epoch
 
     # Warmup steps (e.g., 10% of total steps)
-    warmup_steps = int(0.05 * total_steps)
+    warmup_steps = int(0.1 * total_steps)
 
     scheduler = get_cosine_schedule_with_warmup(
         optimizer, num_warmup_steps=warmup_steps, num_training_steps=total_steps
     )
 
-    optimal_loss = 1e10
+    optimal_loss = 0.0
     save_path = "/data/users/cboned/checkpoints"
     os.makedirs(save_path, exist_ok=True)
     checkpoint_name = f"{save_path}/{cfg.modeling.student.checkpoint_name}.pt"
 
     criterion = torch.nn.CrossEntropyLoss()
+    if cfg.log_wandb == True:
+
+        wandb_logger.watch(model, log="all")
+
 
     print("CREATING THE BASELINE METRIC VALUE\n STARTING TO EVALUATE FO THE FIRST TIME")
-    _, loss_validation = test_classification_task(
+    _, loss_validation, acc_validation = test_classification_task(
         dataloader=val_dloader,
         model=student_model,
         criterion=criterion,
@@ -116,15 +158,16 @@ def main(cfg: DictConfig):
 
     _, optimal_loss = utils.update_and_save_model_pt(
         previous_metric=optimal_loss,
-        actual_metric=loss_validation,
-        model=model,
+        actual_metric=acc_validation,
+        model=student_model,
         checkpoint_path=checkpoint_name,
-        compare="<",
+        compare=">",
     )
 
     print(
-        f"Validation Loss Epoch: {0} Value: {loss_validation} Optimal_loss: {optimal_loss}"
+        f"Validation Loss Epoch: {0} Value: {acc_validation} Optimal_loss: {optimal_loss}"
     )
+
 
 
     for epoch in tqdm.tqdm(
@@ -147,7 +190,7 @@ def main(cfg: DictConfig):
         print(f"Loss Epoch: {epoch} Value: {train_loss}")
 
         if ((epoch) % 1) == 0:
-            _, loss_validation = test_classification_task(
+            _, loss_validation, acc_validation = test_classification_task(
                 dataloader=val_dloader,
                 model=student_model,
                 criterion=criterion,
@@ -156,15 +199,15 @@ def main(cfg: DictConfig):
 
             updated, optimal_loss = utils.update_and_save_model_pt(
                 previous_metric=optimal_loss,
-                actual_metric=loss_validation,
-                model=model,
+                actual_metric=acc_validation,
+                model=student_model,
                 checkpoint_path=checkpoint_name,
-                compare="<",
+                compare=">",
             )
 
             if updated:
                 print(
-                    f"Model Updated: Validation Loss Epoch: {0} Value: {loss_validation} Optimal_loss: {optimal_loss}"
+                    f"Model Updated: Validation Loss Epoch: {0} Value: {acc_validation} Optimal_loss: {optimal_loss}"
                 )
 
     print("End of training")
