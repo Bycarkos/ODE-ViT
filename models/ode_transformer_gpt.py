@@ -162,9 +162,9 @@ class ViTNeuralODE(nn.Module):
         embed_dim: int = 192,
         num_heads: int = 3,
         mlp_ratio: float = 4.0,
-        attn_drop: float = 0.3,
-        proj_drop: float = 0.3,
-        mlp_drop: float = 0.3,
+        attn_drop: float = 0.0,
+        proj_drop: float = 0.0,
+        mlp_drop: float = 0.0,
         emulate_depth: int = 12,           # corresponds to a 12-layer ViT
         time_interval: float = 12.0,       # integrate over [0, 12] to match 12 layers; set to 1.0 if you prefer [0,1]
         num_eval_steps: int = 48,          # solver internal evaluation points (e.g., 4 per unit of time)
@@ -229,7 +229,7 @@ class ViTNeuralODE(nn.Module):
         B, N, D = x.shape
         cls = self.cls_token.expand(B, -1, -1)     # [B, 1, D]
         dist = self.dist_token.expand(B, -1, -1)
-        x = torch.cat([cls, dist, x], dim=1)             # [B, 1+N, D]
+        x = torch.cat([cls, dist, x], dim=1)# [B, 1+N, D]
         x = x + self.pos_embed[:, : (N + 2)]
         x = self.pos_drop(x)
         return x

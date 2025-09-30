@@ -70,19 +70,7 @@ def main(cfg: DictConfig):
 
     #model = NeuralODEIntrepretation(vit_config=config, **cfg.modeling.student.inputs)
     #model = model.to(device)
-    model = ViTNeuralODE(
-            img_size=224,
-            patch_size=16,
-            in_chans=3,
-            num_classes=100,
-            embed_dim=768,
-            num_heads=8,
-            mlp_ratio=1.0,
-            emulate_depth=12.0,
-            time_interval=1.0,   # match 12 "layers" by integrating over [0,12]
-            num_eval_steps=24,
-            solver="euler",
-    ).cuda()
+    model = ViTNeuralODE(**cfg.modeling.student.inputs).cuda()
 
     """
     save_path = "/data/users/cboned/checkpoints"
@@ -98,9 +86,12 @@ def main(cfg: DictConfig):
     teacher_model_checkpoint = cfg.modeling.teacher.checkpoint_path
     teacher_model = ViTForImageClassification.from_pretrained(teacher_model_checkpoint)
 
+    model_parameters = (sum(p.numel() for p in model.parameters() if p.requires_grad))
+    if wandb_logger:
+        wandb_logger.log({"model_parameters": model_parameters})
 
-    model.head = teacher_model.classifier
-    model.head.requires_grad = False
+    print("Training Model with a total parameters of", model_parameters/1e6, "Millions")
+
     print("Teacher Model Loaded Correctly")
 
     student_model = model.to(device)

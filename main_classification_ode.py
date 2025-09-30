@@ -13,7 +13,7 @@ from test import test_classification_task
 from transformers import AutoConfig, ViTForImageClassification, ViTConfig, ResNetForImageClassification, ViTImageProcessor
 from models.wrapper_ode_new import NeuralODEIntrepretation
 from models.ode_transformer_gpt import ViTNeuralODE
-
+from models.ode_resnet import ODEResNet
 ## Common packages
 import torch
 from torch.utils.data import DataLoader
@@ -60,28 +60,17 @@ def main(cfg: DictConfig):
 
 
     base_checkpoint_path = cfg.modeling.base
-    config = AutoConfig.from_pretrained(base_checkpoint_path)
-    config.hidden_size = 192
-    config.num_attention_heads = 3
-    config.intermidiate_size = 768
-    config.hidden_act = "gelu"
 
-
-    #model = NeuralODEIntrepretation(vit_config=config, **cfg.modeling.inputs)
-    #model = model.to(device)
-    model = ViTNeuralODE(
-        img_size=224,
-        patch_size=16,
-        in_chans=3,
-        num_classes=100,
-        embed_dim=768,
-        num_heads=8,
-        mlp_ratio=1.0,
-        emulate_depth=12.0,
-        time_interval=1.0,   # match 12 "layers" by integrating over [0,12]
-        num_eval_steps=24,
-        solver="euler",
-    )
+    if cfg.modeling.type == "vit":
+        model = ViTNeuralODE(**cfg.modeling.inputs)
+    else:
+        model = ODEResNet(
+            num_classes=100,
+            channels=[32],
+            depth_emulations = [1],
+            num_eval_steps=18,
+            solver="euler",
+        )
 
     save_path = "/data/users/cboned/checkpoints"
     checkpoint_name = f"{save_path}/VIT_ODE_CIFAR100.pt"
@@ -92,21 +81,11 @@ def main(cfg: DictConfig):
             if model.state_dict().get(w) is not None:
                 model.state_dict()[w].data.copy_(weight_to_update[w])
 
-    #teacher_model_checkpoint = cfg.modeling.base
-    #teacher_model = ViTForImageClassification.from_pretrained(teacher_model_checkpoint)
+    model_parameters = (sum(p.numel() for p in model.parameters() if p.requires_grad))
+    if wandb_logger:
+        wandb_logger.log({"model_parameters": model_parameters})
 
-    #model.cls_token = teacher_model.vit.embeddings.cls_token
-    #model.cls_token.requires_grad = False
-
-
-    #for param in model.parameters():
-    #    param.requires_grad = False
-
-
-    #model.cls_token.requires_grad = True
-    #model.pos_embed.requires_grad = True
-    #model.head.requires_grad = True
-    #model.norm_head.requires_grad = True
+    print("Training Model with a total parameters of", model_parameters/1e6, "Millions")
 
     model = model.to(device)
 

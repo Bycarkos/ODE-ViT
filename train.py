@@ -24,7 +24,7 @@ class ImageDistilTrainer(torch.nn.Module):
         self.temperature = temperature
         self.lambda_param = lambda_param
 
-    
+
     def compute_loss(self, inputs, labels, return_outputs=True):
         student_output = self.student(**inputs, labels=labels, output_hidden_states=True)
 
@@ -50,7 +50,7 @@ class ImageDistilTrainer(torch.nn.Module):
         distillation_loss = self.lambda_param * distillation_loss
 
         # Calculate final loss
-        loss = student_target_loss + distillation_loss + (mse_loss * ((1-self.lambda_param)/ 10))
+        loss = student_target_loss + distillation_loss + (mse_loss * ((1-self.lambda_param)/ 5))
 
         return (loss, student_target_loss, mse_loss, student_output) if return_outputs else (loss, student_target_loss, mse_loss)
 
@@ -135,7 +135,7 @@ def train_classification_with_koopman(
         total_loss.backward()
 
         if cumulative >= num_accumulation_steps:
-            torch.nn.utils.clip_grad_norm_(params, 1.0)
+            torch.nn.utils.clip_grad_norm_(params, 5.0)
             optimizer.step()
             optimizer.zero_grad()
             if scheduler:
@@ -349,8 +349,8 @@ def train_classification_task_distillation(
 
     trainer = ImageDistilTrainer(teacher_model=teacher_model,
                                 student_model=student_model,
-                                temperature=2.0,
-                                lambda_param=0.6)
+                                temperature=5.0,
+                                lambda_param=0.8)
 
     for batch_idx, data in tqdm.tqdm(
         enumerate(dataloader), desc="Training Procedure", leave=True, position=1, total=len(dataloader), unit="batch", unit_scale=True

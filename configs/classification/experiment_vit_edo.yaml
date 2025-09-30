@@ -10,11 +10,11 @@ setup:
     wandb:
         project: Koopman
         group: CLASSIFICATION
-        name: Training_EDO_VIT_ON_cifar100_no_fixing_cls
+        name: Vit_ODE_CIFAR100_RK4
 data:
     dataset:
         name: "cifar100"
-        dataset_path: "/data/users/cboned/data/Generic/cifar"
+        dataset_path: "/data/users/cboned/cifar"
 
     collator:
         train:
@@ -38,10 +38,17 @@ data:
 modeling:
     type: vit
     inputs:
-        integration_time: 1
-        num_step_evaluations: 24
-        solver: euler
-        n_classes: 100
+        img_size: 224
+        patch_size: 16
+        in_chans: 3
+        num_classes: 100
+        embed_dim: 768
+        num_heads: 12
+        mlp_ratio: 1
+        emulate_depth: 12.0
+        time_interval: 1.0
+        num_eval_steps: 12
+        solver: "rk4"
 
-    checkpoint_name: VIT_ODE_cifar100_no_fixing_cls
+    checkpoint_name: Vit_ODE_CIFAR100_RK4
     base: "checkpoints/Vit_CIFAR100.pt"
