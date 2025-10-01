@@ -4,8 +4,7 @@ from typing import Optional, Tuple, List
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from .time_emb import TimeEmbedding, LearnedSinusoidalPosEmb
-from torchdiffeq import odeint
+from torchdiffeq import odeint_adjoint as odeint
 
 
 class PatchEmbed(nn.Module):
@@ -99,7 +98,6 @@ class ViT_ODEFunc(nn.Module):
         super().__init__()
         self.dim = dim
         self.block = ParallelAttentionMLP(dim, num_heads, mlp_ratio, attn_drop, proj_drop, mlp_drop)
-        self.conditional_time_embedding =  nn.Linear(dim*2, dim) #MLP(dim=dim, hidden_dim=dim, drop=0.0)
 
         # If you integrate over [0, 1] and want to match D layers, multiply by D.
         # If you integrate over [0, D], set scaler=1.0

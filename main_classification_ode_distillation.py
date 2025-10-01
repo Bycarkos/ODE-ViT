@@ -1,8 +1,6 @@
 # type: ignore
 ## Dataset Things
-from json import encoder
-import torch.utils
-import torch.utils.data
+import torch.nn.functional as F
 from torchvision.datasets.imagenet import ImageFolder
 from datasets.collator import Collator
 import utils
@@ -11,11 +9,10 @@ import utils
 from torchvision.datasets import CIFAR100
 
 
-from train import  train_classification_task, train_classification_task_distillation
+from train import  train_classification_task_distillation
 from test import test_classification_task
-from models.wrapper_ode_new import NeuralODEIntrepretation
 from models.ode_transformer_gpt import ViTNeuralODE
-from transformers import AutoConfig, ViTForImageClassification,  ViTImageProcessor
+from transformers import ViTForImageClassification,  ViTImageProcessor
 
 
 ## Common packages
@@ -41,6 +38,53 @@ from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
+class ImageDistilTrainer(torch.nn.Module):
+    def __init__(self, teacher_model=None, student_model=None, temperature=None, lambda_param=None,  *args, **kwargs):
+        super().__init__()
+        self.teacher = teacher_model
+        self.student = student_model
+        self.loss_function = torch.nn.KLDivLoss(reduction="batchmean")
+        self.cosine_loss = torch.nn.CosineEmbeddingLoss()
+        self.mse_loss = torch.nn.MSELoss()
+        self.teacher.eval()
+        self.student.train()
+        self.temperature = temperature
+        self.lambda_param = lambda_param
+
+        self.alpha_param = (1-self.lambda_param)/10
+
+
+    def compute_loss(self, inputs, labels, return_outputs=True):
+        student_output = self.student(**inputs, labels=labels, output_hidden_states=True)
+
+        with torch.no_grad():
+          teacher_output = self.teacher(**inputs, output_hidden_states=True)
+
+        last_cls_token = teacher_output.hidden_states[-1][:,0]
+        last_state = student_output["states"][-1, :, 0]
+
+
+        mse_loss = self.mse_loss(last_cls_token, last_state)
+        soft_teacher = F.softmax(teacher_output["logits"] / self.temperature, dim=-1)
+        soft_student = F.log_softmax(student_output["logits_dist"] / self.temperature, dim=-1)
+
+        # Compute the loss
+        distillation_loss = self.loss_function(soft_student, soft_teacher) * (self.temperature ** 2)
+
+        # Compute the true label loss
+        student_target_loss = student_output["loss"]
+
+        ## Losses
+        student_target_loss = (1. - self.lambda_param) * student_target_loss
+        distillation_loss = self.lambda_param * distillation_loss
+
+        # Calculate final loss
+        loss = student_target_loss + distillation_loss + (mse_loss * self.alpha_param)
+
+        return (loss, student_target_loss, mse_loss, student_output) if return_outputs else (loss, student_target_loss, mse_loss)
+
+
+
 def main(cfg: DictConfig):
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -50,6 +94,7 @@ def main(cfg: DictConfig):
             project=cfg.setup.wandb.project,
             group=cfg.setup.wandb.group,
             name=cfg.setup.wandb.name,
+            config=dict(cfg.setup.dict).update(dict(cfg.modeling.student.inputs))
         )
     else:
         wandb_logger = False
@@ -63,13 +108,6 @@ def main(cfg: DictConfig):
         validation_dataset = ImageFolder(root=cfg.data.dataset.dataset_path+"/val")
 
 
-    base_checkpoint_path = cfg.modeling.base.checkpoint_path
-
-    #config = AutoConfig.from_pretrained(base_checkpoint_path)
-
-
-    #model = NeuralODEIntrepretation(vit_config=config, **cfg.modeling.student.inputs)
-    #model = model.to(device)
     model = ViTNeuralODE(**cfg.modeling.student.inputs).cuda()
 
     """
@@ -96,6 +134,12 @@ def main(cfg: DictConfig):
 
     student_model = model.to(device)
     teacher_model = teacher_model.to(device)
+
+
+    criterion = ImageDistilTrainer(teacher_model=teacher_model,
+                                student_model=student_model,
+                                temperature=cfg.setup.dict.temperature,
+                                lambda_param=cfg.setup.dict.lambda_param)
 
     processor = ViTImageProcessor.from_pretrained('google/vit-base-patch16-224-in21k')
 
@@ -133,9 +177,9 @@ def main(cfg: DictConfig):
     os.makedirs(save_path, exist_ok=True)
     checkpoint_name = f"{save_path}/{cfg.modeling.student.checkpoint_name}.pt"
 
-    criterion = torch.nn.CrossEntropyLoss()
-    if cfg.log_wandb == True:
 
+
+    if cfg.log_wandb == True:
         wandb_logger.watch(model, log="all")
 
 

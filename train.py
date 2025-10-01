@@ -11,49 +11,6 @@ from wandb import Table, Image  # type: ignore
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 
-class ImageDistilTrainer(torch.nn.Module):
-    def __init__(self, teacher_model=None, student_model=None, temperature=None, lambda_param=None,  *args, **kwargs):
-        super().__init__()
-        self.teacher = teacher_model
-        self.student = student_model
-        self.loss_function = torch.nn.KLDivLoss(reduction="batchmean")
-        self.cosine_loss = torch.nn.CosineEmbeddingLoss()
-        self.mse_loss = torch.nn.MSELoss()
-        self.teacher.eval()
-        self.student.train()
-        self.temperature = temperature
-        self.lambda_param = lambda_param
-
-
-    def compute_loss(self, inputs, labels, return_outputs=True):
-        student_output = self.student(**inputs, labels=labels, output_hidden_states=True)
-
-        with torch.no_grad():
-          teacher_output = self.teacher(**inputs, output_hidden_states=True)
-
-        last_cls_token = teacher_output.hidden_states[-1][:,0]
-        last_state = student_output["states"][-1, :, 0]
-
-
-        mse_loss = self.mse_loss(last_cls_token, last_state)
-        soft_teacher = F.softmax(teacher_output["logits"] / self.temperature, dim=-1)
-        soft_student = F.log_softmax(student_output["logits_dist"] / self.temperature, dim=-1)
-
-        # Compute the loss
-        distillation_loss = self.loss_function(soft_student, soft_teacher) * (self.temperature ** 2)
-
-        # Compute the true label loss
-        student_target_loss = student_output["loss"]
-
-        ## Losses
-        student_target_loss = (1. - self.lambda_param) * student_target_loss
-        distillation_loss = self.lambda_param * distillation_loss
-
-        # Calculate final loss
-        loss = student_target_loss + distillation_loss + (mse_loss * ((1-self.lambda_param)/ 5))
-
-        return (loss, student_target_loss, mse_loss, student_output) if return_outputs else (loss, student_target_loss, mse_loss)
-
 
 def train_classification_with_koopman(
     dataloader: DataLoader,
@@ -347,10 +304,7 @@ def train_classification_task_distillation(
     cumulative = 0
     params = student_model.parameters()
 
-    trainer = ImageDistilTrainer(teacher_model=teacher_model,
-                                student_model=student_model,
-                                temperature=5.0,
-                                lambda_param=0.8)
+
 
     for batch_idx, data in tqdm.tqdm(
         enumerate(dataloader), desc="Training Procedure", leave=True, position=1, total=len(dataloader), unit="batch", unit_scale=True
@@ -361,7 +315,7 @@ def train_classification_task_distillation(
 
         labels = data["labels"].to(device)
 
-        loss, student_target_loss, mse_loss, student_output = trainer.compute_loss(inputs = pixel_values, labels=labels)
+        loss, student_target_loss, mse_loss, student_output = criterion.compute_loss(inputs = pixel_values, labels=labels)
 
         preds = student_output["logits"]
         soft_pred = preds.softmax(dim=-1).argmax(dim=-1)
