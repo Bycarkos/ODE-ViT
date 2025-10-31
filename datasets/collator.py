@@ -4,14 +4,11 @@ from typing import Optional
 
 
 class Collator:
-
     def __init__(self, processor, pad_token: Optional[int] = -100):
         self.processor = processor
         self._pad_token = pad_token
 
-
     def classification_collate_fn(self, batch):
-
         pixel_values = [item[0] for item in batch]
         labels = [item[1] for item in batch]
         images = [item[0] for item in batch]
@@ -49,8 +46,6 @@ class Collator:
             metadata=metadata,
             images=images,
         )
-
-
 
     def ocr_collate_fn(self, batch):
         """

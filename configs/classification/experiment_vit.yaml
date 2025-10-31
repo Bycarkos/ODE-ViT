@@ -2,32 +2,34 @@ log_wandb: True
 
 setup:
     dict:
-        epochs: 20
+        epochs: 200
         accumulation_steps: -1
         log_every: 10
+        num_hidden_layers: 12
+        classifier_only: False
 
     wandb:
         project: Koopman
         group: CLASSIFICATION
-        name: Training_ViT_on_CIFAR100
+        name: Training_Vit_CIFAR100_DINOv2_JASMIN
 
 data:
     dataset:
         name: cifar100
-        dataset_path: "/data/users/cboned/data/Generic/cifar"
+        dataset_path: "/data/users/cboned/cifar"
 
     collator:
         train:
             shuffle: True
-            batch_size: 256
+            batch_size: 128
             pin_memory: True
             num_workers: 8
 
         val:
             shuffle: True
-            batch_size: 32
+            batch_size: 256
             pin_memory: False
-            num_workers: 8
+            num_workers: 4
 
         test:
             shuffle: False
@@ -36,6 +38,6 @@ data:
             num_workers: 0
 
 modeling:
-    type: vit
+    type: dinov2
 
-    checkpoint_name: "Vit_CIFAR100"
+    checkpoint_name: "Vit_CIFAR100_DINOv2_JASMIN"

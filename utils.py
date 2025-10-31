@@ -162,28 +162,35 @@ def update_and_save_model_pt(
     previous_metric,
     actual_metric,
     model,
+    optimizer,
+    lr_scheduler,
     checkpoint_path: str,
     compare: str = "<",
 ):
+    saver = {"optimizer": optimizer.state_dict(), "state_dict": model.state_dict(), "lr_scheduler": lr_scheduler}
 
-    if compare == "<":
+    if eval(str(actual_metric)+compare+str(previous_metric)):
+        torch.save(saver, checkpoint_path)
+        return True, actual_metric
 
-        if actual_metric < previous_metric:
-            previous_metric = actual_metric
-            torch.save(model.state_dict(), checkpoint_path)
-
-            return True, previous_metric
-
-    elif compare == ">":
-
-        if actual_metric > previous_metric:
-            previous_metric = actual_metric
-            torch.save(model.state_dict(), checkpoint_path)
-
-            return True, previous_metric
 
     return False, previous_metric
 
+def load_model_pt(student_model, optimizer, checkpoint_path: str, device):
+
+    checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=True)
+
+
+    student_model.load_state_dict(checkpoint["state_dict"])
+    try:
+        optimizer.load_state_dict(checkpoint["optimizer"])
+    except:
+        print("Optimizer state could not be loaded.")
+        
+    lr = checkpoint["lr_scheduler"]
+
+
+    return student_model, optimizer, lr
 
 def update_and_save_model(
     previous_metric,

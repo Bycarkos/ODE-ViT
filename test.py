@@ -33,6 +33,78 @@ def infer_one_sample(filepath: str, model: torch.nn.Module, processor):
 
     return generated_text[0]
 
+
+@torch.no_grad()
+def test_classification_task_one_sample(
+    dataloader: DataLoader,
+    model: torch.nn.Module,
+    criterion: torch.nn.Module,
+    wandb_logger=None,
+    mode: str = "val",
+    log_every: int = 25,
+):
+    metrics = defaultdict(float)
+
+    model.eval()
+    cumulative = 0
+
+    for batch_idx, data in tqdm.tqdm(
+        enumerate(dataloader),
+        total=len(dataloader),
+        desc=f"{mode} Procedure",
+        leave=True,
+        position=1,
+    ):
+        pixel_values = data["pixel_values"].to(device)
+        labels = data["labels"].to(device)
+
+        output = model(**pixel_values, labels=labels)
+
+        preds = output["logits"]
+
+        # Top-1 accuracy
+        soft_pred = preds.softmax(dim=-1).argmax(dim=-1)
+        metrics["epoch_acc"] += (soft_pred == labels).float().mean(-1)
+
+        # Top-3 accuracy
+        top3_pred = torch.topk(preds, k=3, dim=-1).indices
+        correct_top3 = top3_pred.eq(labels.view(-1, 1)).any(dim=1).float().mean()
+        metrics["epoch_acc3"] += correct_top3
+
+        # Top-5 accuracy
+        top5_pred = torch.topk(preds, k=5, dim=-1).indices
+        correct_top5 = top5_pred.eq(labels.view(-1, 1)).any(dim=1).float().mean()
+        metrics["epoch_acc5"] += correct_top5
+
+        # If distributional predictions exist
+        if output.get("logits_dist", None) is not None:
+            soft_pred_dist = output["logits_dist"].argmax(dim=-1)
+            metrics["epoch_acc_dist"] += (soft_pred_dist == labels).float().mean(-1)
+            metrics["epoch_mixed_acc"] += (
+                (((output["logits_dist"] + preds) / 2).argmax(dim=-1) == labels)
+                .float()
+                .mean(-1)
+            )
+
+        # Loss
+        loss = output["loss"]  # criterion(preds, labels)
+        metrics["epoch_loss"] += loss.item()
+
+        break
+    # Normalize metrics
+    final_metrics = {key: value for key, value in metrics.items()}
+
+    # Logging
+    if wandb_logger:
+        wandb_logger.log({f"{mode}/{key}": val for key, val in final_metrics.items()})
+
+    print(f"Top-1 Accuracy: {final_metrics['epoch_acc'].item():.4f}")
+    print(f"Top-3 Accuracy: {final_metrics['epoch_acc3'].item():.4f}")
+    print(f"Top-5 Accuracy: {final_metrics['epoch_acc5'].item():.4f}")
+
+    return model, final_metrics["epoch_loss"], final_metrics["epoch_acc"].item()
+
+
 @torch.no_grad()
 def test_classification_task(
     dataloader: DataLoader,
@@ -40,9 +112,8 @@ def test_classification_task(
     criterion: torch.nn.Module,
     wandb_logger=None,
     mode: str = "val",
-    log_every: int = 25
+    log_every: int = 25,
 ):
-
     metrics = defaultdict(float)
 
     model.eval()
@@ -59,24 +130,48 @@ def test_classification_task(
         output = model(**pixel_values, labels=labels)
 
         preds = output["logits"]
+
+        # Top-1 accuracy
         soft_pred = preds.softmax(dim=-1).argmax(dim=-1)
+        metrics["epoch_acc"] += (soft_pred == labels).float().mean(-1)
+
+        # Top-3 accuracy
+        top3_pred = torch.topk(preds, k=3, dim=-1).indices
+        correct_top3 = top3_pred.eq(labels.view(-1, 1)).any(dim=1).float().mean()
+        metrics["epoch_acc3"] += correct_top3
+
+        # Top-5 accuracy
+        top5_pred = torch.topk(preds, k=5, dim=-1).indices
+        correct_top5 = top5_pred.eq(labels.view(-1, 1)).any(dim=1).float().mean()
+        metrics["epoch_acc5"] += correct_top5
+
+        # If distributional predictions exist
         if output.get("logits_dist", None) is not None:
             soft_pred_dist = output["logits_dist"].argmax(dim=-1)
             metrics["epoch_acc_dist"] += (soft_pred_dist == labels).float().mean(-1)
-            metrics["epoch_mixed_acc"] += (((output["logits_dist"] + preds)/2).argmax(dim=-1) == labels).float().mean(-1)
+            metrics["epoch_mixed_acc"] += (
+                (((output["logits_dist"] + preds) / 2).argmax(dim=-1) == labels)
+                .float()
+                .mean(-1)
+            )
 
-        loss = output["loss"] #criterion(preds, labels)
-
+        # Loss
+        loss = output["loss"]  # criterion(preds, labels)
         metrics["epoch_loss"] += loss.item()
-        metrics["epoch_acc"] += (soft_pred == labels).float().mean(-1) #(accuracy(soft_pred, labels, task="multiclass"))
 
+    # Normalize metrics
+    final_metrics = {key: value / len(dataloader) for key, value in metrics.items()}
+
+    # Logging
     if wandb_logger:
-        wandb_logger.log(
-            {f"{mode}/{key}": value / len(dataloader) for key, value in metrics.items()}
-        )
+        wandb_logger.log({f"{mode}/{key}": val for key, val in final_metrics.items()})
 
-    print("Accuracy:", (metrics["epoch_acc"]/len(dataloader)).item())
-    return model, (metrics["epoch_loss"] / len(dataloader)), (metrics["epoch_acc"]/len(dataloader)).item()
+    print(f"Top-1 Accuracy: {final_metrics['epoch_acc'].item():.4f}")
+    print(f"Top-3 Accuracy: {final_metrics['epoch_acc3'].item():.4f}")
+    print(f"Top-5 Accuracy: {final_metrics['epoch_acc5'].item():.4f}")
+
+    return model, final_metrics["epoch_loss"], final_metrics["epoch_acc"].item()
+
 
 @torch.no_grad()
 def test_ocr_task_ctc(
@@ -86,9 +181,8 @@ def test_ocr_task_ctc(
     ctc_decoder,
     wandb_logger=None,
     mode: str = "val",
-    log_every: int = 10
+    log_every: int = 10,
 ):
-
     metrics = {"epoch_loss": 0.0, "epoch_cer": 0.0, "epoch_wer": 0.0}
 
     model.eval()
@@ -99,7 +193,6 @@ def test_ocr_task_ctc(
     for batch_idx, data in tqdm.tqdm(
         enumerate(dataloader), desc=f"{mode} Procedure", leave=True, position=1
     ):
-
         decoded_text = []
         inputs = data["pixel_values"].to(device)
         text = data["text"]
@@ -107,12 +200,18 @@ def test_ocr_task_ctc(
         tokens = data["tokens"].to(device)
         output = model(**inputs)["logits"]
         final_preds = output.permute(1, 0, 2).log_softmax(2)
-        pred_size = torch.IntTensor([output.size(1)] * tokens.shape[0]).to(tokens.device)
-        target_lengths = torch.sum(tokens != ctc_decoder.tokenizer.pad_token_id, dim=1) # 0 because pad token id is 0, handcrafted
+        pred_size = torch.IntTensor([output.size(1)] * tokens.shape[0]).to(
+            tokens.device
+        )
+        target_lengths = torch.sum(
+            tokens != ctc_decoder.tokenizer.pad_token_id, dim=1
+        )  # 0 because pad token id is 0, handcrafted
         loss = criterion(final_preds, tokens, pred_size, target_lengths)
 
         generated_ids = ctc_decoder(output.cpu().numpy())
-        generated_text = [ctc_decoder.tokenizer.decode(get["text"]) for get in generated_ids]
+        generated_text = [
+            ctc_decoder.tokenizer.decode(get["text"]) for get in generated_ids
+        ]
 
         metrics["epoch_loss"] += loss.item()
 
@@ -122,7 +221,6 @@ def test_ocr_task_ctc(
 
         if wandb_logger:
             for _idx in range(len(decoded_text)):
-
                 ## Wandb Logging
                 original_text = text[_idx]
                 image = data["raw_images"][_idx]
@@ -141,7 +239,6 @@ def test_ocr_task_ctc(
     return model, (metrics["epoch_loss"] / log_every)
 
 
-
 @torch.no_grad()
 def test_ocr_task(
     dataloader: DataLoader,
@@ -152,7 +249,6 @@ def test_ocr_task(
     mode: str = "val",
     log_every: int = 100,
 ):
-
     metrics = {"epoch_loss": 0.0, "epoch_cer": 0.0, "epoch_wer": 0.0}
 
     model.eval()
@@ -163,7 +259,6 @@ def test_ocr_task(
     for batch_idx, data in tqdm.tqdm(
         enumerate(dataloader), desc=f"{mode} Procedure", leave=True, position=1
     ):
-
         decoded_text = []
         inputs = data["pixel_values"].to(device)
         text = data["text"]
@@ -173,7 +268,8 @@ def test_ocr_task(
         loss = output.loss
 
         generated_ids = model.generate(**inputs)
-        generated_text = ctc_decoder.batch_decode(generated_ids, skip_special_tokens=True
+        generated_text = ctc_decoder.batch_decode(
+            generated_ids, skip_special_tokens=True
         )
 
         metrics["epoch_loss"] += loss.item()
@@ -185,7 +281,6 @@ def test_ocr_task(
 
         if wandb_logger:
             for _idx in range(len(decoded_text)):
-
                 ## Wandb Logging
                 original_text = text[_idx]
                 image = data["raw_images"][_idx]

@@ -1,17 +1,26 @@
 # type: ignore
 ## Dataset Things
+from curses import use_default_colors
 import torch.utils
 import torch.utils.data
 from torchvision.datasets.imagenet import ImageFolder
-from torchvision.datasets import CIFAR100
+from torchvision.datasets import CIFAR100, CIFAR10
 from datasets.collator import Collator
 import utils
 
 
-from train import  train_classification_task
+from train import train_classification_task
 from test import test_classification_task
 
-from transformers import ViTForImageClassification, ResNetForImageClassification, ViTImageProcessor, AutoImageProcessor
+from transformers import (
+    ViTForImageClassification,
+    ResNetForImageClassification,
+    ViTImageProcessor,
+    AutoImageProcessor,
+    ViTModel,
+    Dinov2ForImageClassification,
+    Dinov2WithRegistersForImageClassification,
+)
 
 ## Common packages
 import torch
@@ -34,11 +43,13 @@ import os
 import wandb
 
 from PIL import ImageFile
+
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
 def main(cfg: DictConfig):
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    print("Using device:", device)
 
     if cfg.log_wandb == True:
         wandb.login()
@@ -46,36 +57,114 @@ def main(cfg: DictConfig):
             project=cfg.setup.wandb.project,
             group=cfg.setup.wandb.group,
             name=cfg.setup.wandb.name,
+            settings=wandb.Settings(code_dir="./models/"),
         )
     else:
         wandb_logger = False
 
     if cfg.data.dataset.name == "cifar100":
-        train_dataset = CIFAR100(root=cfg.data.dataset.dataset_path, download=False, train=True)
-        validation_dataset = CIFAR100(root=cfg.data.dataset.dataset_path, download=False, train=False)
+        train_dataset = CIFAR100(
+            root=cfg.data.dataset.dataset_path, download=False, train=True
+        )
+        validation_dataset = CIFAR100(
+            root=cfg.data.dataset.dataset_path, download=False, train=False
+        )
+    elif cfg.data.dataset.name == "cifar10":
+        train_dataset = CIFAR10(
+            root=cfg.data.dataset.dataset_path, download=False, train=True
+        )
+        validation_dataset = CIFAR10(
+            root=cfg.data.dataset.dataset_path, download=False, train=False
+        )
     else:
-        train_dataset = ImageFolder(root=cfg.data.dataset.dataset_path+"/train")
-        validation_dataset = ImageFolder(root=cfg.data.dataset.dataset_path+"/val")
+        train_dataset = ImageFolder(root=cfg.data.dataset.dataset_path + "/train")
+        validation_dataset = ImageFolder(root=cfg.data.dataset.dataset_path + "/val")
 
+    if cfg.modeling.type == "resnet":
+        model = ResNetForImageClassification.from_pretrained(
+            "microsoft/resnet-50",
+            ignore_mismatched_sizes=True,
+            num_labels=len(train_dataset.classes),
+        )
+    elif cfg.modeling.type == "vit":
+        model = ViTForImageClassification.from_pretrained(
+            "google/vit-base-patch16-224-in21k",
+            num_labels=len(train_dataset.classes),
+            num_hidden_layers=cfg.setup.dict.num_hidden_layers,
+        )
+    elif cfg.modeling.type == "dino":
+        model = ViTForImageClassification.from_pretrained(
+            "facebook/dino-vitb16",
+            num_labels=len(train_dataset.classes),
+            num_hidden_layers=cfg.setup.dict.num_hidden_layers,
+        )
 
+    elif cfg.modeling.type == "dinov2":
+        model = Dinov2WithRegistersForImageClassification.from_pretrained(
+            "facebook/dinov2-with-registers-base",
+            num_labels=len(train_dataset.classes),
+            num_hidden_layers=cfg.setup.dict.num_hidden_layers,
+        )
 
-    model = ResNetForImageClassification.from_pretrained("microsoft/resnet-50", ignore_mismatched_sizes=True, num_labels=len(train_dataset.classes)) if cfg.modeling.type == "resnet" else ViTForImageClassification.from_pretrained("google/vit-base-patch16-224-in21k", num_labels=len(train_dataset.classes))
+    else:
+        raise ValueError(f"Unknown model type: {cfg.modeling.type}")
 
     if cfg.modeling.type == "resnet":
         model.classifier = torch.nn.Sequential(
-        torch.nn.Flatten(start_dim=1, end_dim=-1),
-        torch.nn.Linear(2048, len(train_dataset.classes))
+            torch.nn.Flatten(start_dim=1, end_dim=-1),
+            torch.nn.Linear(2048, len(train_dataset.classes)),
         )
-    elif cfg.modeling.type == "vit":
-        model.classifier = torch.nn.Linear(model.classifier.in_features, len(train_dataset.classes))
+    elif cfg.modeling.type in ["vit", "dino", "dinov2"]:
+        model.classifier = torch.nn.Linear(
+            model.classifier.in_features, len(train_dataset.classes)
+        )
+
+        if cfg.setup.dict.classifier_only:
+            for name, param in model.named_parameters():
+                print(name)
+                if name.startswith("classifier") or name.startswith("pooler"):
+                    print(name)
+                    param.requires_grad = True
+                else:
+                    param.requires_grad = False
+
     else:
         raise ValueError("Invalid model type")
 
-    processor = AutoImageProcessor.from_pretrained("microsoft/resnet-50", use_fast=True) if cfg.modeling.type == "resnet" else ViTImageProcessor.from_pretrained('google/vit-base-patch16-224-in21k')
+    model.set_attn_implementation("eager")
+
+    model_parameters = sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+    print(
+        "Training Model with a total parameters of", model_parameters / 1e6, "Millions"
+    )
+
+    model_dist = [
+        (name, p.numel() / 1e6)
+        for name, p in model.named_parameters()
+        if p.requires_grad
+    ]
+    print("The distribution of the parameters is: ")
+    for name, num_params in model_dist:
+        print(f"{name}: {num_params:.2f} Million")
+
+    processor = (
+        AutoImageProcessor.from_pretrained("microsoft/resnet-50", use_fast=True)
+        if cfg.modeling.type == "resnet"
+        else ViTImageProcessor.from_pretrained("google/vit-base-patch16-224-in21k")
+    )
+
+    processor = AutoImageProcessor.from_pretrained(
+        "facebook/dinov2-with-registers-base", use_fast=False
+    )
 
     collator = Collator(processor)
 
-    train_dloader = DataLoader(train_dataset, **cfg.data.collator.train, collate_fn=collator.classification_collate_fn)
+    train_dloader = DataLoader(
+        train_dataset,
+        **cfg.data.collator.train,
+        collate_fn=collator.classification_collate_fn,
+    )
 
     val_dloader = DataLoader(
         validation_dataset,
@@ -86,7 +175,7 @@ def main(cfg: DictConfig):
 
     initial_lr = 1e-5
     optimizer = AdamW(
-        filter(lambda p: p.requires_grad, model.parameters()),
+        model.parameters(),
         lr=initial_lr,
         weight_decay=1e-4,
     )
@@ -102,38 +191,19 @@ def main(cfg: DictConfig):
         optimizer, num_warmup_steps=warmup_steps, num_training_steps=total_steps
     )
 
-    optimal_loss = 1e10
+    optimal_loss = 0.0
     os.makedirs("./checkpoints", exist_ok=True)
     checkpoint_name = f"./checkpoints/{cfg.modeling.checkpoint_name}.pt"
 
     criterion = torch.nn.CrossEntropyLoss()
 
-    print("CREATING THE BASELINE METRIC VALUE\n STARTING TO EVALUATE FO THE FIRST TIME")
-    _, loss_validation = test_classification_task(
-        dataloader=val_dloader,
-        model=model,
-        criterion=criterion,
-        wandb_logger=wandb_logger,
-    )
-
-    _, optimal_loss = utils.update_and_save_model(
-        previous_metric=optimal_loss,
-        actual_metric=loss_validation,
-        model=model,
-        checkpoint_path=checkpoint_name,
-        compare="<",
-    )
-
-    print(
-        f"Validation Loss Epoch: {0} Value: {loss_validation} Optimal_loss: {optimal_loss}"
-    )
-
-
     for epoch in tqdm.tqdm(
-        range(1, cfg.setup.dict.epochs), desc="Training Procedure", position=0, leave=False
+        range(1, cfg.setup.dict.epochs),
+        desc="Training Procedure",
+        position=0,
+        leave=False,
     ):
-
-        _, train_loss = train_classification_task(
+        model, train_loss = train_classification_task(
             dataloader=train_dloader,
             model=model,
             optimizer=optimizer,
@@ -147,8 +217,14 @@ def main(cfg: DictConfig):
 
         print(f"Loss Epoch: {epoch} Value: {train_loss}")
 
+        if (epoch) == 25:
+            for name, param in model.named_parameters():
+                if "vit.encoder.layer":
+                    param.requires_grad = True
+                    print(f"Unfreezing parameter: {name}")
+
         if ((epoch) % 1) == 0:
-            _, loss_validation = test_classification_task(
+            _, loss_validation, acc_validation = test_classification_task(
                 dataloader=val_dloader,
                 model=model,
                 criterion=criterion,
@@ -157,21 +233,22 @@ def main(cfg: DictConfig):
 
             updated, optimal_loss = utils.update_and_save_model(
                 previous_metric=optimal_loss,
-                actual_metric=loss_validation,
+                actual_metric=acc_validation,
                 model=model,
                 checkpoint_path=checkpoint_name,
-                compare="<",
+                processor=processor,
+                compare=">",
             )
 
             if updated:
                 print(
-                    f"Model Updated: Validation Loss Epoch: {0} Value: {loss_validation} Optimal_loss: {optimal_loss}"
+                    f"Model Updated: Validation Metric Epoch: {0} Value: {acc_validation} Optimal_Metric: {optimal_loss}"
                 )
 
     print("End of training")
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
@@ -190,7 +267,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-
     import os
     from PIL import Image, UnidentifiedImageError
 
@@ -198,7 +274,7 @@ if __name__ == "__main__":
         num_deleted = 0
         for root, _, files in os.walk(root_dir):
             for file in files:
-                if file.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp', '.gif')):
+                if file.lower().endswith((".jpg", ".jpeg", ".png", ".bmp", ".gif")):
                     file_path = os.path.join(root, file)
                     try:
                         with Image.open(file_path) as img:
@@ -209,8 +285,8 @@ if __name__ == "__main__":
                         num_deleted += 1
         print(f"\nFinished. Deleted {num_deleted} corrupted images.")
 
-    #delete_corrupted_images("/data/users/cboned/data/Generic/Imagenet1k/train")
-    #delete_corrupted_images("/data/users/cboned/data/Generic/Imagenet1k/val")
+    # delete_corrupted_images("/data/users/cboned/data/Generic/Imagenet1k/train")
+    # delete_corrupted_images("/data/users/cboned/data/Generic/Imagenet1k/val")
 
     with initialize(version_base="1.3.2", config_path=args.config_path):
         cfg = compose(config_name=args.config_file)
