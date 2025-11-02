@@ -98,10 +98,10 @@ def main(cfg: DictConfig):
     for param in student_model.head.parameters():
         param.requires_grad = False
 
-    # student_model.patch_embed.pos_embed = (
-    #    teacher_model.vit.embeddings.position_embeddings
+    student_model.patch_embed.pos_embed = (
+        teacher_model.vit.embeddings.position_embeddings)
 
-    # student_model.patch_embed.pos_embed.requires_grad = False
+    student_model.patch_embed.pos_embed.requires_grad = False
 
     model_parameters = sum(
         p.numel() for p in student_model.parameters() if p.requires_grad
