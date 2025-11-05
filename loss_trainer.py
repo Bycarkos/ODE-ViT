@@ -159,7 +159,10 @@ class ImageDistilTrainer(torch.nn.Module):
         return mse_loss, mse_losses
 
     def compute_l1_attention_loss(
-        self, student_output_attentions, teacher_output_attentions, compute_per_head=False
+        self,
+        student_output_attentions,
+        teacher_output_attentions,
+        compute_per_head=False,
     ):
         # --- 1. Extract last-layer attention excluding CLS→CLS ---
         attn_t = torch.stack(teacher_output_attentions, dim=0)[-1][
@@ -169,13 +172,12 @@ class ImageDistilTrainer(torch.nn.Module):
 
         s_attn_mean, s_attn, _ = self.extract_mass(attn_s, threshold=0.5)
         t_attn_mean, t_attn, _ = self.extract_mass(attn_t, threshold=0.7)
-        
-        
+
         max_value_att = t_attn_mean.flatten(1, 2).max(dim=-1).values
-        t_attn_mean = max_value_att[:, None, None] - t_attn_mean
+        # t_attn_mean = max_value_att[:, None, None] - t_attn_mean
         l1_loss = (self.L1_loss(s_attn_mean, t_attn_mean)).sum()
 
-        return l1_loss*self.lambda_param
+        return l1_loss * self.lambda_param
 
     def compute_distillation_loss(
         self,
@@ -183,7 +185,7 @@ class ImageDistilTrainer(torch.nn.Module):
         teacher_output_attentions,
         eps=1e-8,
         compute_per_head: bool = True,
-    ):  
+    ):
         ## TODO Experiment with the attention distillation by heads.
         """
         Computes symmetrized, temperature-scaled attention distillation loss.
@@ -201,12 +203,12 @@ class ImageDistilTrainer(torch.nn.Module):
 
         s_attn_mean, s_attn, _ = self.extract_mass(attn_s, threshold=0.5)
         t_attn_mean, t_attn, _ = self.extract_mass(attn_t, threshold=0.7)
-        t_attn = 1-t_attn ## When trained with JASMIN LOSS THE TEACHER AD-HOC
-        
+        t_attn = 1 - t_attn  ## When trained with JASMIN LOSS THE TEACHER AD-HOC
+
         max_value_att = t_attn_mean.flatten(1, 2).max(dim=-1).values
 
         t_attn_mean = max_value_att[:, None, None] - t_attn_mean
-        
+
         if not compute_per_head:
             s_attn_mean = s_attn_mean.clamp(min=eps)
             t_attn_mean = t_attn_mean.clamp(min=eps)
@@ -279,9 +281,10 @@ class ImageDistilTrainer(torch.nn.Module):
         if self.use_distillation:
             self.temperature_scheduler.get_temp(epoch=self.epoch)
             kl = self.compute_l1_attention_loss(
-                student_output["attentions"], teacher_output["attentions"], compute_per_head=False
+                student_output["attentions"],
+                teacher_output["attentions"],
+                compute_per_head=False,
             )
-
 
             if kl.isnan().any():
                 print("KL loss is NaN")
@@ -337,7 +340,7 @@ class ImageDistilTrainer(torch.nn.Module):
         )
         dict_output.update(representation_losses)
         loss += representation_losses["loss"]
-        loss += student_output["jasmin_loss"]
+        loss += student_output["jasmin_loss"] * 0.1
 
         if self.use_supervision:
             loss += student_output["loss"]
@@ -357,7 +360,7 @@ class ImageDistilTrainer(torch.nn.Module):
 
         # --- Backpropagation ---
         loss.backward()
-        torch.nn.utils.clip_grad_norm_(self.student.parameters(), 5.0)
+        torch.nn.utils.clip_grad_norm_(self.student.parameters(), 1.0)
         self.optimizer.step()
 
         if self.scheduler is not None:

@@ -101,7 +101,7 @@ def main(cfg: DictConfig):
     student_model.patch_embed.pos_embed = (
         teacher_model.vit.embeddings.position_embeddings)
 
-    student_model.patch_embed.pos_embed.requires_grad = False
+    #student_model.patch_embed.pos_embed.requires_grad = False
 
     model_parameters = sum(
         p.numel() for p in student_model.parameters() if p.requires_grad
@@ -140,9 +140,9 @@ def main(cfg: DictConfig):
         **cfg.data.collator.val,
     )
 
-    initial_lr = 5e-5
+    initial_lr = 1e-4
     optimizer = AdamW(
-        filter(lambda p: p.requires_grad, student_model.parameters()),
+        student_model.parameters(), #filter(lambda p: p.requires_grad, student_model.parameters()),
         lr=initial_lr,
         weight_decay=5e-2,
     )
@@ -206,29 +206,6 @@ def main(cfg: DictConfig):
     if cfg.log_wandb:
         wandb_logger.watch(student_model, log="all")
 
-    """
-    print("CREATING THE BASELINE METRIC VALUE\n STARTING TO EVALUATE FO THE FIRST TIME")
-    _, loss_validation, acc_validation = test_classification_task(
-        dataloader=val_dloader,
-        model=student_model,
-        criterion=criterion,
-        wandb_logger=wandb_logger,
-    )
-
-    updated, optimal_loss = utils.update_and_save_model_pt(
-            previous_metric=optimal_loss,
-            actual_metric=acc_validation,
-            model=model,
-            optimizer=optimizer,
-            lr_scheduler=optimizer.param_groups[0]["lr"],
-            checkpoint_path=checkpoint_name,
-            compare=">",
-        )
-
-    print(
-        f"Validation Loss Epoch: {0} Value: {acc_validation} Optimal_loss: {optimal_loss}"
-    )
-    """
 
     for epoch in tqdm.tqdm(
         range(1, cfg.setup.dict.epochs),
@@ -236,6 +213,11 @@ def main(cfg: DictConfig):
         position=0,
         leave=False,
     ):
+
+        if (epoch == 25) and (cfg.setup.dict.curriculum):
+            for param in student_model.head.parameters():
+                param.requires_grad = True
+
         _, train_loss = train_classification_task_distillation(
             dataloader=train_dloader,
             student_model=student_model,

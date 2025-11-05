@@ -285,7 +285,7 @@ def train_classification_task(
         if jasmin_loss is not None:
             loss += jasmin_loss  # * 0.1
         else:
-            jasmin_loss = utils.jasmin_loss(output.attentions[-3:])
+            jasmin_loss = utils.jasmin_loss(output.attentions, k=10)
 
         loss.backward()
 

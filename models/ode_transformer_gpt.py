@@ -345,20 +345,8 @@ class ViTNeuralODE(nn.Module):
 
     ## AD-HOC
     AVG_DISTANCES_CONSECUTIVE_HIDDEN_STATES_VIT = torch.tensor(
-        [
-            19.9335,
-            12.61485625,
-            13.10309922,
-            14.70024375,
-            15.15418125,
-            17.1821,
-            14.34054062,
-            18.23386562,
-            23.4014875,
-            14.24714063,
-            29.36258125,
-            171.6232875,
-        ]
+    [19.99450625, 12.949505, 5.35348687, 4.86699219, 4.81463781, 4.52093875,
+      5.21054063, 5.69734125, 6.1311925, 6.05176188, 6.4614325, 53.514895]
     )
 
     def __init__(
@@ -494,8 +482,8 @@ class ViTNeuralODE(nn.Module):
             steps = torch.round(x_exp_norm * self.num_eval_steps).int()
 
         checkpoints = torch.cumsum(steps, dim=0).long()
-        if checkpoints[-1] == self.num_eval_steps:
-            checkpoints[-1] -= 1
+        #if checkpoints[-1] == self.num_eval_steps:
+        checkpoints[-1] = num_eval_steps-1
 
         return checkpoints
 
@@ -566,7 +554,7 @@ class ViTNeuralODE(nn.Module):
         output_attentions: bool = False,
         output_attention_trajectory: bool = False,
         t_grid: Optional[torch.Tensor] = None,
-        temperature: Optional[float] = 100,
+        temperature: Optional[float] = 30,
         jasmin_k: int = 10,
     ):
         """

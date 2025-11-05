@@ -217,7 +217,7 @@ def main(cfg: DictConfig):
 
         print(f"Loss Epoch: {epoch} Value: {train_loss}")
 
-        if (epoch) == 25:
+        if (epoch) == 5:
             for name, param in model.named_parameters():
                 if "vit.encoder.layer":
                     param.requires_grad = True
