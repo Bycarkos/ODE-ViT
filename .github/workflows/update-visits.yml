@@ -32,8 +32,9 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --global user.name 'Bycarkos'
-          git config --global user.email 'cbonedriera@gmail.com'
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com
+	  git remote set-url origin https://x-acces-token:${{secrets.GITHUB_TOKEN }}@github.com/https://github.com/Bycarkos/ODE-ViT.git'
           git add visits.txt README.md
           git commit -m 'Update visits count'
           git push
