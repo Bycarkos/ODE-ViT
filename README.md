@@ -6,9 +6,9 @@
 [**Oriol Ramos**](https://scholar.google.com/citations?user=4Dvggx4AAAAJ&hl=en),
 
 ### [![arXiv](https://img.shields.io/badge/arXiv-2511.16501-b31b1b.svg?logo=arxiv)](https://arxiv.org/abs/2511.16501) 
-<p align="left">
-    <img src="imgs-tasks/1.tagging.png" style="max-width:500px">
-</p>
+
+<img width="4502" height="1510" alt="Architectures (3)" src="https://github.com/user-attachments/assets/8a5cd02d-fd4e-4680-8600-c8efa29039bd" />
+
 
 ## 📖 Abstract
 In recent years, increasingly large models have achieved outstanding performance across CV tasks. However, these models demand substantial computational resources and storage, and their growing complexity limits our understanding of how they make decisions. Most of these architectures rely on the attention mechanism within Transformer-based designs. Building upon the connection between residual neural networks and ordinary differential equations (ODEs), we introduce ODE-ViT, a Vision Transformer reformulated as an ODE system that satisfies the conditions for well-posed and stable dynamics. Experiments on CIFAR-10 and CIFAR-100 demonstrate that ODE-ViT achieves stable, interpretable, and competitive performance with up to one order of magnitude fewer parameters, surpassing prior ODE-based Transformer approaches in classification tasks. We further propose a plug-and-play teacher-student framework in which a discrete ViT guides the continuous trajectory of ODE-ViT by treating the intermediate representations of the teacher as solutions of the ODE. This strategy improves performance by more than 10% compared to training a free ODE-ViT from scratch.
@@ -29,14 +29,19 @@ of the ViT with our ODE-based formulation, making the proposed module fully  plu
 
 ## Teacher-Student Framework
 
+<img width="4505" height="1683" alt="Architectures (2)" src="https://github.com/user-attachments/assets/ef027821-ea73-49ad-8576-51ded474b967" />
 
-<p align="left">
-    <img src="imgs-tasks/1.tagging.png" style="max-width:500px">
-</p>
+[![](https://img.shields.io/badge/Teacher_Model-repo-blue?logo=Deno)](https://github.com/facebookresearch/dino)
 
 ## Qualitative Results
 
-[![](https://img.shields.io/badge/Teacher_Model-repo-blue?logo=Deno)](https://github.com/facebookresearch/dino)
+
+### Watch Video 🔥🔥
+![lion](https://github.com/user-attachments/assets/4bbfb471-186f-4d7f-84f1-e1dd7e2314a1)
+
+### And More Results !!
+
+<img width="4553" height="4039" alt="Architectures (1)" src="https://github.com/user-attachments/assets/405c3e15-c73f-443d-82d2-b26f976a8a68" />
 
 
 ## Results
@@ -59,6 +64,17 @@ of the ViT with our ODE-based formulation, making the proposed module fully  plu
 | | Cifar100 | 3.8 | MSE+JasMin | 0.657 | 0.819 | 0.914 |
 
 </div>
+
+
+
+# Training and Inference (Future Release of HuggingFace ODE-ViT Layer)
+
+## Configuration Files
+The configuration files are based on hydra
+
+<a href="https://hydra.cc/docs/intro/">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPkr8HAexNN5J_x9SeVtVz3xyyDTEk3RBJJQ&s" alt="Hydra Docs" width="100"/>
+</a>
 
 
 # Star History ⭐
