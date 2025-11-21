@@ -58,4 +58,4 @@ def jasmin_loss(attn_maps, k=0, reduction="mean"):
         losses.append(loss.mean())
 
     losses = torch.stack(losses)
-    return losses.mean() if reduction == "mean" else losses
+    return losses.mean() if reduction == "mean" else losses.sum()

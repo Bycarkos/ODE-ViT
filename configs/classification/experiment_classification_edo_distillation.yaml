@@ -6,12 +6,12 @@ finetunne:
 
 setup:
     dict:
-        jasmin_k: 2
+        jasmin_k: 10
         epochs: 300
         accumulation_steps: -1
         log_every: 10
         temperature: 3.0
-        lambda_param: 0.5
+        lambda_param: 0.25
         mse_full_path: True
         use_mse_loss: True
         use_supervision: False
@@ -25,12 +25,12 @@ setup:
     wandb:
         project: Koopman
         group: CLASSIFICATION
-        name: EDO_DISTILLATION_VIT_ON_CIFAR100_DINO_ATTENTION_FULL_PATH_ATTENTION_DISTILL
+        name: EDO_DISTILLATION_VIT_ON_Imagenet100_DINO_ATTENTION_L1_JASMIN_FULL_PATH
 
 data:
     dataset:
-        name: "cifar100"
-        dataset_path: "/data/users/cboned/cifar"
+        name: "imagenet100"
+        dataset_path: "/data/users/cboned/imagenet100"
 
     collator:
         train:
@@ -56,7 +56,7 @@ modeling:
     type: vit
 
     teacher:
-        checkpoint_path: "checkpoints/Vit_CIFAR100_DINO.pt"
+        checkpoint_path: "checkpoints/Vit_Imagenet100_DINO_JASMIN.pt"
 
     student:
         inputs:
@@ -76,7 +76,7 @@ modeling:
             l2_attention: False
             add_distillation_token: False
             register_tokens: 10
-            pos_embed_register_tokens: True
+            pos_embed_register_tokens: False
             solver: "euler"
 
-        checkpoint_name: "EDO_DISTILLATION_VIT_ON_CIFAR100_DINO_ATTENTION_FULL_PATH_ATTENTION_DISTILL"
+        checkpoint_name: "EDO_DISTILLATION_VIT_ON_Imagenet100_DINO_ATTENTION_L1_JASMIN_FULL_PATH"

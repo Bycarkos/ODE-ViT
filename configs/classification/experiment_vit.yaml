@@ -1,8 +1,8 @@
-log_wandb: True
+log_wandb: False
 
 setup:
     dict:
-        epochs: 200
+        epochs: 10
         accumulation_steps: -1
         log_every: 10
         num_hidden_layers: 12
@@ -11,11 +11,11 @@ setup:
     wandb:
         project: Koopman
         group: CLASSIFICATION
-        name: Training_Vit_CIFAR100_DINOv2_JASMIN
+        name: Training_Vit_Imagenet100_DINO_JASMIN
 
 data:
     dataset:
-        name: cifar100
+        name: cifar10
         dataset_path: "/data/users/cboned/cifar"
 
     collator:
@@ -38,6 +38,6 @@ data:
             num_workers: 0
 
 modeling:
-    type: dinov2
+    type: dino
 
-    checkpoint_name: "Vit_CIFAR100_DINOv2_JASMIN"
+    checkpoint_name: "Vit_Imagenet100_DINO_JASMIN"
