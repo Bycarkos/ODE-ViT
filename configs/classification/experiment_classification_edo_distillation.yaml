@@ -2,35 +2,35 @@ log_wandb: True
 
 finetunne:
     recover_training: False
-    checkpoint: /data/users/cboned/checkpoints/EDO_DISTILLATION_VIT_ON_CIFAR10_DINO_ATTENTION_KL_LOSS_FULL_PATH.pt
+    checkpoint: /data/users/cboned/checkpoints/EDO_DISTILLATION_VIT_ON_CIFAR100_DINO_ATTENTION_KL_LOSS_FULL_PATH.pt
 
 setup:
     dict:
-        jasmin_k: 10
+        jasmin_k: 2
         epochs: 300
         accumulation_steps: -1
         log_every: 10
         temperature: 3.0
-        lambda_param: 0.25
+        lambda_param: 0.5
         mse_full_path: True
         use_mse_loss: True
-        use_supervision: False
+        use_supervision: True
         use_distillation: True
         use_kl_loss: False
         compute_per_head: False
         use_jasmin: True
-        curriculum: False
+        curriculum: True
         patience_factor: 0.5
 
     wandb:
         project: Koopman
         group: CLASSIFICATION
-        name: EDO_DISTILLATION_VIT_ON_Imagenet100_DINO_ATTENTION_L1_JASMIN_FULL_PATH
+        name: EDO_DISTILLATION_VIT_ON_CIFAR100_DINO_ATTENTION_FULL_PATH_ATTENTION_DISTILL
 
 data:
     dataset:
-        name: "imagenet100"
-        dataset_path: "/data/users/cboned/imagenet100"
+        name: "cifar100"
+        dataset_path: "/data/users/cboned/cifar"
 
     collator:
         train:
@@ -56,7 +56,7 @@ modeling:
     type: vit
 
     teacher:
-        checkpoint_path: "checkpoints/Vit_Imagenet100_DINO_JASMIN.pt"
+        checkpoint_path: "checkpoints/Vit_CIFAR100_DINO.pt"
 
     student:
         inputs:
@@ -66,10 +66,10 @@ modeling:
             num_classes: 100
             embed_dim: 768
             num_heads: 12
-            mlp_ratio: 4.0
+            mlp_ratio: 1.0
             emulate_depth: 12.0
             time_interval: 1.0
-            num_eval_steps: 24
+            num_eval_steps: 36
             attn_drop: 0.1
             proj_drop: 0.1
             mlp_drop: 0.1
@@ -79,4 +79,4 @@ modeling:
             pos_embed_register_tokens: False
             solver: "euler"
 
-        checkpoint_name: "EDO_DISTILLATION_VIT_ON_Imagenet100_DINO_ATTENTION_L1_JASMIN_FULL_PATH"
+        checkpoint_name: "EDO_DISTILLATION_VIT_ON_CIFAR100_DINO_ATTENTION_FULL_PATH_ATTENTION_DISTILL"
