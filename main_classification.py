@@ -99,6 +99,8 @@ def main(cfg: DictConfig):
             num_hidden_layers=cfg.setup.dict.num_hidden_layers,
         )
 
+
+
     elif cfg.modeling.type == "dinov2":
         model = Dinov2WithRegistersForImageClassification.from_pretrained(
             "facebook/dinov2-with-registers-base",
@@ -139,6 +141,7 @@ def main(cfg: DictConfig):
         "Training Model with a total parameters of", model_parameters / 1e6, "Millions"
     )
 
+    exit()
     model_dist = [
         (name, p.numel() / 1e6)
         for name, p in model.named_parameters()

@@ -3,18 +3,18 @@ infer_from_checkpoint: False
 
 setup:
     dict:
-        jasmin: 1
+        jasmin: 10
         epochs: 300
-        accumulation_steps: -1
+        accumulation_steps: 2
         log_every: 10
 
     wandb:
         project: Koopman
-        group: CLASSIFICATION_CIFAR10_EDO
-        name: Vit_ODE_CIFAR10_JASMIN_K_ALL_ATTENTIONS_TRAINING_ONLY_ATT
+        group: CLASSIFICATION_CIFAR100_EDO
+        name: Vit_ODE_CIFAR100_JASMIN_K_P_SIZE_16
 data:
     dataset:
-        name: "cifar10"
+        name: "cifar100"
         dataset_path: "/data/users/cboned/cifar"
 
     collator:
@@ -23,6 +23,7 @@ data:
             batch_size: 64
             pin_memory: True
             num_workers: 8
+            drop_last: True
 
         val:
             shuffle: True
@@ -42,21 +43,21 @@ modeling:
         img_size: 224
         patch_size: 16
         in_chans: 3
-        num_classes: 10
+        num_classes: 100
         embed_dim: 768
         num_heads: 12
-        mlp_ratio: 1.0
+        mlp_ratio: 2.0
         emulate_depth: 12.0
         time_interval: 1.0
         num_eval_steps: 24
-        attn_drop: 0.1
-        proj_drop: 0.1
-        mlp_drop: 0.1
+        attn_drop: 0.3
+        proj_drop: 0.3
+        mlp_drop: 0.3
         l2_attention: False
         add_distillation_token: False
-        register_tokens: 16
-        pos_embed_register_tokens: True
+        register_tokens: 10
+        pos_embed_register_tokens: False
         solver: "euler"
 
-    checkpoint_name: Vit_ODE_CIFAR10_JASMIN_K_ALL_ATTENTIONS_TRAINING_ONLY_ATT ## Remember to switch names
+    checkpoint_name: Vit_ODE_CIFAR100_JASMIN_K_P_SIZE_16
     base: "checkpoints/Vit_CIFAR10_DINO.pt"

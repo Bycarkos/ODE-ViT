@@ -91,23 +91,15 @@ def main(cfg: DictConfig):
     else:
         model = ODEResNet(**cfg.modeling.inputs)
 
-    base_checkpoint_path = cfg.modeling.base
-    teacher_model = ViTForImageClassification.from_pretrained(base_checkpoint_path)
+    teacher_model = ViTForImageClassification.from_pretrained("facebook/dino-vitb16")
 
-    # model.patch_embed.cls_token = teacher_model.vit.embeddings.cls_token
-    # model.patch_embed.cls_token.requires_grad = False
+    model.patch_embed.cls_token = teacher_model.vit.embeddings.cls_token
+    model.patch_embed.cls_token.requires_grad = False
 
     # model.patch_embed.proj.weight.data.copy_(
-    #    teacher_model.vit.embeddings.patch_embeddings.projection.weight.data
-    #    )
+    #   teacher_model.vit.embeddings.patch_embeddings.projection.weight.data
+    #        )
     # for param in model.patch_embed.proj.parameters():
-    #    param.requires_grad = False
-
-    # model.patch_embed.cls_token = teacher_model.vit.embeddings.cls_token
-    # model.patch_embed.cls_token.requires_grad = False
-
-    # model.head = teacher_model.classifier
-    # for param in model.head.parameters():
     #    param.requires_grad = False
 
     save_path = "/data/users/cboned/checkpoints"
@@ -129,7 +121,7 @@ def main(cfg: DictConfig):
 
     model = model.to(device)
 
-    processor = ViTImageProcessor.from_pretrained("google/vit-base-patch16-224-in21k")
+    processor = ViTImageProcessor.from_pretrained("facebook/dino-vitb16")
 
     collator = Collator(processor)
 
@@ -145,9 +137,9 @@ def main(cfg: DictConfig):
         **cfg.data.collator.val,
     )
 
-    initial_lr = 5e-5
-    optimizer = AdamW(
-        filter(lambda p: p.requires_grad, model.parameters()),
+    initial_lr = 1e-4
+    optimizer = torch.optim.AdamW(
+        model.parameters(),
         lr=initial_lr,
         weight_decay=5e-2,
     )
@@ -177,7 +169,7 @@ def main(cfg: DictConfig):
     os.makedirs(save_path, exist_ok=True)
     checkpoint_name = f"{save_path}/{cfg.modeling.checkpoint_name}.pt"
 
-    criterion = torch.nn.CrossEntropyLoss()
+    criterion = torch.nn.CrossEntropyLoss(label_smoothing=0.01)
 
     if cfg.log_wandb == True:
         wandb_logger.watch(model, log="all")
@@ -188,9 +180,9 @@ def main(cfg: DictConfig):
         position=0,
         leave=False,
     ):
-        # if epoch > 5:
-        #    for p in model.patch_embed.proj.parameters():
-        #        p.requires_grad = True
+        if epoch > 100:
+            for p in model.patch_embed.proj.parameters():
+                p.requires_grad = True
 
         _, train_loss = train_classification_task(
             dataloader=train_dloader,

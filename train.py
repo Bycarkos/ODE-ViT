@@ -274,7 +274,7 @@ def train_classification_task(
             labels=labels,
             output_attentions=True,
             # jasmin_k=10,
-            # output_attention_trajectory=True,
+            output_attention_trajectory=True,
         )
 
         preds = output["logits"]
@@ -285,7 +285,9 @@ def train_classification_task(
         if jasmin_loss is not None:
             loss += jasmin_loss  # * 0.1
         else:
-            jasmin_loss = utils.jasmin_loss(output.attentions, k=10)
+            jasmin_loss = utils.jasmin_loss(output["attention_trajectory"][-1:], k=10)
+
+        loss += jasmin_loss
 
         loss.backward()
 
@@ -299,7 +301,7 @@ def train_classification_task(
         metrics_epoch["jasmin_loss"] += jasmin_loss.item()
 
         if cumulative >= num_accumulation_steps:
-            torch.nn.utils.clip_grad_norm_(params, 10.0)
+            torch.nn.utils.clip_grad_norm_(params, 1.0)
             optimizer.step()
             optimizer.zero_grad()
             if scheduler:
