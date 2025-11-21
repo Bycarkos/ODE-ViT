@@ -10,3 +10,4 @@ dmd_results/*
 *.vscode
 **/.ropeproject
 **/pyrightconfig.json
+pyrightconfig.json

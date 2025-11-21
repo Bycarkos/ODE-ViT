@@ -594,7 +594,7 @@ class ViTNeuralODE(nn.Module):
         }
 
         if output_attention_trajectory:
-            out["attention_trajectory"] = self.odefunc.attention_trajectory[:,:,: -self.patch_embed.num_register_tokens,: -self.patch_embed.num_register_tokens]
+            out["attention_trajectory"] = torch.stack(self.odefunc.attention_trajectory, dim=0)[:,:,: -self.patch_embed.num_register_tokens, : -self.patch_embed.num_register_tokens]
 
         if output_attentions:
             out["attentions"] = self.odefunc.block.attentions[
@@ -612,7 +612,7 @@ class ViTNeuralODE(nn.Module):
             ]
 
             out["jasmin_loss"] = self.jasmin_loss(
-                self.odefunc.attention_trajectory[-3:],
+                self.odefunc.attention_trajectory[-int(self.num_eval_steps*0.85):],
                 k=jasmin_k,
                 reduction="mean",
             )
@@ -638,6 +638,8 @@ class ViTNeuralODE(nn.Module):
             ]  # [Q, B, 1+N, D]
             out["control_points"] = control_points
 
+        del self.odefunc.attention_trajectory
+        
         self.odefunc.attention_trajectory = []  # reset for next forward pass
 
         return out

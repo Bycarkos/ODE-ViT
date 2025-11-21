@@ -51,6 +51,7 @@ class ImageDistilTrainer(torch.nn.Module):
         self.loss_function = torch.nn.KLDivLoss(reduction="batchmean")
         self.mse_loss = torch.nn.MSELoss(reduction="none")
         self.L1_loss = torch.nn.L1Loss(reduction="none")
+        self.conjugate_l1 = False
         self.teacher.eval()
         self.student.train()
 
@@ -108,7 +109,7 @@ class ImageDistilTrainer(torch.nn.Module):
         if smooth:
             attn_filtered = gaussian_blur(attn_filtered, kernel_size=(3, 3), sigma=0.5)
 
-        attentions_mean = attn_filtered.mean(dim=1) * th_attn.mean(dim=1)
+        attentions_mean = attn_filtered.mean(dim=1) #* th_attn.mean(dim=1)
 
         if return_mask:
             return attentions_mean, attn_filtered, th_attn.mean(dim=1)
@@ -173,8 +174,10 @@ class ImageDistilTrainer(torch.nn.Module):
         s_attn_mean, s_attn, _ = self.extract_mass(attn_s, threshold=0.5)
         t_attn_mean, t_attn, _ = self.extract_mass(attn_t, threshold=0.7)
 
-        max_value_att = t_attn_mean.flatten(1, 2).max(dim=-1).values
-        t_attn_mean = max_value_att[:, None, None] - t_attn_mean
+        if self.conjugate_l1:
+            max_value_att = t_attn_mean.flatten(1, 2).max(dim=-1).values
+            t_attn_mean = max_value_att[:, None, None] - t_attn_mean
+
         l1_loss = (self.L1_loss(s_attn_mean, t_attn_mean)).sum()
 
         return l1_loss * self.lambda_param
@@ -342,7 +345,7 @@ class ImageDistilTrainer(torch.nn.Module):
         loss += representation_losses["loss"]
         loss += student_output["jasmin_loss"]
 
-        if (self.use_supervision) and (epoch > 200):
+        if (self.use_supervision) and (epoch > 200): ## Curriculum learning AD-HOC:
             loss += student_output["loss"]
 
         # --- Final checks ---

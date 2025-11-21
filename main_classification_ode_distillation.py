@@ -152,7 +152,7 @@ def main(cfg: DictConfig):
 
     # Warmup steps (e.g., 10% of total steps)
     warmup_steps = int(0.05 * total_steps)
-    num_cycles = cfg.setup.dict.epochs // 30
+    num_cycles = cfg.setup.dict.epochs // 100
 
     optimal_loss = 0.0
     save_path = "/data/users/cboned/checkpoints"
