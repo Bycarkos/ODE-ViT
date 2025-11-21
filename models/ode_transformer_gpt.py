@@ -324,7 +324,7 @@ class ViT_ODEFunc(nn.Module):
             self.attention_trajectory = []
 
         self.attention_trajectory.append(
-            self.block.attentions.detach()[:, :, :-10, :-10]
+            self.block.attentions.detach()
         )
 
         return dx  # + x
@@ -453,7 +453,7 @@ class ViTNeuralODE(nn.Module):
             losses.append(loss.mean())
 
         losses = torch.stack(losses)
-        return losses.mean() if reduction == "mean" else losses
+        return losses.mean() if reduction == "mean" else losses.sum()
 
     def finite_difference_second_derivative_sequence(self, f_t, delta_t=1e-4):
         """
@@ -594,7 +594,7 @@ class ViTNeuralODE(nn.Module):
         }
 
         if output_attention_trajectory:
-            out["attention_trajectory"] = self.odefunc.attention_trajectory
+            out["attention_trajectory"] = self.odefunc.attention_trajectory[:,:,: -self.patch_embed.num_register_tokens,: -self.patch_embed.num_register_tokens]
 
         if output_attentions:
             out["attentions"] = self.odefunc.block.attentions[
@@ -612,7 +612,7 @@ class ViTNeuralODE(nn.Module):
             ]
 
             out["jasmin_loss"] = self.jasmin_loss(
-                self.odefunc.attention_trajectory[-1],
+                self.odefunc.attention_trajectory[-3:],
                 k=jasmin_k,
                 reduction="mean",
             )
@@ -623,7 +623,7 @@ class ViTNeuralODE(nn.Module):
             out["logits_dist"] = logits_dist
 
         if labels is not None:
-            loss = F.cross_entropy(logits, labels)
+            loss = F.cross_entropy(logits, labels, label_smoothing=0.05)
             out["loss"] = loss
 
         if output_hidden_states:

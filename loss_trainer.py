@@ -174,7 +174,7 @@ class ImageDistilTrainer(torch.nn.Module):
         t_attn_mean, t_attn, _ = self.extract_mass(attn_t, threshold=0.7)
 
         max_value_att = t_attn_mean.flatten(1, 2).max(dim=-1).values
-        # t_attn_mean = max_value_att[:, None, None] - t_attn_mean
+        t_attn_mean = max_value_att[:, None, None] - t_attn_mean
         l1_loss = (self.L1_loss(s_attn_mean, t_attn_mean)).sum()
 
         return l1_loss * self.lambda_param
@@ -340,9 +340,9 @@ class ImageDistilTrainer(torch.nn.Module):
         )
         dict_output.update(representation_losses)
         loss += representation_losses["loss"]
-        loss += student_output["jasmin_loss"] * 0.1
+        loss += student_output["jasmin_loss"]
 
-        if self.use_supervision:
+        if (self.use_supervision) and (epoch > 200):
             loss += student_output["loss"]
 
         # --- Final checks ---

@@ -66,9 +66,7 @@ def main(cfg: DictConfig):
             root=cfg.data.dataset.dataset_path, download=False, train=False
         )
     elif cfg.data.dataset.name == "cifar10":
-        train_dataset = CIFAR10(
-            root=cfg.data.dataset.dataset_path, download=False, train=True
-        )
+        train_dataset = CIFAR10(root=cfg.data.dataset.dataset_path, download=False, train=True)
         validation_dataset = CIFAR10(
             root=cfg.data.dataset.dataset_path, download=False, train=False
         )
@@ -111,6 +109,7 @@ def main(cfg: DictConfig):
         for name, p in student_model.named_parameters()
         if p.requires_grad
     ]
+
     if wandb_logger:
         wandb_logger.log({"model_parameters": model_parameters})
 
@@ -141,7 +140,7 @@ def main(cfg: DictConfig):
     )
 
     initial_lr = 1e-4
-    optimizer = AdamW(
+    optimizer = torch.optim.AdamW(
         student_model.parameters(), #filter(lambda p: p.requires_grad, student_model.parameters()),
         lr=initial_lr,
         weight_decay=5e-2,
@@ -152,7 +151,7 @@ def main(cfg: DictConfig):
     total_steps = cfg.setup.dict.epochs * steps_per_epoch
 
     # Warmup steps (e.g., 10% of total steps)
-    warmup_steps = int(0.1 * total_steps)
+    warmup_steps = int(0.05 * total_steps)
     num_cycles = cfg.setup.dict.epochs // 30
 
     optimal_loss = 0.0
@@ -197,11 +196,6 @@ def main(cfg: DictConfig):
     student_model = student_model.to(device)
     teacher_model = teacher_model.to(device)
 
-    # now individually transfer the optimizer parts...
-    for state in optimizer.state.values():
-        for k, v in state.items():
-            if isinstance(v, torch.Tensor):
-                state[k] = v.to(device)
 
     if cfg.log_wandb:
         wandb_logger.watch(student_model, log="all")
@@ -214,7 +208,7 @@ def main(cfg: DictConfig):
         leave=False,
     ):
 
-        if (epoch == 25) and (cfg.setup.dict.curriculum):
+        if (epoch == 200) and (cfg.setup.dict.curriculum):
             for param in student_model.head.parameters():
                 param.requires_grad = True
 
