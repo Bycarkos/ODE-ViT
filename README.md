@@ -5,7 +5,7 @@
 [**David Romero**](),
 [**Oriol Ramos**](https://scholar.google.com/citations?user=4Dvggx4AAAAJ&hl=en),
 
-### [![arXiv](https://img.shields.io/badge/arXiv-2511.16501-b31b1b.svg?logo=arxiv)](https://arxiv.org/abs/2511.16501) ![Visits](https://img.shields.io/badge/Visits-180-blue)
+### [![arXiv](https://img.shields.io/badge/arXiv-2511.16501-b31b1b.svg?logo=arxiv)](https://arxiv.org/abs/2511.16501) ![Visits](https://img.shields.io/badge/Visits-181-blue)
 
 <img width="4502" height="1510" alt="Architectures (3)" src="https://github.com/user-attachments/assets/8a5cd02d-fd4e-4680-8600-c8efa29039bd" />
 
