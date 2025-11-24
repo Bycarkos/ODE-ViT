@@ -15,7 +15,7 @@ In recent years, increasingly large models have achieved outstanding performance
 
 
 ## 📣 Latest News 📣
-- **`25 November 2025`** Our survey paper have dropped in [arXiv](https://arxiv.org/abs/2511.16501) !!
+- **`25 November 2025`** Our preprint paper have dropped in [arXiv](https://arxiv.org/abs/2511.16501) !!
 
 
 
