@@ -67,10 +67,16 @@ of the ViT with our ODE-based formulation, making the proposed module fully  plu
 
 
 
-# Training and Inference (Future Release of HuggingFace ODE-ViT Layer)
+# Training and Inference 
 
+## TODO: 
+  * Future Release of HuggingFace ODE-ViT Layer
+  * Future Release of Huggingface Demo
+    
 ## Configuration Files
-The configuration files are based on hydra
+* The configuration files are based on hydra 🐉
+
+**Click on the image to go to the documentation** 📚
 
 <a href="https://hydra.cc/docs/intro/">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPkr8HAexNN5J_x9SeVtVz3xyyDTEk3RBJJQ&s" alt="Hydra Docs" width="100"/>
@@ -78,21 +84,6 @@ The configuration files are based on hydra
 
 
 # Star History ⭐
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="
-      https://api.star-history.com/svg?repos=Bycarkos/ODE-ViT&type=Date
-    "
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="
-      https://api.star-history.com/svg?repos=Bycarkos/ODE-ViT&type=Date
-    "
-  />
-  <img
-    alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=Bycarkos/ODE-ViT&type=Date"
-  />
-</picture>
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Bycarkos/ODE-ViT&type=date&legend=bottom-right)](https://www.star-history.com/#Bycarkos/ODE-ViT&type=date&legend=bottom-right)
+
